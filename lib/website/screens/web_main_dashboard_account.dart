@@ -9,8 +9,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:share/share.dart';
-
 class WebMainDashboardAccount extends StatefulWidget {
   const WebMainDashboardAccount({super.key});
 
@@ -298,10 +296,5 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
   void shareInviteLink(BuildContext context) {
     // Replace 'YOUR_INVITE_LINK' with your actual invite link
     final String inviteLink = 'https://yourapp.com/invite?ref=friend123';
-
-    Share.share(
-      'Join our app using my invite link: $inviteLink',
-      subject: 'Join us on the app!',
-    );
   }
 }

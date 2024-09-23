@@ -185,9 +185,8 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
                       firstDate: DateTime(2015),
                       initialDate: DateTime.now(),
                     );
-                    if (pickedDate == null) return;
                     _dateController.text =
-                        DateFormat('yyyy-MM-dd').format(pickedDate);
+                        DateFormat('yyyy-MM-dd').format(pickedDate!);
                   },
                   preFixICon: Icons.date_range,
                   controller: _dateController,
