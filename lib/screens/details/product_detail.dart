@@ -56,7 +56,13 @@ class _ProductDetailState extends State<ProductDetail> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.network(widget.photoURL),
+            Image.network(
+              widget.photoURL,
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
@@ -131,7 +137,17 @@ class _ProductDetailState extends State<ProductDetail> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (builder) => ProductBooking()));
+                              builder: (builder) => ProductBooking(
+                                    price: widget.price.toString(),
+                                    discount: widget.discount.toString(),
+                                    description: widget.description,
+                                    photoURL: widget.photoURL,
+                                    serviceCategory: widget.serviceCategory,
+                                    serviceName: widget.serviceName,
+                                    serviceSubCategory:
+                                        widget.serviceSubCategory,
+                                    uuid: widget.uuid,
+                                  )));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: mainColor,

@@ -17,34 +17,35 @@ class _SplashScreenState extends State<SplashScreen> {
       ..initialize().then((_) {
         setState(() {});
         _controller.play();
-        _controller.setLooping(false);
-        _controller.addListener(() {
-          if (_controller.value.position == _controller.value.duration) {
-            _navigateToNextPage();
-          }
-        });
       });
+    _controller.setLooping(false);
+    _controller.addListener(() {
+      if (_controller.value.position == _controller.value.duration) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+              builder: (context) => LoginScreen()), // Main screen after splash
+        );
+      }
+    });
   }
 
-  void _navigateToNextPage() {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => LoginScreen()),
-    );
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: _controller.value.isInitialized
-            ? AspectRatio(
+      body: _controller.value.isInitialized
+          ? Center(
+              child: AspectRatio(
                 aspectRatio: _controller.value.aspectRatio,
                 child: VideoPlayer(_controller),
-              )
-            : CircularProgressIndicator(),
-      ),
+              ),
+            )
+          : Center(child: CircularProgressIndicator()),
     );
   }
 }
