@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 class ProductBooking extends StatefulWidget {
   final description;
@@ -391,10 +392,10 @@ class _ProductBookingState extends State<ProductBooking> {
                               setState(() {
                                 isLoading = true;
                               });
-
+                              var uuid = Uuid().v4();
                               await FirebaseFirestore.instance
                                   .collection("appointment")
-                                  .doc(widget.uuid)
+                                  .doc(uuid)
                                   .set({
                                 "gender": _selectedGender,
                                 "patientName": _paitientController.text.trim(),
@@ -413,7 +414,7 @@ class _ProductBookingState extends State<ProductBooking> {
                                 "price": int.parse(widget.price),
                                 "patientUid":
                                     FirebaseAuth.instance.currentUser!.uid,
-                                "appointmentId": widget.uuid,
+                                "appointmentId": uuid,
                               });
                               setState(() {
                                 isLoading = false;
