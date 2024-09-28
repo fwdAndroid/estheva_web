@@ -163,6 +163,7 @@ class _HomePageState extends State<HomePage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (builder) => ProductDetail(
+                                                  type: serviceData['type'],
                                                   description: serviceData[
                                                       'serviceDescription'],
                                                   discount:
@@ -299,6 +300,7 @@ class _HomePageState extends State<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (builder) => ProductDetail(
+                                              type: serviceData['type'],
                                               description: serviceData[
                                                   'serviceDescription'],
                                               discount: serviceData['discount']
@@ -434,6 +436,7 @@ class _HomePageState extends State<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (builder) => ProductDetail(
+                                              type: serviceData['type'],
                                               description: serviceData[
                                                   'serviceDescription'],
                                               discount: serviceData['discount']
@@ -568,6 +571,7 @@ class _HomePageState extends State<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (builder) => ProductDetail(
+                                              type: serviceData['type'],
                                               description: serviceData[
                                                   'serviceDescription'],
                                               discount: serviceData['discount']
@@ -699,6 +703,7 @@ class _HomePageState extends State<HomePage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (builder) => ProductDetail(
+                                              type: serviceData['type'],
                                               description: serviceData[
                                                   'serviceDescription'],
                                               discount: serviceData['discount']
@@ -844,6 +849,7 @@ class _HomePageState extends State<HomePage> {
                                           MaterialPageRoute(
                                               builder: (builder) =>
                                                   ProductDetail(
+                                                    type: serviceData['type'],
                                                     description: serviceData[
                                                         'serviceDescription'],
                                                     discount:
@@ -995,6 +1001,7 @@ class _HomePageState extends State<HomePage> {
                                           MaterialPageRoute(
                                               builder: (builder) =>
                                                   ProductDetail(
+                                                    type: serviceData['type'],
                                                     description: serviceData[
                                                         'serviceDescription'],
                                                     discount:

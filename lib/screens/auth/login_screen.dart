@@ -199,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             });
                             await AuthMethods().loginUpUser(
                               email: _emailController.text.trim(),
-                              pass: _emailController.text.trim(),
+                              pass: _passwordController.text.trim(),
                             );
 
                             setState(() {
