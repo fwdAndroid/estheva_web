@@ -35,7 +35,15 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildMenuItem('Home', () {
+                _buildMenuItem('Home Services', () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => MainDashboardWeb(
+                                type: "clinic",
+                              )));
+                }),
+                _buildMenuItem('Clinic Services', () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
