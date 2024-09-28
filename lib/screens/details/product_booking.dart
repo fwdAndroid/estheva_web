@@ -362,6 +362,7 @@ class _ProductBookingState extends State<ProductBooking> {
                                     _endTimeController.text.trim(),
                                 "serviceName": widget.serviceName,
                                 "serviceCategory": widget.serviceCategory,
+                                "serviceDescription": widget.description,
                                 "status": "confirm",
                                 "price": int.parse(widget.price),
                                 "patientUid":

@@ -1,10 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:estheva_web/screens/tabs/service_appointment_details.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:estheva_web/screens/details/appointment_detail.dart';
 import 'package:estheva_web/screens/tabs/doctor_appointment_details.dart';
-import 'package:estheva_web/uitls/colors.dart';
 
 class Upcoming extends StatefulWidget {
   const Upcoming({super.key});
@@ -16,12 +12,15 @@ class Upcoming extends StatefulWidget {
 class _UpcomingState extends State<Upcoming> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: ListView.builder(itemBuilder: (context, index) {
-      return Column(
-        children: [
-          SizedBox(
-            width: 300,
-            height: 300,
+    return Scaffold(
+        body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Center(
+          child: SizedBox(
+            width: 250,
+            height: 250,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -34,27 +33,47 @@ class _UpcomingState extends State<Upcoming> {
                   children: [
                     Image.asset(
                       "assets/doctor.png",
-                      height: 200,
+                      height: 170,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("View Doctor Appointment"),
+                      child: Text("Doctor Appointment"),
                     ),
                   ],
                 ),
               ),
             ),
           ),
-          Card(
-            child: Column(
-              children: [
-                Image.asset("assets/doctor.png"),
-                Text("View Services Appointment"),
-              ],
+        ),
+        Center(
+          child: SizedBox(
+            width: 250,
+            height: 250,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (builder) => ServiceAppointmentDetails()));
+              },
+              child: Card(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "assets/newlogo.png",
+                      height: 170,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Service Appointment"),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          )
-        ],
-      );
-    }));
+          ),
+        ),
+      ],
+    ));
   }
 }
