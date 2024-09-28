@@ -1,16 +1,11 @@
-import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/uitls/image_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 
 class EditProfile extends StatefulWidget {
@@ -25,8 +20,30 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController customerPhoneNumberController = TextEditingController();
 
   bool _isLoading = false;
-  Uint8List? _image;
-  String? imageUrl;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    // Fetch data from Firestore
+    DocumentSnapshot doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    // Update the controllers with the fetched data
+    setState(() {
+      customerFullNameContoller.text = data['fullName'];
+      customerPhoneNumberController.text =
+          (data['contactNumber']); // Convert int to string
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,26 +68,6 @@ class _EditProfileState extends State<EditProfile> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                  onTap: () => selectImage(),
-                  child: _image != null
-                      ? CircleAvatar(
-                          radius: 59, backgroundImage: MemoryImage(_image!))
-                      : imageUrl != null
-                          ? CircleAvatar(
-                              radius: 59,
-                              backgroundImage: NetworkImage(imageUrl!))
-                          : Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset(
-                                "assets/person.png",
-                                height: 100,
-                              ),
-                            ),
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -109,19 +106,42 @@ class _EditProfileState extends State<EditProfile> {
                           color: black, fontSize: 12)),
                 ),
               ),
-              Center(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: _isLoading
-                    ? CircularProgressIndicator(
-                        color: mainColor,
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          color: mainColor,
+                        ),
                       )
-                    : Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SaveButton(
-                            title: "Confirm",
-                            onTap: () async {
-                              Navigator.pop(context);
-                            }),
-                      ),
+                    : SaveButton(
+                        title: "Edit Profile",
+                        onTap: () async {
+                          setState(() {
+                            _isLoading = true;
+                          });
+
+                          try {
+                            await FirebaseFirestore.instance
+                                .collection("users")
+                                .doc(FirebaseAuth.instance.currentUser!
+                                    .uid) // Use widget.uuid here
+                                .update({
+                              "fullName": customerFullNameContoller.text,
+                              "contactNumber": customerPhoneNumberController
+                                  .text, // Convert string to int
+                            });
+                          } catch (e) {
+                            // Handle errors here
+                            print("Error updating service: $e");
+                            showMessageBar("Profile Not Updated", context);
+                          } finally {
+                            setState(() {
+                              _isLoading = false;
+                            });
+                            showMessageBar("Profile Updated", context);
+                          }
+                        }),
               ),
             ],
           ),

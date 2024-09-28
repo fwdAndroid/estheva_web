@@ -12,6 +12,7 @@ import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -31,18 +32,32 @@ class _HistoryPageState extends State<HistoryPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "Farhan Ali",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w600, fontSize: 22),
-                    ),
-                  ],
-                ),
-              ),
+              StreamBuilder(
+                  stream: FirebaseFirestore.instance
+                      .collection("users")
+                      .doc(FirebaseAuth.instance.currentUser!.uid)
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData || snapshot.data == null) {
+                      return Center(child: Text('No data available'));
+                    }
+                    var snap = snapshot.data;
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            snap['fullName'],
+                            style: GoogleFonts.workSans(
+                                fontWeight: FontWeight.w600, fontSize: 22),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
               const SizedBox(
                 height: 8,
               ),
@@ -310,9 +325,9 @@ class _HistoryPageState extends State<HistoryPage> {
     // Replace 'YOUR_INVITE_LINK' with your actual invite link
     final String inviteLink = 'https://yourapp.com/invite?ref=friend123';
 
-    // Share.share(
-    //   'Join our app using my invite link: $inviteLink',
-    //   subject: 'Join us on the app!',
-    // );
+    Share.share(
+      'Join our app using my invite link: $inviteLink',
+      subject: 'Join us on the app!',
+    );
   }
 }

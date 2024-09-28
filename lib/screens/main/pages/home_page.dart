@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/screens/details/offer_detail.dart';
 import 'package:estheva_web/screens/details/product_detail.dart';
+import 'package:estheva_web/widgets/my_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
           ),
           leading: Image.asset("assets/logos.png"),
         ),
-        endDrawer: Drawer(),
+        endDrawer: MyDrawerWidget(),
         backgroundColor: white,
         body: SingleChildScrollView(
           child: Column(
