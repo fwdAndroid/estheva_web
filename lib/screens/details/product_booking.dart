@@ -44,6 +44,7 @@ class _ProductBookingState extends State<ProductBooking> {
   bool isLoading = false;
   String? selectedDoctor; // For storing selected doctor
   List<String> doctorList = []; // For storing doctors list
+  String _selectedGender = 'male';
 
   @override
   void initState() {
@@ -140,6 +141,50 @@ class _ProductBookingState extends State<ProductBooking> {
                     controller: _paitientController,
                     hintText: "Name",
                     textInputType: TextInputType.name,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Gender",
+                    style: GoogleFonts.manrope(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: appColor),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .start, // Aligning the radio buttons to the center
+                    children: <Widget>[
+                      // Male Radio Button
+                      Radio<String>(
+                        value: 'Male',
+                        groupValue: _selectedGender,
+                        onChanged: (String? value) {
+                          setState(() {
+                            _selectedGender = value!;
+                          });
+                        },
+                      ),
+                      Text("Male"),
+
+                      // Female Radio Button
+                      Radio<String>(
+                        value: 'Female',
+                        groupValue: _selectedGender,
+                        onChanged: (String? value) {
+                          setState(() {
+                            _selectedGender = value!;
+                          });
+                        },
+                      ),
+                      Text("Female"),
+                    ],
                   ),
                 ],
               ),
@@ -351,6 +396,7 @@ class _ProductBookingState extends State<ProductBooking> {
                                   .collection("appointment")
                                   .doc(widget.uuid)
                                   .set({
+                                "gender": _selectedGender,
                                 "patientName": _paitientController.text.trim(),
                                 "doctorName": selectedDoctor,
                                 "patientContact":

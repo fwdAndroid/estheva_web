@@ -46,6 +46,7 @@ class _ServiceAppointCompleteDetailState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Column(
         children: [
           //Appointment Schedule
