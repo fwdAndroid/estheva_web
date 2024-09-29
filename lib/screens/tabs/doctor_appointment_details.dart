@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estheva_web/screens/details/doctor_appointment_complete_detail.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,8 +49,39 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                       child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
-                      trailing:
-                          TextButton(onPressed: () {}, child: Text("View")),
+                      trailing: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) =>
+                                        DoctorAppointmentCompleteDetail(
+                                          status: serviceData['status'],
+                                          appointmentDate:
+                                              serviceData['appointmentDate'],
+                                          paitientDate:
+                                              serviceData['paitientDate'],
+                                          appointmentEndTime:
+                                              serviceData['appointmentEndTime'],
+                                          appointmentId:
+                                              serviceData['appointmentId'],
+                                          appointmentStartTime: serviceData[
+                                              'appointmentStartTime'],
+                                          doctorId: serviceData['doctorId'],
+                                          doctorName: serviceData['doctorName'],
+                                          file: serviceData['file'],
+                                          gender: serviceData['gender'],
+                                          paitientName:
+                                              serviceData['paitientName'],
+                                          paitientProblem:
+                                              serviceData['paitientProblem'],
+                                          paitientUid:
+                                              serviceData['paitientUid'],
+                                          price:
+                                              serviceData['price'].toString(),
+                                        )));
+                          },
+                          child: Text("View")),
                       title: Row(
                         children: [
                           Text(
@@ -118,79 +150,7 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                         ],
                       ),
                     ),
-                  )
-                      // Column(children: [
-                      //   Row(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: [
-                      //       Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           Row(
-                      //             children: [
-                      //               Text(
-                      //                 serviceData['doctorName'],
-
-                      //               const SizedBox(
-                      //                 width: 3,
-                      //               ),
-                      //               Container(
-                      //                 width: 80,
-                      //                 height: 24,
-                      //                 decoration: BoxDecoration(
-                      //                     border:
-                      //                         Border.all(color: contColor),
-                      //                     borderRadius:
-                      //                         BorderRadius.circular(4)),
-                      //                 child: Center(
-                      //                   child: Text(
-                      //                     "Upcoming",
-                      //                     style: GoogleFonts.poppins(
-                      //                         fontSize: 12, color: mainColor),
-                      //                   ),
-                      //                 ),
-                      //               )
-                      //             ],
-                      //           ),
-                      //           Row(
-                      //             mainAxisAlignment: MainAxisAlignment.end,
-                      //             children: [
-                      //               Text(
-                      //                 serviceData['appointmentDate'],
-                      //                 style: GoogleFonts.poppins(
-                      //                     color: dateColor,
-                      //                     fontSize: 14,
-                      //                     fontWeight: FontWeight.w300),
-                      //               ),
-                      //               const SizedBox(
-                      //                 width: 6,
-                      //               ),
-                      //               Text(
-                      //                 "|",
-                      //                 style: GoogleFonts.poppins(
-                      //                     color: dateColor,
-                      //                     fontSize: 14,
-                      //                     fontWeight: FontWeight.w300),
-                      //               ),
-                      //               const SizedBox(
-                      //                 width: 6,
-                      //               ),
-                      //               Text(
-                      //                 serviceData['appointmentStartTime'],
-                      //                 style: GoogleFonts.poppins(
-                      //                     color: dateColor,
-                      //                     fontSize: 14,
-                      //                     fontWeight: FontWeight.w300),
-                      //               )
-                      //             ],
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ],
-                      //   )
-                      // ]),
-
-                      );
+                  ));
                 });
           }),
     );
