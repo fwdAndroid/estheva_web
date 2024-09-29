@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estheva_web/screens/details/doctor_appointment_completed_detail.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
