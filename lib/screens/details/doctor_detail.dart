@@ -12,6 +12,7 @@ class DoctorDetail extends StatefulWidget {
   final doctorCategory;
   final photo;
   final price;
+  final type;
   DoctorDetail(
       {super.key,
       required this.description,
@@ -19,6 +20,7 @@ class DoctorDetail extends StatefulWidget {
       required this.name,
       required this.doctorCategory,
       required this.photo,
+      required this.type,
       required this.price,
       required this.uuid});
 
@@ -235,6 +237,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => AppointmentBegin(
+                                      type: widget.type,
                                       name: widget.name,
                                       price: widget.price.toString(),
                                       photo: widget.photo,

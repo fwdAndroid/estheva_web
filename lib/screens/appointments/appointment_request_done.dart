@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:estheva_web/screens/details/appointment_detail.dart';
 import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
 class AppointmentRequestDone extends StatefulWidget {
+  final type;
   const AppointmentRequestDone({
+    required this.type,
     super.key,
   });
 
@@ -67,41 +68,22 @@ class _AppointmentRequestDoneState extends State<AppointmentRequestDone> {
               const Spacer(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => MainDashboard(
-                                      type: "home",
-                                    )));
-                      },
-                      child: Image.asset(
-                        "assets/home.png",
-                        height: 48,
-                        width: 160,
-                      ),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (builder) => MainDashboard(
+                                    type: widget.type,
+                                  )));
+                    },
+                    child: Image.asset(
+                      "assets/home.png",
+                      height: 48,
+                      width: 160,
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => AppointmentDetail()));
-                      },
-                      child: Image.asset(
-                        "assets/view.png",
-                        height: 48,
-                        width: 160,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               )
             ],

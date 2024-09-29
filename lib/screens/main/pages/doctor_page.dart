@@ -7,7 +7,8 @@ import 'package:estheva_web/screens/details/doctor_detail.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
 class DoctorPage extends StatefulWidget {
-  const DoctorPage({super.key});
+  final type;
+  const DoctorPage({super.key, required this.type});
 
   @override
   State<DoctorPage> createState() => _DoctorPageState();
@@ -67,6 +68,7 @@ class _DoctorPageState extends State<DoctorPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (builder) => DoctorDetail(
+                                          type: widget.type,
                                           doctorCategory:
                                               doctorData['doctorCategory'],
                                           price: doctorData['price'],

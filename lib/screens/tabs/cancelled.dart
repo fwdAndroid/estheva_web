@@ -1,8 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:estheva_web/screens/details/appointment_detail.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
 class Cancelled extends StatefulWidget {

@@ -18,6 +18,7 @@ class AppoinmentRequest extends StatefulWidget {
   final paitientName;
   final doctorname;
   final doctorUuid;
+  final type;
   final paitientUid;
   final paitientProblem;
   final uploadedDocument;
@@ -30,6 +31,7 @@ class AppoinmentRequest extends StatefulWidget {
     required this.doctorname,
     required this.gender,
     required this.contactNumber,
+    required this.type,
     required this.paitientName,
     required this.price,
     required this.paitientProblem,
@@ -350,8 +352,9 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (builder) =>
-                                    AppointmentRequestDone()));
+                                builder: (builder) => AppointmentRequestDone(
+                                      type: widget.type,
+                                    )));
                       }
                     },
                   ),

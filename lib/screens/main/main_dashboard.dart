@@ -23,7 +23,9 @@ class _MainDashboardState extends State<MainDashboard> {
       HomePage(
         type: widget.type,
       ),
-      DoctorPage(),
+      DoctorPage(
+        type: widget.type,
+      ),
       AppointmentPage(),
       HistoryPage(),
       Nutritions()

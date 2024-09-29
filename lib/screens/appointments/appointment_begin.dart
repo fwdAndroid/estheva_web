@@ -19,6 +19,7 @@ class AppointmentBegin extends StatefulWidget {
   final photo;
   final doctorCategory;
   final price;
+  final type;
   AppointmentBegin({
     super.key,
     required this.doctorCategory,
@@ -27,6 +28,7 @@ class AppointmentBegin extends StatefulWidget {
     required this.price,
     required this.photo,
     required this.uuid,
+    required this.type,
   });
 
   @override
@@ -370,6 +372,7 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                           context,
                           MaterialPageRoute(
                               builder: (builder) => AppoinmentRequest(
+                                    type: widget.type,
                                     contactNumber: _phoneController.text.trim(),
                                     paitientName:
                                         _paitnetNameController.text.trim(),

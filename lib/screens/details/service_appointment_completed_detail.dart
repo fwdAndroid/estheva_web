@@ -1,112 +1,54 @@
+import 'package:estheva_web/uitls/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:estheva_web/screens/videocall/video_call.dart';
-import 'package:estheva_web/uitls/colors.dart';
 
-class AppointmentDetail extends StatefulWidget {
-  const AppointmentDetail({
+class ServiceAppointCompletedDetail extends StatefulWidget {
+  final appointmentDate;
+  final appointmentEndTime;
+  final appointmentId;
+  final appointmentStartTime;
+  final doctorName;
+  final patientContact;
+  final patientName;
+  final patientUid;
+  final price;
+  final serviceCategory;
+  final serviceDescription;
+  final serviceName;
+  final status;
+  final gender;
+
+  const ServiceAppointCompletedDetail({
     super.key,
+    required this.appointmentDate,
+    required this.appointmentEndTime,
+    required this.appointmentId,
+    required this.appointmentStartTime,
+    required this.doctorName,
+    required this.patientContact,
+    required this.patientName,
+    required this.patientUid,
+    required this.price,
+    required this.serviceCategory,
+    required this.gender,
+    required this.serviceDescription,
+    required this.serviceName,
+    required this.status,
   });
 
   @override
-  State<AppointmentDetail> createState() => _AppointmentDetailState();
+  State<ServiceAppointCompletedDetail> createState() =>
+      _ServiceAppointCompletedDetailState();
 }
 
-class _AppointmentDetailState extends State<AppointmentDetail> {
+class _ServiceAppointCompletedDetailState
+    extends State<ServiceAppointCompletedDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: IconButton(
-          //       onPressed: () {
-          //         Navigator.push(
-          //             context,
-          //             MaterialPageRoute(
-          //                 builder: (builder) => VideoCall(
-          //                     friendName: "widget.doctorName",
-          //                     callingid: "widget.doctorid")));
-          //       },
-          //       icon: Icon(
-          //         Icons.video_call,
-          //         color: mainColor,
-          //       )),
-          // )
-        ],
-        centerTitle: true,
-        title: Text(
-          "Appointment History",
-          style: GoogleFonts.poppins(fontSize: 18, color: appColor),
-        ),
-      ),
+      appBar: AppBar(),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 100,
-              width: 360,
-              decoration: BoxDecoration(
-                color: circle,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: dividerColor,
-                ),
-              ),
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        "assets/doctor.png",
-                        height: 90,
-                        width: 90,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Fawad Kaleem",
-                            style: GoogleFonts.poppins(
-                                color: appColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "24/12/2023", // Display the formatted date
-                                style: GoogleFonts.poppins(
-                                  color: textColor,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Text(
-                                "5:pm",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text("")
-                  ],
-                ),
-              ),
-            ),
-          ),
           //Appointment Schedule
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -143,7 +85,8 @@ class _AppointmentDetailState extends State<AppointmentDetail> {
                             ),
                           ),
                           Text(
-                            "24/12/2023", // Display the formatted date
+                            widget
+                                .appointmentDate, // Display the formatted date
                             style: GoogleFonts.poppins(
                               color: textColor,
                               fontSize: 12,
@@ -164,7 +107,7 @@ class _AppointmentDetailState extends State<AppointmentDetail> {
                             ),
                           ),
                           Text(
-                            "5:pm",
+                            widget.appointmentStartTime,
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 12,
@@ -213,7 +156,7 @@ class _AppointmentDetailState extends State<AppointmentDetail> {
                             ),
                           ),
                           Text(
-                            "Fawad Kaleem",
+                            widget.patientName,
                             style: GoogleFonts.poppins(
                               color: dateColor,
                               fontSize: 14,
@@ -234,7 +177,7 @@ class _AppointmentDetailState extends State<AppointmentDetail> {
                             ),
                           ),
                           Text(
-                            "Male",
+                            widget.gender,
                             style: GoogleFonts.poppins(
                               color: dateColor,
                               fontSize: 14,
@@ -248,14 +191,14 @@ class _AppointmentDetailState extends State<AppointmentDetail> {
                       child: Row(
                         children: [
                           Text(
-                            "Patient Problem:     ", // Display the formatted date
+                            "Service Description:     ", // Display the formatted date
                             style: GoogleFonts.poppins(
                               color: appColor,
                               fontSize: 14,
                             ),
                           ),
                           Text(
-                            "Cough",
+                            widget.serviceDescription,
                             style: GoogleFonts.poppins(
                               color: dateColor,
                               fontSize: 14,
