@@ -1,3 +1,6 @@
+import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/cancel_service_appointment_web.dart';
+import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/complete_service_appointment_web.dart';
+import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/upcoming_service_appointment_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -35,7 +38,7 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                           context,
                           MaterialPageRoute(
                               builder: (builder) =>
-                                  UpcommingDoctorAppointmentWeb()));
+                                  UpcomingServiceAppointmentWeb()));
                     },
                     child: Card(
                       child: Column(
@@ -64,7 +67,7 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                           context,
                           MaterialPageRoute(
                               builder: (builder) =>
-                                  CompleteDoctorAppointmentWeb()));
+                                  CompleteServiceAppointmentWeb()));
                     },
                     child: Card(
                       child: Column(
@@ -93,7 +96,7 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                           context,
                           MaterialPageRoute(
                               builder: (builder) =>
-                                  CancelDoctorAppointmentWeb()));
+                                  CancelServiceAppointmentWeb()));
                     },
                     child: Card(
                       child: Column(
