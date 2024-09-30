@@ -1,7 +1,7 @@
 import 'package:estheva_web/services/auth_methods.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
-import 'package:estheva_web/website/choose/chose_function_web.dart';
+import 'package:estheva_web/website/screens/main_dashboard_we.dart';
 import 'package:estheva_web/website/web_auth/web_signup.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:flutter/material.dart';
@@ -156,7 +156,7 @@ class _FormSectionState extends State<_FormSection> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (builder) => ChoseFunctionWeb()));
+                              builder: (builder) => MainDashboardWeb()));
                     }
                   },
                 ),
