@@ -3,7 +3,7 @@ import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/website/screens/account_pages/web_edit_profile.dart';
 import 'package:estheva_web/website/web_auth/web_forgot_password.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
-import 'package:estheva_web/widgets/logout_widget.dart';
+import 'package:estheva_web/widgets/logout_web_widget.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -204,72 +204,6 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                       color: borderColor,
                     ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    color: mainColor,
-                    child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text(
-                        "About App",
-                        style: GoogleFonts.workSans(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff5496FB)),
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (builder) => PrivacyPolicy()));
-                    },
-                    leading: Icon(
-                      Icons.privacy_tip,
-                      color: appColor,
-                    ),
-                    title: Text(
-                      "Privacy Policy ",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: appColor,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8),
-                    child: Divider(
-                      color: borderColor,
-                    ),
-                  ),
-                  ListTile(
-                    onTap: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (builder) => Support()));
-                    },
-                    leading: Icon(
-                      Icons.help,
-                      color: appColor,
-                    ),
-                    title: Text(
-                      "Help & Support",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: appColor,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8),
-                    child: Divider(
-                      color: borderColor,
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -282,7 +216,7 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                       context: context,
                       barrierDismissible: false, // user must tap button!
                       builder: (BuildContext context) {
-                        return LogoutWidget();
+                        return LogoutWebWidget();
                       },
                     );
                   }),

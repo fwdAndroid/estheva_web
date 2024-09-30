@@ -1,12 +1,12 @@
-import 'package:estheva_web/screens/auth/login_screen.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
+import 'package:estheva_web/website/web_auth/web_signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LogoutWidget extends StatelessWidget {
-  const LogoutWidget({super.key});
+class LogoutWebWidget extends StatelessWidget {
+  const LogoutWebWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class LogoutWidget extends StatelessWidget {
                 // Navigate to login screen
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (builder) => LoginScreen()),
+                  MaterialPageRoute(builder: (builder) => WebSignInPage()),
                 );
 
                 // Show snack bar message
