@@ -1,4 +1,6 @@
+import 'package:estheva_web/screens/main/pages/appointment_page.dart';
 import 'package:estheva_web/uitls/colors.dart';
+import 'package:estheva_web/website/screens/appointment_web/appointment_page_web.dart';
 import 'package:estheva_web/website/screens/main_dashboard_we.dart';
 import 'package:estheva_web/website/screens/web_dashboard_doctors.dart';
 import 'package:estheva_web/website/screens/web_main_dashboard_account.dart';
@@ -42,7 +44,12 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget {
                           builder: (builder) => MainDashboardWeb()));
                 }),
 
-                _buildMenuItem('Appointments', () {}),
+                _buildMenuItem('Appointments', () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => AppointmentPageWeb()));
+                }),
                 _buildMenuItem('Doctors', () {
                   Navigator.push(
                       context,
