@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class UpcommingDoctorWebAppointmentDetail extends StatefulWidget {
+class CompleteDoctorWebAppointmentDetail extends StatefulWidget {
   final appointmentDate;
   final appointmentEndTime;
   final appointmentId;
@@ -20,7 +20,7 @@ class UpcommingDoctorWebAppointmentDetail extends StatefulWidget {
   final paitientUid;
   final price;
   final status;
-  const UpcommingDoctorWebAppointmentDetail(
+  const CompleteDoctorWebAppointmentDetail(
       {super.key,
       required this.appointmentDate,
       required this.appointmentEndTime,
@@ -38,12 +38,12 @@ class UpcommingDoctorWebAppointmentDetail extends StatefulWidget {
       required this.status});
 
   @override
-  State<UpcommingDoctorWebAppointmentDetail> createState() =>
-      _UpcommingDoctorWebAppointmentDetailState();
+  State<CompleteDoctorWebAppointmentDetail> createState() =>
+      _CompleteDoctorWebAppointmentDetailState();
 }
 
-class _UpcommingDoctorWebAppointmentDetailState
-    extends State<UpcommingDoctorWebAppointmentDetail> {
+class _CompleteDoctorWebAppointmentDetailState
+    extends State<CompleteDoctorWebAppointmentDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
