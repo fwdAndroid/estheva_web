@@ -38,7 +38,7 @@ class _CompleteDoctorAppointmentState extends State<CompleteDoctorAppointment> {
               return Center(child: CircularProgressIndicator());
             }
             if (!snapshot.hasData || snapshot.data == null) {
-              return Center(child: Text('No Doctor Appointment Available Yet'));
+              return Center(child: Text('No Doctor available'));
             }
             var snap = snapshot.data;
             return ListView.builder(
