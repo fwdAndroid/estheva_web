@@ -27,8 +27,8 @@ class _MainDashboardState extends State<MainDashboard> {
         type: widget.type,
       ),
       AppointmentPage(),
+      Nutritions(),
       HistoryPage(),
-      Nutritions()
     ];
     return WillPopScope(
         onWillPop: () async {
@@ -92,6 +92,16 @@ class _MainDashboardState extends State<MainDashboard> {
               ),
               BottomNavigationBarItem(
                 icon: _currentIndex == 3
+                    ? Icon(Icons.nature_outlined, color: mainColor)
+                    : Icon(
+                        Icons.nature_people_outlined,
+                        color: Colors.grey,
+                      ),
+                label: 'History',
+                backgroundColor: white,
+              ),
+              BottomNavigationBarItem(
+                icon: _currentIndex == 4
                     ? Image.asset(
                         "assets/history_blue.png",
                         height: 18,
@@ -101,16 +111,6 @@ class _MainDashboardState extends State<MainDashboard> {
                         "assets/history_medic.png",
                         height: 18,
                         width: 20,
-                      ),
-                label: 'History',
-                backgroundColor: white,
-              ),
-              BottomNavigationBarItem(
-                icon: _currentIndex == 4
-                    ? Icon(Icons.nature_outlined, color: mainColor)
-                    : Icon(
-                        Icons.nature_people_outlined,
-                        color: Colors.grey,
                       ),
                 label: 'History',
                 backgroundColor: white,
