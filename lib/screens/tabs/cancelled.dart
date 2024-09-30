@@ -1,6 +1,6 @@
+import 'package:estheva_web/screens/tabs/cancel_doctor_appointment.dart';
+import 'package:estheva_web/screens/tabs/cancel_service_appointment.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:estheva_web/uitls/colors.dart';
 
 class Cancelled extends StatefulWidget {
   const Cancelled({super.key});
@@ -13,124 +13,67 @@ class _CancelledState extends State<Cancelled> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(itemBuilder: (context, index) {
-        return Column(
-          children: [
-            GestureDetector(
+        body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Center(
+          child: SizedBox(
+            width: 250,
+            height: 250,
+            child: GestureDetector(
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (builder) => AppointmentDetail()));
+                        builder: (builder) => CancelDoctorAppointment()));
               },
-              child: SizedBox(
-                height: 120,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            "assets/doctor.png",
-                            height: 90,
-                            width: 90,
-                          ),
-                          const SizedBox(
-                            width: 7,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Doctor Farhan Ali",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 16,
-                                        color: appColor,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  const SizedBox(
-                                    width: 3,
-                                  ),
-                                  Container(
-                                    width: 80,
-                                    height: 24,
-                                    decoration: BoxDecoration(
-                                        border: Border.all(color: cancelColor),
-                                        borderRadius: BorderRadius.circular(4)),
-                                    child: Center(
-                                      child: Text(
-                                        "Cancelled",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 12, color: mainColor),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Text(
-                                "+82312412414424",
-                                style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    color: appColor,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    "21/11/2023",
-                                    style: GoogleFonts.poppins(
-                                        color: dateColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                  const SizedBox(
-                                    width: 6,
-                                  ),
-                                  Text(
-                                    "|",
-                                    style: GoogleFonts.poppins(
-                                        color: dateColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
-                                  ),
-                                  const SizedBox(
-                                    width: 6,
-                                  ),
-                                  Text(
-                                    "5:pm",
-                                    style: GoogleFonts.poppins(
-                                        color: dateColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w300),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+              child: Card(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "assets/doctor.png",
+                      height: 170,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Cancel Doctors Appointment"),
+                    ),
+                  ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Divider(
-                color: dividerColor,
+          ),
+        ),
+        Center(
+          child: SizedBox(
+            width: 250,
+            height: 250,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (builder) => CancelServiceAppointment()));
+              },
+              child: Card(
+                child: Column(
+                  children: [
+                    Image.asset(
+                      "assets/newlogo.png",
+                      height: 170,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Cancel Service Appointment"),
+                    ),
+                  ],
+                ),
               ),
-            )
-          ],
-        );
-      }),
-    );
+            ),
+          ),
+        ),
+      ],
+    ));
   }
 }
