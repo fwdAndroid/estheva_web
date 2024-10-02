@@ -34,80 +34,89 @@ class _HeaderBarState extends State<HeaderBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: mainColor,
-      elevation: 0,
-      title: Row(
-        children: [
-          // Logo
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (builder) => MainDashboardWeb()));
-            },
-            child: Row(
-              children: [
-                Image.asset(
-                  "assets/logos.png", // Replace with your logo URL
-                  height: 40,
-                ),
-                Text(
-                  "Medicare",
-                  style: GoogleFonts.inter(color: white),
-                )
-              ],
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildMenuItem('Home', () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => MainDashboardWeb()));
+                  }),
+                  _buildClinicServiceMenu(),
+                  _buildHomeServicesMenu(),
+                ],
+              ),
             ),
-          ),
-          SizedBox(width: 20),
-          // Menu items
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // Home Services with dropdown submenus
-                _buildHomeServicesMenu(),
-                _buildClinicServiceMenu(),
 
-                _buildMenuItem('Appointments', () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (builder) => AppointmentPageWeb()));
-                }),
-
-                _buildMenuItem('Doctors', () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (builder) => WebDashboardDoctors()));
-                }),
-                _buildMenuItem('Account', () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (builder) => WebMainDashboardAccount()));
-                }),
-
-                TextButton(
-                    onPressed: () async {
-                      await FirebaseAuth.instance.signOut().then((_) {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => WebSignInPage()));
-                      });
-                    },
-                    child: Text(
-                      "Logout",
-                      style: GoogleFonts.inter(color: white),
-                    )),
-                // Buttons
-              ],
+            // Logo
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (builder) => MainDashboardWeb()));
+              },
+              child: Image.asset(
+                "assets/logos.png", // Replace with your logo URL
+                filterQuality: FilterQuality.high,
+                fit: BoxFit.fill,
+                height: 320,
+                width: 300,
+              ),
             ),
-          )
-        ],
-      ),
-    );
+            // Menu items
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  // Home Services with dropdown submenus
+
+                  _buildMenuItem('Appointments', () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => AppointmentPageWeb()));
+                  }),
+
+                  _buildMenuItem('Doctors', () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => WebDashboardDoctors()));
+                  }),
+                  _buildMenuItem('Account', () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => WebMainDashboardAccount()));
+                  }),
+
+                  TextButton(
+                      onPressed: () async {
+                        await FirebaseAuth.instance.signOut().then((_) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (builder) => WebSignInPage()));
+                        });
+                      },
+                      child: Text(
+                        "Logout",
+                        style: GoogleFonts.inter(color: black),
+                      )),
+                  // Buttons
+                ],
+              ),
+            )
+          ],
+        ));
   }
 
   Widget _buildMenuItem(String title, VoidCallback onTap) {
@@ -117,7 +126,7 @@ class _HeaderBarState extends State<HeaderBar> {
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Text(
           title,
-          style: TextStyle(color: white, fontSize: 16),
+          style: TextStyle(color: black, fontSize: 16),
         ),
       ),
     );
@@ -231,7 +240,7 @@ class _HeaderBarState extends State<HeaderBar> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Text(
               'Home Care',
-              style: TextStyle(color: white, fontSize: 16),
+              style: TextStyle(color: black, fontSize: 16),
             ),
           ),
         ],
@@ -378,7 +387,7 @@ class _HeaderBarState extends State<HeaderBar> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Text(
               'Clinic Services',
-              style: TextStyle(color: white, fontSize: 16),
+              style: TextStyle(color: black, fontSize: 16),
             ),
           ),
         ],
