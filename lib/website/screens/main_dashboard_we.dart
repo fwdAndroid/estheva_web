@@ -5,6 +5,7 @@ import 'package:estheva_web/website/screens/web_details.dart/product_detail_web.
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MainDashboardWeb extends StatefulWidget {
   MainDashboardWeb({
@@ -104,11 +105,21 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                       BorderRadius.all(Radius.circular(5.0)),
                                   child: Stack(
                                     children: <Widget>[
+                                      CachedNetworkImage(
+                                        progressIndicatorBuilder:
+                                            (context, url, progress) => Center(
+                                          child: CircularProgressIndicator(
+                                            value: progress.progress,
+                                          ),
+                                        ),
+                                        imageUrl: item['photos']!,
+                                      ),
+
                                       // Display the image
-                                      Image.network(item['photos']!,
-                                          height: 800,
-                                          fit: BoxFit.cover,
-                                          width: 1000.0),
+                                      // Image.network(item['photos']!,
+                                      //     height: 800,
+                                      //     fit: BoxFit.cover,
+                                      //     width: 1000.0),
                                       // Display the gradient overlay
                                       Positioned(
                                         bottom: 0.0,
@@ -157,51 +168,68 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 style: GoogleFonts.poppins(
                     color: appColor, fontSize: 16, fontWeight: FontWeight.w600),
               )),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Radio(
-                    value: 'home',
-                    groupValue: type,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Radio(
+                          value: 'clinic',
+                          groupValue: type,
 
-                    // leading:
-                    //     Image.asset('assets/male.png', width: 40, height: 40),
-                    onChanged: (value) {
-                      setState(() {
-                        type = value!;
-                      });
-                    },
-                  ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                  Image.asset(
-                    "assets/blue.png",
-                    width: 200,
-                  ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                  Radio(
-                    value: 'clinic',
-                    groupValue: type,
+                          // leading: Image.asset('assets/female.png',
+                          //     width: 40, height: 40),
+                          onChanged: (value) {
+                            setState(() {
+                              type = value!;
+                            });
+                          },
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          "assets/stethoscope-medical-tool.png",
+                          filterQuality: FilterQuality.high,
+                          height: 30,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text("Clinic Services"),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Row(
+                      children: [
+                        Radio(
+                          value: 'home',
+                          groupValue: type,
 
-                    // leading: Image.asset('assets/female.png',
-                    //     width: 40, height: 40),
-                    onChanged: (value) {
-                      setState(() {
-                        type = value!;
-                      });
-                    },
-                  ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                  Image.asset(
-                    "assets/pink.png",
-                    width: 200,
-                  ),
-                ],
+                          // leading:
+                          //     Image.asset('assets/male.png', width: 40, height: 40),
+                          onChanged: (value) {
+                            setState(() {
+                              type = value!;
+                            });
+                          },
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Icon(Icons.home),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text("Home Services"),
+                      ],
+                    )
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
