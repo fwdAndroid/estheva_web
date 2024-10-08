@@ -373,7 +373,7 @@ class _HomePageState extends State<HomePage> {
                                   },
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Center(
                                         child: Padding(
@@ -396,6 +396,7 @@ class _HomePageState extends State<HomePage> {
                                             top: 8.0, left: 8, right: 8),
                                         child: Text(
                                           serviceData['serviceSubcategory'],
+                                          textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: appColor,
                                               fontSize: 12,
@@ -513,7 +514,7 @@ class _HomePageState extends State<HomePage> {
                                             )));
                               },
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Center(
                                     child: Padding(
@@ -535,6 +536,7 @@ class _HomePageState extends State<HomePage> {
                                     padding: const EdgeInsets.only(
                                         top: 8.0, left: 8, right: 8),
                                     child: Text(
+                                      textAlign: TextAlign.center,
                                       serviceData['serviceSubcategory'],
                                       style: TextStyle(
                                         color: appColor,
@@ -654,7 +656,7 @@ class _HomePageState extends State<HomePage> {
                                             )));
                               },
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Center(
                                     child: Padding(
@@ -677,6 +679,7 @@ class _HomePageState extends State<HomePage> {
                                         top: 8.0, left: 8, right: 8),
                                     child: Text(
                                       serviceData['serviceSubcategory'],
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: appColor,
                                         fontSize: 12,
@@ -794,7 +797,7 @@ class _HomePageState extends State<HomePage> {
                                             )));
                               },
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Center(
                                     child: Padding(
@@ -816,6 +819,7 @@ class _HomePageState extends State<HomePage> {
                                     padding: const EdgeInsets.only(
                                         top: 8.0, left: 8, right: 8),
                                     child: Text(
+                                      textAlign: TextAlign.center,
                                       serviceData['serviceSubcategory'],
                                       style: TextStyle(
                                         color: appColor,
@@ -931,7 +935,7 @@ class _HomePageState extends State<HomePage> {
                                             )));
                               },
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Center(
                                     child: Padding(
@@ -949,15 +953,11 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  // Image.network(
-                                  //   serviceData['photoURL'],
-                                  //   width: MediaQuery.of(context).size.width,
-                                  //   height: 75,
-                                  // ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 8.0, left: 8, right: 8),
                                     child: Text(
+                                      textAlign: TextAlign.center,
                                       serviceData['serviceSubcategory'],
                                       style: TextStyle(
                                         color: appColor,
@@ -1087,7 +1087,7 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Center(
                                           child: Padding(
@@ -1109,6 +1109,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.only(
                                               top: 8.0, left: 8, right: 8),
                                           child: Text(
+                                            textAlign: TextAlign.center,
                                             serviceData['serviceSubcategory'],
                                             style: TextStyle(
                                               color: appColor,
@@ -1243,7 +1244,7 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: [
                                         Center(
                                           child: Padding(
@@ -1265,6 +1266,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.only(
                                               top: 8.0, left: 8, right: 8),
                                           child: Text(
+                                            textAlign: TextAlign.center,
                                             serviceData['serviceSubcategory'],
                                             style: TextStyle(
                                               color: appColor,

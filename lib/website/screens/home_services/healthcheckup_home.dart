@@ -66,7 +66,7 @@ class _HealthCheckUpHomeState extends State<HealthCheckUpHome> {
                       },
                       child: Card(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Center(
                               child: CircleAvatar(
@@ -75,33 +75,39 @@ class _HealthCheckUpHomeState extends State<HealthCheckUpHome> {
                                 radius: 60,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 8.0, left: 8, right: 8),
-                              child: Text(
-                                serviceData['serviceSubcategory'],
-                                style: TextStyle(
-                                    color: appColor,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600),
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, left: 8, right: 8),
+                                child: Text(
+                                  serviceData['serviceSubcategory'],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: appColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600),
+                                ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0, top: 8),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xffD3D3D3),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    serviceData['price'].toString() + "AED",
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                        color: mainColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600),
+                            Center(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 8.0, top: 8),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffD3D3D3),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      serviceData['price'].toString() + " AED",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          color: mainColor,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
+                                    ),
                                   ),
                                 ),
                               ),

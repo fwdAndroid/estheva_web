@@ -5,9 +5,9 @@ import 'package:estheva_web/website/screens/web_details.dart/product_detail_web.
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dots_indicator/dots_indicator.dart'; // For the dots indicator
 import 'package:carousel_slider/carousel_slider.dart' as cs;
+import 'package:flutter/gestures.dart';
 
 class MainDashboardWeb extends StatefulWidget {
   MainDashboardWeb({
@@ -329,103 +329,112 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                           return Center(child: Text('No Service available'));
                         }
                         var snap = snapshot.data;
-                        return ListView.builder(
-                            itemCount: snap.docs.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              var serviceData = snap.docs[index].data();
-                              return SizedBox(
-                                width: 200,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (builder) =>
-                                                ProductDetailWeb(
-                                                  description: serviceData[
-                                                      'serviceDescription'],
-                                                  discount:
-                                                      serviceData['discount']
-                                                          .toString(),
-                                                  photoURL:
-                                                      serviceData['photoURL'],
-                                                  uuid: serviceData['uuid'],
-                                                  price: serviceData['price']
-                                                      .toString(),
-                                                  serviceCategory: serviceData[
-                                                      'serviceCategory'],
-                                                  serviceName: serviceData[
-                                                      'serviceName'],
-                                                  serviceSubCategory:
-                                                      serviceData[
-                                                          'serviceSubCategory'],
-                                                )));
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(12)),
-                                            child: Image.network(
-                                              height: 80,
-                                              width: 90,
-                                              fit: BoxFit.cover,
-                                              serviceData['photoURL'],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 8.0, left: 8, right: 8),
-                                        child: Text(
-                                          serviceData['serviceSubcategory'],
-                                          style: TextStyle(
-                                              color: appColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8.0, top: 8),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffD3D3D3),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                serviceData['price']
-                                                        .toString() +
-                                                    " AED",
-                                                textAlign: TextAlign.start,
-                                                style: TextStyle(
-                                                    color: mainColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                        return ScrollConfiguration(
+                          behavior: ScrollConfiguration.of(context).copyWith(
+                            dragDevices: {
+                              PointerDeviceKind.touch,
+                              PointerDeviceKind.mouse,
+                            },
+                          ),
+                          child: ListView.builder(
+                              itemCount: snap.docs.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                var serviceData = snap.docs[index].data();
+                                return SizedBox(
+                                  width: 200,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (builder) =>
+                                                  ProductDetailWeb(
+                                                    description: serviceData[
+                                                        'serviceDescription'],
+                                                    discount:
+                                                        serviceData['discount']
+                                                            .toString(),
+                                                    photoURL:
+                                                        serviceData['photoURL'],
+                                                    uuid: serviceData['uuid'],
+                                                    price: serviceData['price']
+                                                        .toString(),
+                                                    serviceCategory:
+                                                        serviceData[
+                                                            'serviceCategory'],
+                                                    serviceName: serviceData[
+                                                        'serviceName'],
+                                                    serviceSubCategory:
+                                                        serviceData[
+                                                            'serviceSubCategory'],
+                                                  )));
+                                    },
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8, right: 8),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(12)),
+                                              child: Image.network(
+                                                height: 80,
+                                                width: 90,
+                                                fit: BoxFit.cover,
+                                                serviceData['photoURL'],
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 8.0, left: 8, right: 8),
+                                          child: Text(
+                                            serviceData['serviceSubcategory'],
+                                            style: TextStyle(
+                                                color: appColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, top: 8),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(0xffD3D3D3),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  serviceData['price']
+                                                          .toString() +
+                                                      " AED",
+                                                  textAlign: TextAlign.start,
+                                                  style: TextStyle(
+                                                      color: mainColor,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-                            });
+                                );
+                              }),
+                        );
                       }),
                 ),
               ),
@@ -472,97 +481,109 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       }
 
                       var snap = snapshot.data!;
-                      return ListView.builder(
-                        itemCount: snap.docs.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          var serviceData =
-                              snap.docs[index].data() as Map<String, dynamic>;
-                          return SizedBox(
-                            width: 200,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (builder) => ProductDetailWeb(
-                                              description: serviceData[
-                                                  'serviceDescription'],
-                                              discount: serviceData['discount']
-                                                  .toString(),
-                                              photoURL: serviceData['photoURL'],
-                                              uuid: serviceData['uuid'],
-                                              price: serviceData['price']
-                                                  .toString(),
-                                              serviceCategory: serviceData[
-                                                  'serviceCategory'],
-                                              serviceName:
-                                                  serviceData['serviceName'],
-                                              serviceSubCategory: serviceData[
-                                                  'serviceSubCategory'],
-                                            )));
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8, right: 8),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(12)),
-                                        child: Image.network(
-                                          height: 80,
-                                          width: 90,
-                                          fit: BoxFit.cover,
-                                          serviceData['photoURL'],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      serviceData['serviceSubcategory'],
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, top: 8),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffD3D3D3),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            serviceData['price'].toString() +
-                                                " AED",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                color: mainColor,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600),
+                      return ScrollConfiguration(
+                        behavior: ScrollConfiguration.of(context).copyWith(
+                          dragDevices: {
+                            PointerDeviceKind.touch,
+                            PointerDeviceKind.mouse,
+                          },
+                        ),
+                        child: ListView.builder(
+                          itemCount: snap.docs.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var serviceData =
+                                snap.docs[index].data() as Map<String, dynamic>;
+                            return SizedBox(
+                              width: 200,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (builder) =>
+                                              ProductDetailWeb(
+                                                description: serviceData[
+                                                    'serviceDescription'],
+                                                discount:
+                                                    serviceData['discount']
+                                                        .toString(),
+                                                photoURL:
+                                                    serviceData['photoURL'],
+                                                uuid: serviceData['uuid'],
+                                                price: serviceData['price']
+                                                    .toString(),
+                                                serviceCategory: serviceData[
+                                                    'serviceCategory'],
+                                                serviceName:
+                                                    serviceData['serviceName'],
+                                                serviceSubCategory: serviceData[
+                                                    'serviceSubCategory'],
+                                              )));
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8, right: 8),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12)),
+                                          child: Image.network(
+                                            height: 80,
+                                            width: 90,
+                                            fit: BoxFit.cover,
+                                            serviceData['photoURL'],
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        serviceData['serviceSubcategory'],
+                                        style: TextStyle(
+                                          color: appColor,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8.0, top: 8),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffD3D3D3),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              serviceData['price'].toString() +
+                                                  " AED",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                  color: mainColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       );
                     },
                   ),
@@ -612,97 +633,109 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       }
 
                       var snap = snapshot.data!;
-                      return ListView.builder(
-                        itemCount: snap.docs.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          var serviceData =
-                              snap.docs[index].data() as Map<String, dynamic>;
-                          return SizedBox(
-                            width: 200,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (builder) => ProductDetailWeb(
-                                              description: serviceData[
-                                                  'serviceDescription'],
-                                              discount: serviceData['discount']
-                                                  .toString(),
-                                              photoURL: serviceData['photoURL'],
-                                              uuid: serviceData['uuid'],
-                                              price: serviceData['price']
-                                                  .toString(),
-                                              serviceCategory: serviceData[
-                                                  'serviceCategory'],
-                                              serviceName:
-                                                  serviceData['serviceName'],
-                                              serviceSubCategory: serviceData[
-                                                  'serviceSubCategory'],
-                                            )));
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8, right: 8),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(12)),
-                                        child: Image.network(
-                                          height: 80,
-                                          width: 90,
-                                          fit: BoxFit.cover,
-                                          serviceData['photoURL'],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      serviceData['serviceSubcategory'],
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, top: 8),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffD3D3D3),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            serviceData['price'].toString() +
-                                                " AED",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                color: mainColor,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600),
+                      return ScrollConfiguration(
+                        behavior: ScrollConfiguration.of(context).copyWith(
+                          dragDevices: {
+                            PointerDeviceKind.touch,
+                            PointerDeviceKind.mouse,
+                          },
+                        ),
+                        child: ListView.builder(
+                          itemCount: snap.docs.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var serviceData =
+                                snap.docs[index].data() as Map<String, dynamic>;
+                            return SizedBox(
+                              width: 200,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (builder) =>
+                                              ProductDetailWeb(
+                                                description: serviceData[
+                                                    'serviceDescription'],
+                                                discount:
+                                                    serviceData['discount']
+                                                        .toString(),
+                                                photoURL:
+                                                    serviceData['photoURL'],
+                                                uuid: serviceData['uuid'],
+                                                price: serviceData['price']
+                                                    .toString(),
+                                                serviceCategory: serviceData[
+                                                    'serviceCategory'],
+                                                serviceName:
+                                                    serviceData['serviceName'],
+                                                serviceSubCategory: serviceData[
+                                                    'serviceSubCategory'],
+                                              )));
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8, right: 8),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12)),
+                                          child: Image.network(
+                                            height: 80,
+                                            width: 90,
+                                            fit: BoxFit.cover,
+                                            serviceData['photoURL'],
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        serviceData['serviceSubcategory'],
+                                        style: TextStyle(
+                                          color: appColor,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8.0, top: 8),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffD3D3D3),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              serviceData['price'].toString() +
+                                                  " AED",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                  color: mainColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       );
                     },
                   ),
@@ -751,97 +784,109 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       }
 
                       var snap = snapshot.data!;
-                      return ListView.builder(
-                        itemCount: snap.docs.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          var serviceData =
-                              snap.docs[index].data() as Map<String, dynamic>;
-                          return SizedBox(
-                            width: 200,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (builder) => ProductDetailWeb(
-                                              description: serviceData[
-                                                  'serviceDescription'],
-                                              discount: serviceData['discount']
-                                                  .toString(),
-                                              photoURL: serviceData['photoURL'],
-                                              uuid: serviceData['uuid'],
-                                              price: serviceData['price']
-                                                  .toString(),
-                                              serviceCategory: serviceData[
-                                                  'serviceCategory'],
-                                              serviceName:
-                                                  serviceData['serviceName'],
-                                              serviceSubCategory: serviceData[
-                                                  'serviceSubCategory'],
-                                            )));
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8, right: 8),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(12)),
-                                        child: Image.network(
-                                          height: 80,
-                                          width: 90,
-                                          fit: BoxFit.cover,
-                                          serviceData['photoURL'],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      serviceData['serviceSubcategory'],
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, top: 8),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffD3D3D3),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            serviceData['price'].toString() +
-                                                " AED",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                color: mainColor,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600),
+                      return ScrollConfiguration(
+                        behavior: ScrollConfiguration.of(context).copyWith(
+                          dragDevices: {
+                            PointerDeviceKind.touch,
+                            PointerDeviceKind.mouse,
+                          },
+                        ),
+                        child: ListView.builder(
+                          itemCount: snap.docs.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var serviceData =
+                                snap.docs[index].data() as Map<String, dynamic>;
+                            return SizedBox(
+                              width: 200,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (builder) =>
+                                              ProductDetailWeb(
+                                                description: serviceData[
+                                                    'serviceDescription'],
+                                                discount:
+                                                    serviceData['discount']
+                                                        .toString(),
+                                                photoURL:
+                                                    serviceData['photoURL'],
+                                                uuid: serviceData['uuid'],
+                                                price: serviceData['price']
+                                                    .toString(),
+                                                serviceCategory: serviceData[
+                                                    'serviceCategory'],
+                                                serviceName:
+                                                    serviceData['serviceName'],
+                                                serviceSubCategory: serviceData[
+                                                    'serviceSubCategory'],
+                                              )));
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8, right: 8),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12)),
+                                          child: Image.network(
+                                            height: 80,
+                                            width: 90,
+                                            fit: BoxFit.cover,
+                                            serviceData['photoURL'],
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        serviceData['serviceSubcategory'],
+                                        style: TextStyle(
+                                          color: appColor,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8.0, top: 8),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffD3D3D3),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              serviceData['price'].toString() +
+                                                  " AED",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                  color: mainColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       );
                     },
                   ),
@@ -887,102 +932,114 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       }
 
                       var snap = snapshot.data!;
-                      return ListView.builder(
-                        itemCount: snap.docs.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          var serviceData =
-                              snap.docs[index].data() as Map<String, dynamic>;
-                          return SizedBox(
-                            width: 200,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (builder) => ProductDetailWeb(
-                                              description: serviceData[
-                                                  'serviceDescription'],
-                                              discount: serviceData['discount']
-                                                  .toString(),
-                                              photoURL: serviceData['photoURL'],
-                                              uuid: serviceData['uuid'],
-                                              price: serviceData['price']
-                                                  .toString(),
-                                              serviceCategory: serviceData[
-                                                  'serviceCategory'],
-                                              serviceName:
-                                                  serviceData['serviceName'],
-                                              serviceSubCategory: serviceData[
-                                                  'serviceSubCategory'],
-                                            )));
-                              },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8, right: 8),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(12)),
-                                        child: Image.network(
-                                          height: 80,
-                                          width: 90,
-                                          fit: BoxFit.cover,
-                                          serviceData['photoURL'],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  // Image.network(
-                                  //   serviceData['photoURL'],
-                                  //   width: MediaQuery.of(context).size.width,
-                                  //   height: 75,
-                                  // ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      serviceData['serviceSubcategory'],
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 8.0, top: 8),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffD3D3D3),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            serviceData['price'].toString() +
-                                                " AED",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                color: mainColor,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600),
+                      return ScrollConfiguration(
+                        behavior: ScrollConfiguration.of(context).copyWith(
+                          dragDevices: {
+                            PointerDeviceKind.touch,
+                            PointerDeviceKind.mouse,
+                          },
+                        ),
+                        child: ListView.builder(
+                          itemCount: snap.docs.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            var serviceData =
+                                snap.docs[index].data() as Map<String, dynamic>;
+                            return SizedBox(
+                              width: 200,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (builder) =>
+                                              ProductDetailWeb(
+                                                description: serviceData[
+                                                    'serviceDescription'],
+                                                discount:
+                                                    serviceData['discount']
+                                                        .toString(),
+                                                photoURL:
+                                                    serviceData['photoURL'],
+                                                uuid: serviceData['uuid'],
+                                                price: serviceData['price']
+                                                    .toString(),
+                                                serviceCategory: serviceData[
+                                                    'serviceCategory'],
+                                                serviceName:
+                                                    serviceData['serviceName'],
+                                                serviceSubCategory: serviceData[
+                                                    'serviceSubCategory'],
+                                              )));
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8, right: 8),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(12)),
+                                          child: Image.network(
+                                            height: 80,
+                                            width: 90,
+                                            fit: BoxFit.cover,
+                                            serviceData['photoURL'],
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    // Image.network(
+                                    //   serviceData['photoURL'],
+                                    //   width: MediaQuery.of(context).size.width,
+                                    //   height: 75,
+                                    // ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        serviceData['serviceSubcategory'],
+                                        style: TextStyle(
+                                          color: appColor,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8.0, top: 8),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffD3D3D3),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              serviceData['price'].toString() +
+                                                  " AED",
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                  color: mainColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       );
                     },
                   ),
@@ -1036,106 +1093,116 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                             }
 
                             var snap = snapshot.data!;
-                            return ListView.builder(
-                              itemCount: snap.docs.length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) {
-                                var serviceData = snap.docs[index].data()
-                                    as Map<String, dynamic>;
-                                return SizedBox(
-                                  width: 200,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (builder) =>
-                                                  ProductDetailWeb(
-                                                    description: serviceData[
-                                                        'serviceDescription'],
-                                                    discount:
-                                                        serviceData['discount']
-                                                            .toString(),
-                                                    photoURL:
-                                                        serviceData['photoURL'],
-                                                    uuid: serviceData['uuid'],
-                                                    price: serviceData['price']
-                                                        .toString(),
-                                                    serviceCategory:
-                                                        serviceData[
-                                                            'serviceCategory'],
-                                                    serviceName: serviceData[
-                                                        'serviceName'],
-                                                    serviceSubCategory:
-                                                        serviceData[
-                                                            'serviceSubCategory'],
-                                                  )));
-                                    },
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8, right: 8),
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(12)),
-                                              child: Image.network(
-                                                height: 80,
-                                                width: 90,
-                                                fit: BoxFit.cover,
-                                                serviceData['photoURL'],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 8.0, left: 8, right: 8),
-                                          child: Text(
-                                            serviceData['serviceSubcategory'],
-                                            style: TextStyle(
-                                              color: appColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                        ),
-                                        Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0, top: 8),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Color(0xffD3D3D3),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  serviceData['price']
-                                                          .toString() +
-                                                      " AED",
-                                                  textAlign: TextAlign.start,
-                                                  style: TextStyle(
-                                                      color: mainColor,
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w600),
+                            return ScrollConfiguration(
+                              behavior:
+                                  ScrollConfiguration.of(context).copyWith(
+                                dragDevices: {
+                                  PointerDeviceKind.touch,
+                                  PointerDeviceKind.mouse,
+                                },
+                              ),
+                              child: ListView.builder(
+                                itemCount: snap.docs.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  var serviceData = snap.docs[index].data()
+                                      as Map<String, dynamic>;
+                                  return SizedBox(
+                                    width: 200,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (builder) =>
+                                                    ProductDetailWeb(
+                                                      description: serviceData[
+                                                          'serviceDescription'],
+                                                      discount: serviceData[
+                                                              'discount']
+                                                          .toString(),
+                                                      photoURL: serviceData[
+                                                          'photoURL'],
+                                                      uuid: serviceData['uuid'],
+                                                      price:
+                                                          serviceData['price']
+                                                              .toString(),
+                                                      serviceCategory:
+                                                          serviceData[
+                                                              'serviceCategory'],
+                                                      serviceName: serviceData[
+                                                          'serviceName'],
+                                                      serviceSubCategory:
+                                                          serviceData[
+                                                              'serviceSubCategory'],
+                                                    )));
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8, right: 8),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(12)),
+                                                child: Image.network(
+                                                  height: 80,
+                                                  width: 90,
+                                                  fit: BoxFit.cover,
+                                                  serviceData['photoURL'],
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 8.0, left: 8, right: 8),
+                                            child: Text(
+                                              serviceData['serviceSubcategory'],
+                                              style: TextStyle(
+                                                color: appColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0, top: 8),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xffD3D3D3),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    serviceData['price']
+                                                            .toString() +
+                                                        " AED",
+                                                    textAlign: TextAlign.start,
+                                                    style: TextStyle(
+                                                        color: mainColor,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             );
                           },
                         ),
@@ -1191,106 +1258,116 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                             }
 
                             var snap = snapshot.data!;
-                            return ListView.builder(
-                              itemCount: snap.docs.length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) {
-                                var serviceData = snap.docs[index].data()
-                                    as Map<String, dynamic>;
-                                return SizedBox(
-                                  width: 200,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (builder) =>
-                                                  ProductDetailWeb(
-                                                    description: serviceData[
-                                                        'serviceDescription'],
-                                                    discount:
-                                                        serviceData['discount']
-                                                            .toString(),
-                                                    photoURL:
-                                                        serviceData['photoURL'],
-                                                    uuid: serviceData['uuid'],
-                                                    price: serviceData['price']
-                                                        .toString(),
-                                                    serviceCategory:
-                                                        serviceData[
-                                                            'serviceCategory'],
-                                                    serviceName: serviceData[
-                                                        'serviceName'],
-                                                    serviceSubCategory:
-                                                        serviceData[
-                                                            'serviceSubCategory'],
-                                                  )));
-                                    },
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8, right: 8),
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(12)),
-                                              child: Image.network(
-                                                height: 80,
-                                                width: 90,
-                                                fit: BoxFit.cover,
-                                                serviceData['photoURL'],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 8.0, left: 8, right: 8),
-                                          child: Text(
-                                            serviceData['serviceSubcategory'],
-                                            style: TextStyle(
-                                              color: appColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                        ),
-                                        Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 8.0, top: 8),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Color(0xffD3D3D3),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  serviceData['price']
-                                                          .toString() +
-                                                      " AED",
-                                                  textAlign: TextAlign.start,
-                                                  style: TextStyle(
-                                                      color: mainColor,
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w600),
+                            return ScrollConfiguration(
+                              behavior:
+                                  ScrollConfiguration.of(context).copyWith(
+                                dragDevices: {
+                                  PointerDeviceKind.touch,
+                                  PointerDeviceKind.mouse,
+                                },
+                              ),
+                              child: ListView.builder(
+                                itemCount: snap.docs.length,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  var serviceData = snap.docs[index].data()
+                                      as Map<String, dynamic>;
+                                  return SizedBox(
+                                    width: 200,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (builder) =>
+                                                    ProductDetailWeb(
+                                                      description: serviceData[
+                                                          'serviceDescription'],
+                                                      discount: serviceData[
+                                                              'discount']
+                                                          .toString(),
+                                                      photoURL: serviceData[
+                                                          'photoURL'],
+                                                      uuid: serviceData['uuid'],
+                                                      price:
+                                                          serviceData['price']
+                                                              .toString(),
+                                                      serviceCategory:
+                                                          serviceData[
+                                                              'serviceCategory'],
+                                                      serviceName: serviceData[
+                                                          'serviceName'],
+                                                      serviceSubCategory:
+                                                          serviceData[
+                                                              'serviceSubCategory'],
+                                                    )));
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8, right: 8),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(12)),
+                                                child: Image.network(
+                                                  height: 80,
+                                                  width: 90,
+                                                  fit: BoxFit.cover,
+                                                  serviceData['photoURL'],
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 8.0, left: 8, right: 8),
+                                            child: Text(
+                                              serviceData['serviceSubcategory'],
+                                              style: TextStyle(
+                                                color: appColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 8.0, top: 8),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xffD3D3D3),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    serviceData['price']
+                                                            .toString() +
+                                                        " AED",
+                                                    textAlign: TextAlign.start,
+                                                    style: TextStyle(
+                                                        color: mainColor,
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             );
                           },
                         ),
