@@ -13,6 +13,7 @@ import 'package:estheva_web/website/screens/home_services/healthcheckup_home.dar
 import 'package:estheva_web/website/screens/home_services/iv_therapy_packages.dart';
 import 'package:estheva_web/website/screens/home_services/physiotherapy_home.dart';
 import 'package:estheva_web/website/screens/main_dashboard_we.dart';
+import 'package:estheva_web/website/screens/offers/offers.dart';
 import 'package:estheva_web/website/screens/web_dashboard_doctors.dart';
 import 'package:estheva_web/website/screens/web_main_dashboard_account.dart';
 import 'package:estheva_web/website/web_auth/web_signin.dart';
@@ -135,8 +136,12 @@ class _HeaderBarState extends State<HeaderBar> {
   Widget _buildHomeServicesMenu() {
     return PopupMenuButton<String>(
       onSelected: (String result) {
+        if (result == "Consultations") {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => WebDashboardDoctors()));
+        }
         // Handle submenu item selection with navigation
-        if (result == 'Body Contouring at Home') {
+        else if (result == 'Body Contouring at Home') {
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -148,13 +153,15 @@ class _HeaderBarState extends State<HeaderBar> {
               MaterialPageRoute(
                   builder: (context) =>
                       IvThearapyHome())); // Replace with the actual page for IV Drips Therapy
-        } else if (result == 'IV Drips Therapy Packages') {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      IVDripsTherapyPackages())); // Replace with the actual page for Physiotherapy
-        } else if (result == 'Health Tests at Home') {
+        }
+        //  else if (result == 'IV Drips Therapy Packages') {
+        //   Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //           builder: (context) =>
+        //               IVDripsTherapyPackages())); // Replace with the actual page for Physiotherapy
+        // }
+        else if (result == 'Health Tests at Home') {
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -166,9 +173,27 @@ class _HeaderBarState extends State<HeaderBar> {
               MaterialPageRoute(
                   builder: (context) =>
                       PhysiotherapyHome())); // Replace with the actual page for Physiotherapy
+        } else if (result == 'Offers') {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      OffersWeb())); // Replace with the actual page for Physiotherapy
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+        PopupMenuItem<String>(
+          value: 'Consultations',
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => WebDashboardDoctors()));
+            },
+            child: Text('CONSULTATIONS ONLINE'),
+          ),
+        ),
         PopupMenuItem<String>(
           value: 'Body Contouring at Home',
           child: GestureDetector(
@@ -178,7 +203,7 @@ class _HeaderBarState extends State<HeaderBar> {
                   MaterialPageRoute(
                       builder: (context) => BodyContouringPageHome()));
             },
-            child: Text('Body Contouring at Home'),
+            child: Text('BODY CONTOURING'),
           ),
         ),
         PopupMenuItem<String>(
@@ -191,22 +216,22 @@ class _HeaderBarState extends State<HeaderBar> {
                       builder: (context) =>
                           IvThearapyHome())); // Navigate to IV Drips Therapy
             },
-            child: Text('IV Drips Therapy at Home'),
+            child: Text('IV DRIPS THERAPY'),
           ),
         ),
-        PopupMenuItem<String>(
-          value: 'IV Drips Therapy Packages',
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          IVDripsTherapyPackages())); // Navigate to Physiotherapy
-            },
-            child: Text('IV Drips Therapy Packages'),
-          ),
-        ),
+        // PopupMenuItem<String>(
+        //   value: 'IV Drips Therapy Packages',
+        //   child: GestureDetector(
+        //     onTap: () {
+        //       Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //               builder: (context) =>
+        //                   IVDripsTherapyPackages())); // Navigate to Physiotherapy
+        //     },
+        //     child: Text('IV Drips Therapy Packages'),
+        //   ),
+        // ),
         PopupMenuItem<String>(
           value: 'Health Tests at Home',
           child: GestureDetector(
@@ -217,7 +242,7 @@ class _HeaderBarState extends State<HeaderBar> {
                       builder: (context) =>
                           HealthCheckUpHome())); // Navigate to Health Tests
             },
-            child: Text('Health Tests at Home'),
+            child: Text('HEALTH TESTS'),
           ),
         ),
         PopupMenuItem<String>(
@@ -230,7 +255,20 @@ class _HeaderBarState extends State<HeaderBar> {
                       builder: (context) =>
                           PhysiotherapyHome())); // Navigate to Physiotherapy
             },
-            child: Text('Physiotherapy Test at Home'),
+            child: Text('PHYSIOTHERAPY'),
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: 'Offers',
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          OffersWeb())); // Navigate to Physiotherapy
+            },
+            child: Text('OFFERS'),
           ),
         ),
       ],
@@ -251,8 +289,12 @@ class _HeaderBarState extends State<HeaderBar> {
   Widget _buildClinicServiceMenu() {
     return PopupMenuButton<String>(
       onSelected: (String result) {
+        if (result == "Consultations") {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => WebDashboardDoctors()));
+        }
         // Handle submenu item selection with navigation
-        if (result == 'Body Contouring at Clinic') {
+        else if (result == 'Body Contouring at Clinic') {
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -264,13 +306,16 @@ class _HeaderBarState extends State<HeaderBar> {
               MaterialPageRoute(
                   builder: (context) =>
                       IVDripsTherapyClinic())); // Replace with the actual page for Body Contouring
-        } else if (result == 'IV Drips Therapy Packages at Clinic') {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      IVDripsTherapyPackagesClinic())); // Replace with the actual page for Body Contouring
-        } else if (result == 'Health Checkup at Clinic') {
+        }
+
+        /// else if (result == 'IV Drips Therapy Packages at Clinic') {
+        //   Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //           builder: (context) =>
+        //               IVDripsTherapyPackagesClinic())); // Replace with the actual page for Body Contouring
+        // }
+        else if (result == 'Health Checkup at Clinic') {
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -288,17 +333,29 @@ class _HeaderBarState extends State<HeaderBar> {
               MaterialPageRoute(
                   builder: (context) =>
                       AestheticAtClinic())); // Replace with the actual page for Body Contouring
-        } else if (result == 'Hair Transplant') {
+        } else if (result == 'Offers') {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      HairTransplant())); // Replace with the actual page for Body Contouring
+                      OffersWeb())); // Replace with the actual page for Physiotherapy
         }
 
         // Replace with the actual page for Physiotherapy
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+        PopupMenuItem<String>(
+          value: 'Consultations',
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => WebDashboardDoctors()));
+            },
+            child: Text('CONSULTATIONS ONLINE'),
+          ),
+        ),
         PopupMenuItem<String>(
           value: 'Body Contouring at Clinic',
           child: GestureDetector(
@@ -323,17 +380,39 @@ class _HeaderBarState extends State<HeaderBar> {
             child: Text('IV Drips Therapy'),
           ),
         ),
+        // PopupMenuItem<String>(
+        //   value: 'IV Drips Therapy Packages at Clinic',
+        //   child: GestureDetector(
+        //     onTap: () {
+        //       Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //               builder: (context) =>
+        //                   IVDripsTherapyPackagesClinic())); // R
+        //     },
+        //     child: Text('IV DRIPS THERAPY'),
+        //   ),
+        // ),
         PopupMenuItem<String>(
-          value: 'IV Drips Therapy Packages at Clinic',
+          value: 'Physiotherapy at Clinic',
           child: GestureDetector(
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          IVDripsTherapyPackagesClinic())); // R
+                      builder: (context) => PhysiotherapyAtClinic()));
             },
-            child: Text('IV Drips Therapy Packages'),
+            child: Text('PHYSIOTHERAPY'),
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: 'Aesthetic at Clinic',
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AestheticAtClinic()));
+            },
+            child: Text('AESTHETICS'),
           ),
         ),
         PopupMenuItem<String>(
@@ -345,39 +424,20 @@ class _HeaderBarState extends State<HeaderBar> {
                   MaterialPageRoute(
                       builder: (context) => HealthChecupAtClinic()));
             },
-            child: Text('Health CheckUp'),
+            child: Text('HEALTH CHECKUP'),
           ),
         ),
         PopupMenuItem<String>(
-          value: 'Physiotherapy at Clinic',
+          value: 'Offers',
           child: GestureDetector(
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => PhysiotherapyAtClinic()));
+                      builder: (context) =>
+                          OffersWeb())); // Navigate to Physiotherapy
             },
-            child: Text('Physiotherapy'),
-          ),
-        ),
-        PopupMenuItem<String>(
-          value: 'Aesthetic at Clinic',
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AestheticAtClinic()));
-            },
-            child: Text('Aesthetic'),
-          ),
-        ),
-        PopupMenuItem<String>(
-          value: 'Hair Transplant',
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HairTransplant()));
-            },
-            child: Text('Hair Transplant'),
+            child: Text('OFFERS'),
           ),
         ),
       ],
