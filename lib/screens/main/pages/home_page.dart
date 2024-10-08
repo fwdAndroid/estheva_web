@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:estheva_web/screens/details/offer_detail.dart';
 import 'package:estheva_web/screens/details/product_detail.dart';
 import 'package:estheva_web/widgets/my_drawer_widget.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:estheva_web/uitls/colors.dart';
+import 'package:carousel_slider/carousel_slider.dart' as cs;
 
 class HomePage extends StatefulWidget {
   String type;
@@ -16,6 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final cs.CarouselSliderController _controller = cs.CarouselSliderController();
+
   List<Map<String, String>> imgList = []; // To hold image URLs and titles
 
   @override
@@ -64,6 +68,25 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void moveToNextPage() {
+    setState(() {
+      _currentIndex = (_currentIndex + 1) % imgList.length;
+    });
+    _controller.animateToPage(
+        _currentIndex); // Use animateToPage to go to the next image
+  }
+
+  void moveToPreviousPage() {
+    setState(() {
+      _currentIndex =
+          (_currentIndex - 1) < 0 ? imgList.length - 1 : _currentIndex - 1;
+    });
+    _controller.animateToPage(
+        _currentIndex); // Use animateToPage to go to the previous image
+  }
+
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,77 +109,202 @@ class _HomePageState extends State<HomePage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: imgList.isNotEmpty
-                      ? CarouselSlider(
-                          options: CarouselOptions(
-                            aspectRatio: 2.0,
-                            enlargeCenterPage: true,
-                            scrollDirection: Axis.horizontal,
-                            autoPlay: true,
-                          ),
-                          items: imgList.map((item) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (builder) => OfferDetail(
-                                              offerDetail: item['offerDetail'],
-                                              uuid: item['uuid'],
-                                              photos: item['photos'],
-                                            )));
+                child: Stack(
+                  children: [
+                    // Carousel Slider
+                    imgList.isNotEmpty
+                        ? CarouselSlider(
+                            carouselController: _controller,
+                            options: CarouselOptions(
+                              aspectRatio: 2.0,
+                              enlargeCenterPage: true,
+                              scrollDirection: Axis.horizontal,
+                              autoPlay:
+                                  false, // Set autoPlay to false for manual navigation
+                              onPageChanged: (index, reason) {
+                                setState(() {
+                                  _currentIndex = index;
+                                });
                               },
-                              child: Container(
-                                margin: EdgeInsets.all(5.0),
-                                child: ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0)),
-                                  child: Stack(
-                                    children: <Widget>[
-                                      // Display the image
-                                      Image.network(item['photos']!,
-                                          fit: BoxFit.cover, width: 1000.0),
-                                      // Display the gradient overlay
-                                      Positioned(
-                                        bottom: 0.0,
-                                        left: 0.0,
-                                        right: 0.0,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                Color.fromARGB(200, 0, 0, 0),
-                                                Color.fromARGB(0, 0, 0, 0)
-                                              ],
-                                              begin: Alignment.bottomCenter,
-                                              end: Alignment.topCenter,
+                            ),
+                            items: imgList.map((item) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (builder) => OfferDetail(
+                                                offerDetail:
+                                                    item['offerDetail']!,
+                                                uuid: item['uuid']!,
+                                                photos: item['photos']!,
+                                              )));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.all(5.0),
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5.0)),
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Image.network(item['photos']!,
+                                            fit: BoxFit.cover, width: 1000.0),
+                                        Positioned(
+                                          bottom: 0.0,
+                                          left: 0.0,
+                                          right: 0.0,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  Color.fromARGB(200, 0, 0, 0),
+                                                  Color.fromARGB(0, 0, 0, 0)
+                                                ],
+                                                begin: Alignment.bottomCenter,
+                                                end: Alignment.topCenter,
+                                              ),
                                             ),
-                                          ),
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 10.0, horizontal: 20.0),
-                                          // Display the title from Firestore
-                                          child: Text(
-                                            item[
-                                                'offerDetail']!, // Title of the item
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.bold,
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 10.0,
+                                                horizontal: 20.0),
+                                            child: Text(
+                                              item['offerDetail']!,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            );
-                          }).toList(),
-                        )
-                      : Center(
-                          child:
-                              CircularProgressIndicator()), // Loading indicator while fetching data
+                              );
+                            }).toList(),
+                          )
+                        : Center(child: CircularProgressIndicator()),
+
+                    Positioned(
+                      left: 10,
+                      top: 0,
+                      bottom: 0,
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back_ios),
+                        color: Colors.black,
+                        onPressed: () {
+                          moveToPreviousPage(); // Go to the previous page when left arrow is pressed
+                        },
+                      ),
+                    ),
+
+                    // Right arrow
+                    Positioned(
+                      right: 10,
+                      top: 0,
+                      bottom: 0,
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_forward_ios),
+                        color: Colors.black,
+                        onPressed: () {
+                          moveToNextPage(); // Go to the next page when right arrow is pressed
+                        },
+                      ),
+                    ),
+
+                    // Indicator
+                    Positioned(
+                      bottom: 10,
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                        child: imgList.isNotEmpty
+                            ? DotsIndicator(
+                                dotsCount: imgList.length,
+                                position: _currentIndex,
+                                decorator: DotsDecorator(
+                                  activeColor: Colors.white,
+                                  size: const Size.square(9.0),
+                                  activeSize: const Size(18.0, 9.0),
+                                  activeShape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                ),
+                              )
+                            : Container(), // Return an empty container if imgList is empty
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Radio(
+                          value: 'clinic',
+                          groupValue: widget.type,
+
+                          // leading: Image.asset('assets/female.png',
+                          //     width: 40, height: 40),
+                          onChanged: (value) {
+                            setState(() {
+                              widget.type = value!;
+                            });
+                          },
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Image.asset(
+                          "assets/stethoscope-medical-tool.png",
+                          filterQuality: FilterQuality.high,
+                          height: 40,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Clinic Services",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Row(
+                      children: [
+                        Radio(
+                          value: 'home',
+                          groupValue: widget.type,
+
+                          // leading:
+                          //     Image.asset('assets/male.png', width: 40, height: 40),
+                          onChanged: (value) {
+                            setState(() {
+                              widget.type = value!;
+                            });
+                          },
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Icon(Icons.home, size: 30),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "Home Services",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               ),
               Padding(
@@ -227,17 +375,19 @@ class _HomePageState extends State<HomePage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 8, right: 8),
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(12)),
-                                          child: Image.network(
-                                            height: 80,
-                                            width: 90,
-                                            fit: BoxFit.cover,
-                                            serviceData['photoURL'],
+                                      Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8, right: 8),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(12)),
+                                            child: Image.network(
+                                              height: 80,
+                                              width: 90,
+                                              fit: BoxFit.cover,
+                                              serviceData['photoURL'],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -252,25 +402,30 @@ class _HomePageState extends State<HomePage> {
                                               fontWeight: FontWeight.w600),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 8.0, top: 8),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Color(0xffD3D3D3),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              serviceData['price'].toString() +
-                                                  "AED",
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                  color: mainColor,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w600),
+                                      Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 8.0, top: 8),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffD3D3D3),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                serviceData['price']
+                                                        .toString() +
+                                                    " AED",
+                                                textAlign: TextAlign.start,
+                                                style: TextStyle(
+                                                    color: mainColor,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -360,17 +515,19 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8, right: 8),
-                                    child: ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12)),
-                                      child: Image.network(
-                                        height: 80,
-                                        width: 90,
-                                        fit: BoxFit.cover,
-                                        serviceData['photoURL'],
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8, right: 8),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(12)),
+                                        child: Image.network(
+                                          height: 80,
+                                          width: 90,
+                                          fit: BoxFit.cover,
+                                          serviceData['photoURL'],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -386,24 +543,27 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffD3D3D3),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          serviceData['price'].toString() +
-                                              "AED",
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                              color: mainColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, top: 8),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffD3D3D3),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            serviceData['price'].toString() +
+                                                " AED",
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                                color: mainColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -496,17 +656,19 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8, right: 8),
-                                    child: ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12)),
-                                      child: Image.network(
-                                        height: 80,
-                                        width: 90,
-                                        fit: BoxFit.cover,
-                                        serviceData['photoURL'],
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8, right: 8),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(12)),
+                                        child: Image.network(
+                                          height: 80,
+                                          width: 90,
+                                          fit: BoxFit.cover,
+                                          serviceData['photoURL'],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -522,24 +684,27 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffD3D3D3),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          serviceData['price'].toString() +
-                                              "AED",
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                              color: mainColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, top: 8),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffD3D3D3),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            serviceData['price'].toString() +
+                                                " AED",
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                                color: mainColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -631,17 +796,19 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8, right: 8),
-                                    child: ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12)),
-                                      child: Image.network(
-                                        height: 80,
-                                        width: 90,
-                                        fit: BoxFit.cover,
-                                        serviceData['photoURL'],
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8, right: 8),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(12)),
+                                        child: Image.network(
+                                          height: 80,
+                                          width: 90,
+                                          fit: BoxFit.cover,
+                                          serviceData['photoURL'],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -657,24 +824,27 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffD3D3D3),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          serviceData['price'].toString() +
-                                              "AED",
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                              color: mainColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, top: 8),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffD3D3D3),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            serviceData['price'].toString() +
+                                                " AED",
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                                color: mainColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -763,17 +933,19 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8, right: 8),
-                                    child: ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(12)),
-                                      child: Image.network(
-                                        height: 80,
-                                        width: 90,
-                                        fit: BoxFit.cover,
-                                        serviceData['photoURL'],
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8, right: 8),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(12)),
+                                        child: Image.network(
+                                          height: 80,
+                                          width: 90,
+                                          fit: BoxFit.cover,
+                                          serviceData['photoURL'],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -794,24 +966,27 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffD3D3D3),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          serviceData['price'].toString() +
-                                              "AED",
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                              color: mainColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, top: 8),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffD3D3D3),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            serviceData['price'].toString() +
+                                                " AED",
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                                color: mainColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -914,17 +1089,19 @@ class _HomePageState extends State<HomePage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(12)),
-                                            child: Image.network(
-                                              height: 80,
-                                              width: 90,
-                                              fit: BoxFit.cover,
-                                              serviceData['photoURL'],
+                                        Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8, right: 8),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(12)),
+                                              child: Image.network(
+                                                height: 80,
+                                                width: 90,
+                                                fit: BoxFit.cover,
+                                                serviceData['photoURL'],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -940,28 +1117,30 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8.0, top: 8),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffD3D3D3),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                serviceData['price']
-                                                        .toString() +
-                                                    "AED",
-                                                textAlign: TextAlign.start,
-                                                style: TextStyle(
-                                                    color: mainColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                        Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, top: 8),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(0xffD3D3D3),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  serviceData['price']
+                                                          .toString() +
+                                                      " AED",
+                                                  textAlign: TextAlign.start,
+                                                  style: TextStyle(
+                                                      color: mainColor,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1066,17 +1245,19 @@ class _HomePageState extends State<HomePage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8, right: 8),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(12)),
-                                            child: Image.network(
-                                              height: 80,
-                                              width: 90,
-                                              fit: BoxFit.cover,
-                                              serviceData['photoURL'],
+                                        Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8, right: 8),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(12)),
+                                              child: Image.network(
+                                                height: 80,
+                                                width: 90,
+                                                fit: BoxFit.cover,
+                                                serviceData['photoURL'],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1092,28 +1273,30 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 8.0, top: 8),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffD3D3D3),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                serviceData['price']
-                                                        .toString() +
-                                                    "AED",
-                                                textAlign: TextAlign.start,
-                                                style: TextStyle(
-                                                    color: mainColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                        Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0, top: 8),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(0xffD3D3D3),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  serviceData['price']
+                                                          .toString() +
+                                                      " AED",
+                                                  textAlign: TextAlign.start,
+                                                  style: TextStyle(
+                                                      color: mainColor,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
                                               ),
                                             ),
                                           ),

@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore: ^5.4.2
   cloud_firestore_web: ^4.3.1
   cupertino_icons: ^1.0.8
+  dots_indicator: ^3.0.0
   firebase_auth: ^5.3.0
   firebase_auth_web: ^5.13.1
   firebase_core: ^3.5.0
