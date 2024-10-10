@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,13 +37,34 @@ class AppointmentBegin extends StatefulWidget {
 }
 
 class _AppointmentBeginState extends State<AppointmentBegin> {
-  String currentTime = '';
-  String currentDate = '';
-
   @override
   void initState() {
     super.initState();
+    fetchUsersDetails();
     _updateTime();
+  }
+
+  String currentTime = '';
+  String currentDate = '';
+
+  TextEditingController _paitnetNameController = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
+  TextEditingController _aboutController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  void fetchUsersDetails() async {
+    // Fetch data from Firestore
+    DocumentSnapshot doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    // Update the controllers with the fetched data
+    setState(() {
+      _paitnetNameController.text = data['fullName'];
+      _phoneController.text = (data['contactNumber']); // Convert int to string
+    });
   }
 
   void _updateTime() {
@@ -61,11 +83,6 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _paitnetNameController = TextEditingController();
-    TextEditingController _dateController = TextEditingController();
-    TextEditingController _aboutController = TextEditingController();
-    TextEditingController _phoneController = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,

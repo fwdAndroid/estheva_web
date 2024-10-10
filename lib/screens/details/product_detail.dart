@@ -54,123 +54,120 @@ class _ProductDetailState extends State<ProductDetail> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.network(
-              widget.photoURL,
-              height: 200,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.serviceName,
-                style: GoogleFonts.poppins(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.network(
+            widget.photoURL,
+            height: 200,
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              widget.serviceName,
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.description,
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  color: Colors.black54,
+          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(16.0),
+          //   child: Text(
+          //     widget.description,
+          //     style: GoogleFonts.poppins(
+          //       fontSize: 14,
+          //       color: Colors.black54,
+          //     ),
+          //   ),
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(16.0),
+          //   child: Container(
+          //     color: Colors.yellow.shade100,
+          //     padding: EdgeInsets.all(16),
+          //     child: Row(
+          //       children: [
+          //         Icon(Icons.discount, color: Colors.orange),
+          //         SizedBox(width: 8),
+          //         Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: [
+          //             Text(
+          //               widget.discount.toString(),
+          //               style: GoogleFonts.poppins(
+          //                 fontSize: 14,
+          //                 fontWeight: FontWeight.bold,
+          //                 color: Colors.black,
+          //               ),
+          //             ),
+          //             Text(
+          //               "Use code SUMMER20 | above AED 10",
+          //               style: GoogleFonts.poppins(
+          //                 fontSize: 12,
+          //                 color: Colors.black54,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          Spacer(),
+          Container(
+            color: Colors.grey.shade200,
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  widget.price.toString() + "AED",
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: mainColor,
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Container(
-                color: Colors.yellow.shade100,
-                padding: EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    Icon(Icons.discount, color: Colors.orange),
-                    SizedBox(width: 8),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.discount.toString(),
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Text(
-                          "Use code SUMMER20 | above AED 10",
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              color: Colors.grey.shade200,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    widget.price.toString() + "AED",
+                ElevatedButton(
+                  onPressed: () {
+                    // Book now action
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => ProductBooking(
+                                  type: widget.type,
+                                  price: widget.price.toString(),
+                                  discount: widget.discount.toString(),
+                                  description: widget.description,
+                                  photoURL: widget.photoURL,
+                                  serviceCategory: widget.serviceCategory,
+                                  serviceName: widget.serviceName,
+                                  serviceSubCategory: widget.serviceSubCategory,
+                                  uuid: widget.uuid,
+                                )));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: mainColor,
+                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  ),
+                  child: Text(
+                    "Book Now",
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: mainColor,
+                      color: Colors.white,
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Book now action
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (builder) => ProductBooking(
-                                    type: widget.type,
-                                    price: widget.price.toString(),
-                                    discount: widget.discount.toString(),
-                                    description: widget.description,
-                                    photoURL: widget.photoURL,
-                                    serviceCategory: widget.serviceCategory,
-                                    serviceName: widget.serviceName,
-                                    serviceSubCategory:
-                                        widget.serviceSubCategory,
-                                    uuid: widget.uuid,
-                                  )));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: mainColor,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                    ),
-                    child: Text(
-                      "Book Now",
-                      style: GoogleFonts.poppins(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

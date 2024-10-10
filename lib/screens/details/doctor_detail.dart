@@ -199,7 +199,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
                               Row(
                                 children: [
                                   Text(
-                                    "AED",
+                                    " AED",
                                     style: GoogleFonts.poppins(
                                         color: appColor,
                                         fontSize: 16,

@@ -50,6 +50,7 @@ class _ProductBookingState extends State<ProductBooking> {
   @override
   void initState() {
     super.initState();
+    fetchUsersDetails();
     fetchDoctors(); // Fetch doctors when the screen initializes
   }
 
@@ -69,6 +70,23 @@ class _ProductBookingState extends State<ProductBooking> {
       print('Error fetching doctors: $e');
       // Handle the error
     }
+  }
+
+  void fetchUsersDetails() async {
+    // Fetch data from Firestore
+    DocumentSnapshot doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    // Update the controllers with the fetched data
+    setState(() {
+      _paitientController.text = data['fullName'];
+      _contactControlelr.text =
+          (data['contactNumber']); // Convert int to string
+    });
   }
 
   @override
