@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
+import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/upcoming_service_appointment_web.dart';
 import 'package:estheva_web/website/screens/main_dashboard_we.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
@@ -38,6 +39,7 @@ class _ProductBookingWebState extends State<ProductBookingWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -124,6 +126,7 @@ class _FormSelectionState extends State<FormSelection> {
   @override
   void initState() {
     super.initState();
+    fetchUsersDetails();
     fetchDoctors(); // Fetch doctors when the screen initializes
   }
 
@@ -145,40 +148,36 @@ class _FormSelectionState extends State<FormSelection> {
     }
   }
 
+  void fetchUsersDetails() async {
+    // Fetch data from Firestore
+    DocumentSnapshot doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    // Update the controllers with the fetched data
+    setState(() {
+      _paitientController.text = data['fullName'];
+      _contactControlelr.text =
+          (data['contactNumber']); // Convert int to string
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 448,
+      width: 460,
       padding: const EdgeInsets.symmetric(horizontal: 50),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(
-              widget.photoURL,
-              height: 200,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high,
-            ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.serviceName,
-                style: GoogleFonts.poppins(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.description,
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  color: Colors.black54,
-                ),
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage(widget.photoURL),
               ),
             ),
             Padding(
@@ -480,7 +479,7 @@ class _FormSelectionState extends State<FormSelection> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (builder) =>
-                                          MainDashboardWeb()));
+                                          UpcomingServiceAppointmentWeb()));
                             }
                           },
                           title: "Book Now"),
