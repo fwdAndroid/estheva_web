@@ -38,8 +38,18 @@ class _MainDashboardState extends State<MainDashboard> {
         child: Scaffold(
           body: _screens[_currentIndex],
           bottomNavigationBar: BottomNavigationBar(
-            selectedLabelStyle: TextStyle(color: mainColor),
-            unselectedLabelStyle: TextStyle(color: textColor),
+            selectedLabelStyle: TextStyle(
+              color: mainColor, // Change this to your desired color
+              fontSize: 12, // Adjust font size for selected label
+              fontWeight: FontWeight.bold, // Makes the selected label stand out
+            ),
+            unselectedLabelStyle: TextStyle(
+              color: textColor, // Change this to your desired unselected color
+              fontSize: 12, // Same font size for unselected label
+              fontWeight:
+                  FontWeight.normal, // Less emphasis on unselected label
+            ),
+            type: BottomNavigationBarType.fixed,
             onTap: (index) {
               setState(() {
                 _currentIndex = index;
@@ -92,12 +102,17 @@ class _MainDashboardState extends State<MainDashboard> {
               ),
               BottomNavigationBarItem(
                 icon: _currentIndex == 3
-                    ? Icon(Icons.nature_outlined, color: mainColor)
+                    ? Icon(
+                        Icons.nature_outlined,
+                        color: mainColor,
+                        size: 18,
+                      )
                     : Icon(
                         Icons.nature_people_outlined,
                         color: Colors.grey,
+                        size: 18,
                       ),
-                label: 'History',
+                label: 'Nutrition',
                 backgroundColor: white,
               ),
               BottomNavigationBarItem(
