@@ -392,16 +392,20 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 8.0, left: 8, right: 8),
-                                        child: Text(
-                                          serviceData['serviceSubcategory'],
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: appColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600),
+                                      SizedBox(
+                                        height: 40,
+                                        width: 200,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 8.0, left: 8, right: 8),
+                                          child: Text(
+                                            serviceData['serviceSubcategory'],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: appColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w600),
+                                          ),
                                         ),
                                       ),
                                       Center(
@@ -533,16 +537,19 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      serviceData['serviceSubcategory'],
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
+                                  SizedBox(
+                                    height: 40,
+                                    width: 200,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        serviceData['serviceSubcategory'],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: appColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                   ),
@@ -675,16 +682,19 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      serviceData['serviceSubcategory'],
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
+                                  SizedBox(
+                                    height: 40,
+                                    width: 200,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        serviceData['serviceSubcategory'],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: appColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                   ),
@@ -816,16 +826,19 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      serviceData['serviceSubcategory'],
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
+                                  SizedBox(
+                                    height: 40,
+                                    width: 200,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        serviceData['serviceSubcategory'],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: appColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                   ),
@@ -954,16 +967,19 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 8.0, left: 8, right: 8),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      serviceData['serviceSubcategory'],
-                                      style: TextStyle(
-                                        color: appColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
+                                  SizedBox(
+                                    height: 40,
+                                    width: 200,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8.0, left: 8, right: 8),
+                                      child: Text(
+                                        serviceData['serviceSubcategory'],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: appColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                   ),
@@ -1106,16 +1122,19 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 8.0, left: 8, right: 8),
-                                          child: Text(
-                                            textAlign: TextAlign.center,
-                                            serviceData['serviceSubcategory'],
-                                            style: TextStyle(
-                                              color: appColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600,
+                                        SizedBox(
+                                          height: 40,
+                                          width: 200,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 8.0, left: 8, right: 8),
+                                            child: Text(
+                                              serviceData['serviceSubcategory'],
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: appColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                           ),
                                         ),
@@ -1263,16 +1282,19 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 8.0, left: 8, right: 8),
-                                          child: Text(
-                                            textAlign: TextAlign.center,
-                                            serviceData['serviceSubcategory'],
-                                            style: TextStyle(
-                                              color: appColor,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600,
+                                        SizedBox(
+                                          height: 40,
+                                          width: 200,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 8.0, left: 8, right: 8),
+                                            child: Text(
+                                              serviceData['serviceSubcategory'],
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: appColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
                                             ),
                                           ),
                                         ),
