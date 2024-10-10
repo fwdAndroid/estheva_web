@@ -91,6 +91,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           title: TextFormField(
             decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search),
@@ -258,7 +259,7 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                         const SizedBox(
-                          width: 10,
+                          width: 5,
                         ),
                         Image.asset(
                           "assets/stethoscope-medical-tool.png",
@@ -266,16 +267,16 @@ class _HomePageState extends State<HomePage> {
                           height: 40,
                         ),
                         const SizedBox(
-                          width: 10,
+                          width: 5,
                         ),
                         Text(
-                          "Clinic Services",
+                          "Clinic",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      width: 20,
+                      width: 10,
                     ),
                     Row(
                       children: [
@@ -292,14 +293,14 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                         const SizedBox(
-                          width: 10,
+                          width: 5,
                         ),
                         Icon(Icons.home, size: 30),
                         const SizedBox(
-                          width: 10,
+                          width: 5,
                         ),
                         Text(
-                          "Home Services",
+                          "Home",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],

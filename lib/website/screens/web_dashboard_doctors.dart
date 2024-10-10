@@ -76,10 +76,10 @@ class _WebDashboardDoctorsState extends State<WebDashboardDoctors> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Center(
-                                    child: CircleAvatar(
-                                      backgroundImage:
-                                          NetworkImage(data['photoURL']),
-                                      radius: 60,
+                                    child: Image.network(
+                                      data['photoURL'],
+                                      height: 60,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                   Padding(
