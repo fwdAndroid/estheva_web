@@ -73,13 +73,18 @@ class _WebDashboardDoctorsState extends State<WebDashboardDoctors> {
                             },
                             child: Card(
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Center(
-                                    child: Image.network(
-                                      data['photoURL'],
-                                      height: 60,
+                                    child: FittedBox(
                                       fit: BoxFit.cover,
+                                      child: CircleAvatar(
+                                        radius: 60,
+                                        backgroundImage: NetworkImage(
+                                          data['photoURL'],
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   Padding(
@@ -90,7 +95,7 @@ class _WebDashboardDoctorsState extends State<WebDashboardDoctors> {
                                       style: GoogleFonts.poppins(
                                           fontSize: 12, color: appColor),
                                     ),
-                                  ),
+                                  )
                                 ],
                               ),
                             ),
