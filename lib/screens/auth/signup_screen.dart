@@ -1,6 +1,4 @@
 import 'dart:typed_data';
-
-import 'package:estheva_web/screens/chose_function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -277,7 +275,9 @@ class _SignupScreenState extends State<SignupScreen> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => ChoseFunction()));
+                                  builder: (builder) => MainDashboard(
+                                        type: 'clinic',
+                                      )));
                         }
                       },
                     ),

@@ -1,4 +1,3 @@
-import 'package:estheva_web/screens/chose_function.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/auth/signup_screen.dart';
@@ -208,7 +207,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (builder) => ChoseFunction()));
+                                    builder: (builder) => MainDashboard(
+                                          type: "clinic",
+                                        )));
                           }
                         }),
                   ),
