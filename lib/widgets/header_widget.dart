@@ -461,7 +461,12 @@ class _HeaderBarState extends State<HeaderBar> {
                       builder: (context) =>
                           OffersWeb())); // Navigate to Physiotherapy
             },
-            child: Text('OFFERS'),
+            child: Text(
+              'OFFERS',
+              style: TextStyle(
+                fontFamily: 'Futura',
+              ),
+            ),
           ),
         ),
       ],
@@ -471,7 +476,11 @@ class _HeaderBarState extends State<HeaderBar> {
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Text(
               'Clinic Services',
-              style: TextStyle(color: black, fontSize: 16),
+              style: TextStyle(
+                color: black,
+                fontSize: 16,
+                fontFamily: 'Futura',
+              ),
             ),
           ),
         ],
