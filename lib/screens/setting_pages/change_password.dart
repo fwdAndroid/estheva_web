@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/auth/login_screen.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
@@ -29,15 +28,18 @@ class _ChangePasswordState extends State<ChangePassword> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               "Forgot password,",
-              style: GoogleFonts.workSans(
-                  fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontFamily: 'Futura',
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               "Please type your email below and we will give you a OTP code,",
-              style: GoogleFonts.nunitoSans(
+              style: TextStyle(
+                fontFamily: 'Futura',
                 fontSize: 14,
               ),
             ),
@@ -47,7 +49,10 @@ class _ChangePasswordState extends State<ChangePassword> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               controller: providerPassController,
-              style: GoogleFonts.plusJakartaSans(color: black),
+              style: TextStyle(
+                color: black,
+                fontFamily: 'Futura',
+              ),
               decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: borderColor)),
@@ -58,8 +63,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: borderColor)),
                   hintText: "Enter Full Name",
-                  hintStyle:
-                      GoogleFonts.plusJakartaSans(color: black, fontSize: 12)),
+                  hintStyle: TextStyle(
+                    color: black,
+                    fontSize: 12,
+                    fontFamily: 'Futura',
+                  )),
             ),
           ),
           Padding(

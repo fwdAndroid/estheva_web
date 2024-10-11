@@ -1,6 +1,5 @@
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CancelServiceAppointmentDetail extends StatefulWidget {
   final appointmentDate;
@@ -67,7 +66,8 @@ class _CancelServiceAppointmentDetailState
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "Appointment Schedule",
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                            fontFamily: 'Futura',
                             color: appColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w700),
@@ -79,7 +79,8 @@ class _CancelServiceAppointmentDetailState
                         children: [
                           Text(
                             "Date:     ", // Display the formatted date
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: appColor,
                               fontSize: 14,
                             ),
@@ -87,7 +88,8 @@ class _CancelServiceAppointmentDetailState
                           Text(
                             widget
                                 .appointmentDate, // Display the formatted date
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: textColor,
                               fontSize: 12,
                             ),
@@ -101,14 +103,16 @@ class _CancelServiceAppointmentDetailState
                         children: [
                           Text(
                             "Time:     ", // Display the formatted date
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: appColor,
                               fontSize: 14,
                             ),
                           ),
                           Text(
                             widget.appointmentStartTime,
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: Colors.black,
                               fontSize: 12,
                             ),
@@ -138,7 +142,8 @@ class _CancelServiceAppointmentDetailState
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "Patient Details",
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                            fontFamily: 'Futura',
                             color: appColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w700),
@@ -150,14 +155,16 @@ class _CancelServiceAppointmentDetailState
                         children: [
                           Text(
                             "Name:     ", // Display the formatted date
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: appColor,
                               fontSize: 14,
                             ),
                           ),
                           Text(
                             widget.patientName,
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: dateColor,
                               fontSize: 14,
                             ),
@@ -171,14 +178,16 @@ class _CancelServiceAppointmentDetailState
                         children: [
                           Text(
                             "Gender:     ", // Display the formatted date
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: appColor,
                               fontSize: 14,
                             ),
                           ),
                           Text(
                             widget.gender,
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: dateColor,
                               fontSize: 14,
                             ),
@@ -192,14 +201,16 @@ class _CancelServiceAppointmentDetailState
                         children: [
                           Text(
                             "Service Description:     ", // Display the formatted date
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: appColor,
                               fontSize: 14,
                             ),
                           ),
                           Text(
                             widget.serviceDescription,
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: dateColor,
                               fontSize: 14,
                             ),

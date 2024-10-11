@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/auth/signup_screen.dart';
 import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/services/auth_methods.dart';
@@ -46,14 +45,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Column(
               children: [
-                Text(
-                  "Hello Again!",
-                  style: GoogleFonts.poppins(
-                      fontSize: 24, fontWeight: FontWeight.w600, color: black),
-                ),
+                Text("Hello Again!",
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontSize: 24,
+                        color: black,
+                        fontWeight: FontWeight.bold)),
                 Text(
                   "Welcome back you’ve been missed!",
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: textColor),
@@ -66,13 +67,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.only(top: 16.0, left: 16),
                   child: Align(
                     alignment: AlignmentDirectional.topStart,
-                    child: Text(
-                      'Email',
-                      style: GoogleFonts.plusJakartaSans(
-                          color: black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14),
-                    ),
+                    child: Text('Email',
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w700,
+                            color: black)),
                   ),
                 ),
                 Container(
@@ -80,7 +79,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.all(8),
                   child: TextFormField(
                     controller: _emailController,
-                    style: GoogleFonts.plusJakartaSans(color: black),
+                    style: TextStyle(
+                      color: black,
+                      fontFamily: 'Futura',
+                    ),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -92,8 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Enter Email Address",
-                        hintStyle: GoogleFonts.plusJakartaSans(
-                            color: black, fontSize: 12)),
+                        hintStyle: TextStyle(
+                            fontFamily: 'Futura',
+                            fontSize: 12,
+                            color: black,
+                            fontWeight: FontWeight.w300)),
                   ),
                 ),
               ],
@@ -106,7 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       'Password',
-                      style: GoogleFonts.plusJakartaSans(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           color: black,
                           fontWeight: FontWeight.w500,
                           fontSize: 14),
@@ -119,7 +125,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextFormField(
                     obscureText: passwordVisible,
                     controller: _passwordController,
-                    style: GoogleFonts.plusJakartaSans(color: black),
+                    style: TextStyle(
+                      color: black,
+                      fontFamily: 'Futura',
+                    ),
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
                           icon: Icon(passwordVisible
@@ -142,8 +151,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Enter Password",
-                        hintStyle: GoogleFonts.plusJakartaSans(
-                            color: black, fontSize: 12)),
+                        hintStyle: TextStyle(
+                            fontFamily: 'Futura',
+                            color: black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300)),
                   ),
                 ),
               ],
@@ -166,14 +178,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Text(
                         'Remember Me',
-                        style: GoogleFonts.plusJakartaSans(
+                        style: TextStyle(
+                            fontFamily: 'Futura',
                             color: black,
                             fontWeight: FontWeight.w500,
                             fontSize: 14),
                       ),
                     ],
                   ),
-                  TextButton(onPressed: () {}, child: Text("Forgot Password"))
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Forgot Password",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ))
                 ],
               ),
             ),
@@ -226,6 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextSpan(
                         text: 'Sign Up',
                         style: TextStyle(
+                            fontFamily: 'Futura',
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: mainColor),

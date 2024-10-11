@@ -37,7 +37,12 @@ class _CancelledState extends State<Cancelled> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Cancel Doctors Appointment"),
+                      child: Text(
+                        "Cancel Doctors Appointment",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -65,7 +70,12 @@ class _CancelledState extends State<Cancelled> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Cancel Service Appointment"),
+                      child: Text(
+                        "Cancel Service Appointment",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ),
                   ],
                 ),

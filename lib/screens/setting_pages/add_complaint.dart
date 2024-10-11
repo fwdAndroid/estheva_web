@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:estheva_web/screens/main/main_dashboard.dart';
+
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';
@@ -27,8 +26,12 @@ class _AddComplaintState extends State<AddComplaint> {
         iconTheme: IconThemeData(color: white),
         title: Text(
           "Complaint",
-          style: GoogleFonts.workSans(
-              color: white, fontSize: 18, fontWeight: FontWeight.w500),
+          style: TextStyle(
+            color: white,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Futura',
+          ),
         ),
         backgroundColor: mainColor,
       ),
@@ -41,6 +44,9 @@ class _AddComplaintState extends State<AddComplaint> {
               decoration: InputDecoration(
                 filled: true,
                 hintText: "Complaint Title",
+                hintStyle: TextStyle(
+                  fontFamily: 'Futura',
+                ),
                 fillColor: white,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -70,6 +76,9 @@ class _AddComplaintState extends State<AddComplaint> {
               decoration: InputDecoration(
                 filled: true,
                 hintText: "Enter Your Email",
+                hintStyle: TextStyle(
+                  fontFamily: 'Futura',
+                ),
                 fillColor: Color(0xffF6F7F9),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -98,6 +107,9 @@ class _AddComplaintState extends State<AddComplaint> {
               maxLines: 3,
               controller: descriptionController,
               decoration: InputDecoration(
+                hintStyle: TextStyle(
+                  fontFamily: 'Futura',
+                ),
                 filled: true,
                 hintText: "Write Your Issue",
                 fillColor: Color(0xffF6F7F9),

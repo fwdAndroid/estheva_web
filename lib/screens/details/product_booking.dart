@@ -6,7 +6,6 @@ import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -126,20 +125,11 @@ class _ProductBookingState extends State<ProductBooking> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 widget.serviceName,
-                style: GoogleFonts.poppins(
+                style: TextStyle(
+                  fontFamily: 'Futura',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.description,
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  color: Colors.black54,
                 ),
               ),
             ),
@@ -150,7 +140,8 @@ class _ProductBookingState extends State<ProductBooking> {
                 children: [
                   Text(
                     "Name",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -171,7 +162,8 @@ class _ProductBookingState extends State<ProductBooking> {
                 children: [
                   Text(
                     "Gender",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -190,7 +182,12 @@ class _ProductBookingState extends State<ProductBooking> {
                           });
                         },
                       ),
-                      Text("Male"),
+                      Text(
+                        "Male",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
 
                       // Female Radio Button
                       Radio<String>(
@@ -202,7 +199,12 @@ class _ProductBookingState extends State<ProductBooking> {
                           });
                         },
                       ),
-                      Text("Female"),
+                      Text(
+                        "Female",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -215,7 +217,8 @@ class _ProductBookingState extends State<ProductBooking> {
                 children: [
                   Text(
                     "Select Appointment Date",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -246,7 +249,8 @@ class _ProductBookingState extends State<ProductBooking> {
                 children: [
                   Text(
                     "Start Appointment Time",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -296,7 +300,8 @@ class _ProductBookingState extends State<ProductBooking> {
                 children: [
                   Text(
                     "End Appointment Time",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -344,7 +349,8 @@ class _ProductBookingState extends State<ProductBooking> {
                       children: [
                         Text(
                           "Contact Number",
-                          style: GoogleFonts.manrope(
+                          style: TextStyle(
+                              fontFamily: 'Futura',
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: appColor),
@@ -365,14 +371,20 @@ class _ProductBookingState extends State<ProductBooking> {
                       children: [
                         Text(
                           "Select Doctor",
-                          style: GoogleFonts.manrope(
+                          style: TextStyle(
+                              fontFamily: 'Futura',
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: appColor),
                         ),
                         DropdownButtonFormField<String>(
                           value: selectedDoctor,
-                          hint: Text("Choose a doctor"),
+                          hint: Text(
+                            "Choose a doctor",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          ),
                           onChanged: (String? newValue) {
                             setState(() {
                               selectedDoctor = newValue;

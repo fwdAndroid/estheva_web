@@ -1,7 +1,6 @@
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class ServiceWidget extends StatelessWidget {
@@ -43,29 +42,32 @@ class ServiceWidget extends StatelessWidget {
             children: [
               Text(
                 doctorName,
-                style: GoogleFonts.manrope(
+                style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
+                    fontFamily: 'Futura',
                     color: mainColor),
               ),
               Row(
                 children: [
                   Text(
                     "Department: ",
-                    style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.bold, fontSize: 14),
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14),
                   ),
                   Text(
                     department,
-                    style: GoogleFonts.manrope(
-                        fontWeight: FontWeight.bold, fontSize: 14),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   ),
                 ],
               ),
               Text(
                 descTitle,
                 overflow: TextOverflow.clip,
-                style: GoogleFonts.nunitoSans(
+                style: TextStyle(
+                    fontFamily: 'Futura',
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                     color: Color(0xff50555C)),
@@ -74,8 +76,11 @@ class ServiceWidget extends StatelessWidget {
           ),
           trailing: Text(
             priceTitle,
-            style: GoogleFonts.manrope(
-                fontWeight: FontWeight.bold, fontSize: 14, color: mainColor),
+            style: TextStyle(
+                fontFamily: 'Futura',
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: mainColor),
           ),
         ),
       ),

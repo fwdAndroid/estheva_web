@@ -3,7 +3,6 @@ import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LogoutWidget extends StatelessWidget {
   const LogoutWidget({super.key});
@@ -23,7 +22,8 @@ class LogoutWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Oh No, You are leaving",
-                      style: GoogleFonts.workSans(
+                      style: TextStyle(
+                        fontFamily: 'Futura',
                         fontWeight: FontWeight.w500,
                         fontSize: 18,
                         color: black,
@@ -36,10 +36,11 @@ class LogoutWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Are you sure you want to logout?",
-                      style: GoogleFonts.workSans(
+                      style: TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                         color: appColor,
+                        fontFamily: 'Futura',
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -61,7 +62,10 @@ class LogoutWidget extends StatelessWidget {
               },
               child: Text(
                 "No",
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             const SizedBox(width: 10),
@@ -83,7 +87,10 @@ class LogoutWidget extends StatelessWidget {
               },
               child: Text(
                 "Yes",
-                style: TextStyle(color: white),
+                style: TextStyle(
+                  color: white,
+                  fontFamily: 'Futura',
+                ),
               ),
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(137, 50),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/appointments/appointment_begin.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/widgets/save_button.dart';
@@ -93,7 +92,8 @@ class _DoctorDetailState extends State<DoctorDetail> {
                         const EdgeInsets.only(left: 8.0, right: 8, top: 17),
                     child: Text(
                       widget.name,
-                      style: GoogleFonts.poppins(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                           color: appColor),
@@ -127,14 +127,16 @@ class _DoctorDetailState extends State<DoctorDetail> {
                           ),
                           Text(
                             widget.experience + " Years",
-                            style: GoogleFonts.inter(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
                                 color: appColor),
                           ),
                           Text(
                             "Experience",
-                            style: GoogleFonts.inter(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                                 color: textColor),
@@ -148,7 +150,8 @@ class _DoctorDetailState extends State<DoctorDetail> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     "About Doctor",
-                    style: GoogleFonts.poppins(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
                         color: appColor),
@@ -160,7 +163,8 @@ class _DoctorDetailState extends State<DoctorDetail> {
                     padding: const EdgeInsets.only(left: 8.0, right: 8, top: 5),
                     child: Text(
                       widget.description,
-                      style: GoogleFonts.poppins(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                           color: dateColor),
@@ -188,7 +192,8 @@ class _DoctorDetailState extends State<DoctorDetail> {
                             children: [
                               Text(
                                 "Consultation fee",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                  fontFamily: 'Futura',
                                   color: dateColor,
                                   fontSize: 14,
                                 ),
@@ -200,21 +205,24 @@ class _DoctorDetailState extends State<DoctorDetail> {
                                 children: [
                                   Text(
                                     " AED",
-                                    style: GoogleFonts.poppins(
+                                    style: TextStyle(
+                                        fontFamily: 'Futura',
                                         color: appColor,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700),
                                   ),
                                   Text(
                                     " " + widget.price.toString(),
-                                    style: GoogleFonts.poppins(
+                                    style: TextStyle(
+                                        fontFamily: 'Futura',
                                         color: appColor,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700),
                                   ),
                                   Text(
                                     "/Consultation fee",
-                                    style: GoogleFonts.poppins(
+                                    style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: dateColor,
                                       fontSize: 12,
                                     ),

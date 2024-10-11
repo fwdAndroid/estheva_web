@@ -84,6 +84,7 @@ class _PhysiotherapyAtClinicState extends State<PhysiotherapyAtClinic> {
                                   serviceData['serviceSubcategory'],
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: appColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600),
@@ -105,6 +106,7 @@ class _PhysiotherapyAtClinicState extends State<PhysiotherapyAtClinic> {
                                       serviceData['price'].toString() + " AED",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
+                                          fontFamily: 'Futura',
                                           color: mainColor,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600),

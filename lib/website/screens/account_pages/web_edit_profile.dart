@@ -6,7 +6,6 @@ import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WebEditProfile extends StatelessWidget {
   const WebEditProfile({Key? key}) : super(key: key);
@@ -88,14 +87,21 @@ class _FormSectionState extends State<_FormSection> {
           children: [
             const Text(
               "Edit Profile",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25.63),
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 25.63,
+                fontFamily: 'Futura',
+              ),
             ),
             const SizedBox(height: 41),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: customerFullNameContoller,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
@@ -106,15 +112,18 @@ class _FormSectionState extends State<_FormSection> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "Enter Full Name",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                        fontFamily: 'Futura', color: black, fontSize: 12)),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8),
               child: TextFormField(
                 controller: customerPhoneNumberController,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
@@ -125,8 +134,8 @@ class _FormSectionState extends State<_FormSection> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "Enter Phone Number",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                        fontFamily: 'Futura', color: black, fontSize: 12)),
               ),
             ),
             const SizedBox(height: 30),

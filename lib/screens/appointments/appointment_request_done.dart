@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
@@ -41,7 +40,8 @@ class _AppointmentRequestDoneState extends State<AppointmentRequestDone> {
                 child: Center(
                   child: Text(
                     "Appointment Success!",
-                    style: GoogleFonts.poppins(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 20,
                         color: appColor,
                         fontWeight: FontWeight.w500),
@@ -56,7 +56,8 @@ class _AppointmentRequestDoneState extends State<AppointmentRequestDone> {
                     height: 60,
                     child: Text(
                       "Your appointment has been successfully scheduled. You can see details from your  Appointments Tab.",
-                      style: GoogleFonts.poppins(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           fontSize: 14,
                           color: textColor,
                           fontWeight: FontWeight.w300),

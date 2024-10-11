@@ -2,12 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/upcoming_service_appointment_web.dart';
-import 'package:estheva_web/website/screens/main_dashboard_we.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -187,7 +185,8 @@ class _FormSelectionState extends State<FormSelection> {
                 children: [
                   Text(
                     "Name",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -208,7 +207,8 @@ class _FormSelectionState extends State<FormSelection> {
                 children: [
                   Text(
                     "Gender",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -227,7 +227,12 @@ class _FormSelectionState extends State<FormSelection> {
                           });
                         },
                       ),
-                      Text("Male"),
+                      Text(
+                        "Male",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
 
                       // Female Radio Button
                       Radio<String>(
@@ -239,7 +244,12 @@ class _FormSelectionState extends State<FormSelection> {
                           });
                         },
                       ),
-                      Text("Female"),
+                      Text(
+                        "Female",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -252,7 +262,8 @@ class _FormSelectionState extends State<FormSelection> {
                 children: [
                   Text(
                     "Select Appointment Date",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -283,7 +294,8 @@ class _FormSelectionState extends State<FormSelection> {
                 children: [
                   Text(
                     "Start Appointment Time",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -333,7 +345,8 @@ class _FormSelectionState extends State<FormSelection> {
                 children: [
                   Text(
                     "End Appointment Time",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -381,7 +394,8 @@ class _FormSelectionState extends State<FormSelection> {
                       children: [
                         Text(
                           "Contact Number",
-                          style: GoogleFonts.manrope(
+                          style: TextStyle(
+                              fontFamily: 'Futura',
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: appColor),
@@ -402,7 +416,8 @@ class _FormSelectionState extends State<FormSelection> {
                       children: [
                         Text(
                           "Select Doctor",
-                          style: GoogleFonts.manrope(
+                          style: TextStyle(
+                              fontFamily: 'Futura',
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: appColor),

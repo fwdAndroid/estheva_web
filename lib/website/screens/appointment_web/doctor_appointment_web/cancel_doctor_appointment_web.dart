@@ -5,7 +5,6 @@ import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CancelDoctorAppointmentWeb extends StatefulWidget {
   const CancelDoctorAppointmentWeb({super.key});
@@ -76,12 +75,18 @@ class _CancelDoctorAppointmentWebState
                                               serviceData['price'].toString(),
                                         )));
                           },
-                          child: Text("View")),
+                          child: Text(
+                            "View",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          )),
                       title: Row(
                         children: [
                           Text(
                             "Doctor Name:",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
@@ -91,7 +96,8 @@ class _CancelDoctorAppointmentWebState
                           ),
                           Text(
                             serviceData['doctorName'],
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 color: appColor,
                                 fontWeight: FontWeight.w300),
@@ -104,7 +110,8 @@ class _CancelDoctorAppointmentWebState
                             children: [
                               Text(
                                 "Date:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -114,7 +121,8 @@ class _CancelDoctorAppointmentWebState
                               ),
                               Text(
                                 serviceData['appointmentDate'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
@@ -125,7 +133,8 @@ class _CancelDoctorAppointmentWebState
                             children: [
                               Text(
                                 "Time:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -135,7 +144,8 @@ class _CancelDoctorAppointmentWebState
                               ),
                               Text(
                                 serviceData['appointmentStartTime'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),

@@ -21,7 +21,7 @@ class SaveButton extends StatelessWidget {
         title,
         style: TextStyle(
             fontSize: 14,
-            fontFamily: "Mulish",
+            fontFamily: 'Futura',
             fontWeight: FontWeight.w500,
             color: white),
       ),

@@ -83,6 +83,7 @@ class _HealthCheckUpHomeState extends State<HealthCheckUpHome> {
                                   serviceData['serviceSubcategory'],
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: appColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600),
@@ -104,6 +105,7 @@ class _HealthCheckUpHomeState extends State<HealthCheckUpHome> {
                                       serviceData['price'].toString() + " AED",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
+                                          fontFamily: 'Futura',
                                           color: mainColor,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600),

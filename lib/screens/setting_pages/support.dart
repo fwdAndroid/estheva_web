@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/setting_pages/add_complaint.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
@@ -35,8 +34,11 @@ class _SupportState extends State<Support> {
         iconTheme: IconThemeData(color: white),
         title: Text(
           "Support",
-          style: GoogleFonts.workSans(
-              color: white, fontSize: 18, fontWeight: FontWeight.w500),
+          style: TextStyle(
+              fontFamily: 'Futura',
+              color: white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500),
         ),
         backgroundColor: mainColor,
       ),
@@ -79,6 +81,7 @@ class _SupportState extends State<Support> {
                             Text(
                               "Title:  " + data['title'],
                               style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -86,7 +89,10 @@ class _SupportState extends State<Support> {
                             SizedBox(height: 8),
                             Text(
                               data['description'],
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: 'Futura',
+                              ),
                             ),
                             SizedBox(height: 8),
                             Row(
@@ -117,14 +123,24 @@ class _SupportState extends State<Support> {
                                                   "Are you sure you want to delete this item?"),
                                               actions: <Widget>[
                                                 TextButton(
-                                                  child: Text("Cancel"),
+                                                  child: Text(
+                                                    "Cancel",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Futura',
+                                                    ),
+                                                  ),
                                                   onPressed: () {
                                                     Navigator.of(context).pop(
                                                         false); // Return false when cancel is pressed
                                                   },
                                                 ),
                                                 TextButton(
-                                                  child: Text("Delete"),
+                                                  child: Text(
+                                                    "Delete",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Futura',
+                                                    ),
+                                                  ),
                                                   onPressed: () {
                                                     Navigator.of(context).pop(
                                                         true); // Return true when delete is pressed
@@ -143,7 +159,12 @@ class _SupportState extends State<Support> {
                                               .delete();
                                         }
                                       },
-                                      child: Text("Delete"),
+                                      child: Text(
+                                        "Delete",
+                                        style: TextStyle(
+                                          fontFamily: 'Futura',
+                                        ),
+                                      ),
                                     ))
                               ],
                             ),

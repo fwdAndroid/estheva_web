@@ -5,7 +5,6 @@ import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class UpcommingDoctorAppointmentWeb extends StatefulWidget {
   const UpcommingDoctorAppointmentWeb({super.key});
@@ -76,13 +75,19 @@ class _UpcommingDoctorAppointmentWebState
                                               serviceData['price'].toString(),
                                         )));
                           },
-                          child: Text("View")),
+                          child: Text(
+                            "View",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          )),
                       title: Row(
                         children: [
                           Text(
                             "Doctor Name:",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
                                 fontSize: 13,
+                                fontFamily: 'Futura',
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -91,9 +96,10 @@ class _UpcommingDoctorAppointmentWebState
                           ),
                           Text(
                             serviceData['doctorName'],
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
                                 fontSize: 12,
                                 color: appColor,
+                                fontFamily: 'Futura',
                                 fontWeight: FontWeight.w300),
                           ),
                         ],
@@ -104,9 +110,10 @@ class _UpcommingDoctorAppointmentWebState
                             children: [
                               Text(
                                 "Date:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
                                     fontSize: 13,
                                     color: appColor,
+                                    fontFamily: 'Futura',
                                     fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(
@@ -114,8 +121,9 @@ class _UpcommingDoctorAppointmentWebState
                               ),
                               Text(
                                 serviceData['appointmentDate'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
                                     fontSize: 12,
+                                    fontFamily: 'Futura',
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -125,9 +133,10 @@ class _UpcommingDoctorAppointmentWebState
                             children: [
                               Text(
                                 "Time:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
                                     fontSize: 13,
                                     color: appColor,
+                                    fontFamily: 'Futura',
                                     fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(
@@ -135,8 +144,9 @@ class _UpcommingDoctorAppointmentWebState
                               ),
                               Text(
                                 serviceData['appointmentStartTime'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
                                     fontSize: 12,
+                                    fontFamily: 'Futura',
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
                               ),

@@ -3,7 +3,6 @@ import 'package:estheva_web/screens/details/service_appointment_completed_detail
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CompleteServiceAppointment extends StatefulWidget {
   const CompleteServiceAppointment({super.key});
@@ -23,7 +22,10 @@ class _CompleteServiceAppointmentState
         centerTitle: true,
         title: Text(
           'Service Appointment ',
-          style: TextStyle(color: white),
+          style: TextStyle(
+            color: white,
+            fontFamily: 'Futura',
+          ),
         ),
         backgroundColor: mainColor,
       ),
@@ -83,13 +85,19 @@ class _CompleteServiceAppointmentState
                                               serviceData['price'].toString(),
                                         )));
                           },
-                          child: Text("View")),
+                          child: Text(
+                            "View",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          )),
                       title: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "Service Name:",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
@@ -99,7 +107,8 @@ class _CompleteServiceAppointmentState
                           ),
                           Text(
                             serviceData['serviceName'],
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 color: appColor,
                                 fontWeight: FontWeight.w300),
@@ -112,7 +121,8 @@ class _CompleteServiceAppointmentState
                             children: [
                               Text(
                                 "Date:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -122,7 +132,8 @@ class _CompleteServiceAppointmentState
                               ),
                               Text(
                                 serviceData['appointmentDate'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
@@ -133,7 +144,8 @@ class _CompleteServiceAppointmentState
                             children: [
                               Text(
                                 "Time:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -143,7 +155,8 @@ class _CompleteServiceAppointmentState
                               ),
                               Text(
                                 serviceData['appointmentStartTime'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),

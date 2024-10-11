@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 
@@ -32,7 +31,7 @@ class _NutritionsState extends State<Nutritions> {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       'Enter Height',
-                      style: GoogleFonts.plusJakartaSans(
+                      style: TextStyle(
                           color: black,
                           fontWeight: FontWeight.w500,
                           fontSize: 14),
@@ -44,7 +43,7 @@ class _NutritionsState extends State<Nutritions> {
                   padding: const EdgeInsets.all(8),
                   child: TextFormField(
                     controller: _emailController,
-                    style: GoogleFonts.plusJakartaSans(color: black),
+                    style: TextStyle(color: black),
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
@@ -55,8 +54,7 @@ class _NutritionsState extends State<Nutritions> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Enter Height",
-                        hintStyle: GoogleFonts.plusJakartaSans(
-                            color: black, fontSize: 12)),
+                        hintStyle: TextStyle(color: black, fontSize: 12)),
                   ),
                 ),
                 Padding(

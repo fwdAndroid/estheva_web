@@ -3,7 +3,6 @@ import 'package:estheva_web/screens/details/cancel_service_appointment_detail.da
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CancelServiceAppointment extends StatefulWidget {
   const CancelServiceAppointment({super.key});
@@ -22,7 +21,10 @@ class _CancelServiceAppointmentState extends State<CancelServiceAppointment> {
         centerTitle: true,
         title: Text(
           'Service Appointment ',
-          style: TextStyle(color: white),
+          style: TextStyle(
+            color: white,
+            fontFamily: 'Futura',
+          ),
         ),
         backgroundColor: mainColor,
       ),
@@ -82,13 +84,19 @@ class _CancelServiceAppointmentState extends State<CancelServiceAppointment> {
                                               serviceData['price'].toString(),
                                         )));
                           },
-                          child: Text("View")),
+                          child: Text(
+                            "View",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          )),
                       title: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "Service Name:",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
@@ -98,7 +106,8 @@ class _CancelServiceAppointmentState extends State<CancelServiceAppointment> {
                           ),
                           Text(
                             serviceData['serviceName'],
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 color: appColor,
                                 fontWeight: FontWeight.w300),
@@ -111,7 +120,8 @@ class _CancelServiceAppointmentState extends State<CancelServiceAppointment> {
                             children: [
                               Text(
                                 "Date:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -121,7 +131,8 @@ class _CancelServiceAppointmentState extends State<CancelServiceAppointment> {
                               ),
                               Text(
                                 serviceData['appointmentDate'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
@@ -132,7 +143,8 @@ class _CancelServiceAppointmentState extends State<CancelServiceAppointment> {
                             children: [
                               Text(
                                 "Time:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -142,7 +154,8 @@ class _CancelServiceAppointmentState extends State<CancelServiceAppointment> {
                               ),
                               Text(
                                 serviceData['appointmentStartTime'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),

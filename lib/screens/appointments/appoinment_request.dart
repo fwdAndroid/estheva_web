@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:estheva_web/screens/appointments/appointment_request_done.dart';
 import 'package:estheva_web/services/storage_methods.dart';
@@ -56,7 +55,11 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
         centerTitle: true,
         title: Text(
           "Confirm Appointment",
-          style: GoogleFonts.poppins(fontSize: 17, color: appColor),
+          style: TextStyle(
+            fontSize: 17,
+            color: appColor,
+            fontFamily: 'Futura',
+          ),
         ),
         leading: GestureDetector(
           onTap: () {
@@ -120,15 +123,17 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
                             children: [
                               Text(
                                 "Patient Name: ",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
                                     color: appColor,
+                                    fontFamily: 'Futura',
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
                                 widget.paitientName,
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
                                     color: appColor,
+                                    fontFamily: 'Futura',
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -138,14 +143,16 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
                             children: [
                               Text(
                                 "Date of Birth: ",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     color: appColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
                                 widget.dob,
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     color: appColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500),
@@ -154,7 +161,8 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
                           ),
                           Text(
                             widget.paitientProblem,
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                              fontFamily: 'Futura',
                               color: dateColor,
                               fontSize: 12,
                             ),
@@ -174,7 +182,8 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
               children: [
                 Text(
                   "Select Appointment Date",
-                  style: GoogleFonts.manrope(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: appColor),
@@ -205,7 +214,8 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
               children: [
                 Text(
                   "Start Appointment Time",
-                  style: GoogleFonts.manrope(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: appColor),
@@ -255,7 +265,8 @@ class _AppoinmentRequestState extends State<AppoinmentRequest> {
               children: [
                 Text(
                   "End Appointment Time",
-                  style: GoogleFonts.manrope(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: appColor),

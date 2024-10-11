@@ -2,7 +2,6 @@ import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/website/screens/web_details.dart/product_booking_web.dart';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ProductDetailWeb extends StatefulWidget {
   final description;
@@ -51,7 +50,8 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 widget.serviceName,
-                style: GoogleFonts.poppins(
+                style: TextStyle(
+                  fontFamily: 'Futura',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -69,7 +69,8 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           widget.description,
-                          style: GoogleFonts.poppins(
+                          style: TextStyle(
+                            fontFamily: 'Futura',
                             fontSize: 14,
                             color: Colors.black54,
                           ),
@@ -90,7 +91,7 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
             //           children: [
             //             Text(
             //               widget.discount.toString(),
-            //               style: GoogleFonts.poppins(
+            //               style: TextStyle(
             //                 fontSize: 14,
             //                 fontWeight: FontWeight.bold,
             //                 color: Colors.black,
@@ -98,7 +99,7 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
             //             ),
             //             Text(
             //               "Use code SUMMER20 | above AED 10",
-            //               style: GoogleFonts.poppins(
+            //               style: TextStyle(
             //                 fontSize: 12,
             //                 color: Colors.black54,
             //               ),
@@ -117,7 +118,8 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
                 children: [
                   Text(
                     widget.price.toString() + "AED",
-                    style: GoogleFonts.poppins(
+                    style: TextStyle(
+                      fontFamily: 'Futura',
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: mainColor,
@@ -152,7 +154,8 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
                     ),
                     child: Text(
                       "Book Now",
-                      style: GoogleFonts.poppins(
+                      style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

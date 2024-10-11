@@ -84,6 +84,7 @@ class _HealthChecupAtClinicState extends State<HealthChecupAtClinic> {
                                   serviceData['serviceSubcategory'],
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: appColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600),
@@ -106,6 +107,7 @@ class _HealthChecupAtClinicState extends State<HealthChecupAtClinic> {
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           color: mainColor,
+                                          fontFamily: 'Futura',
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600),
                                     ),

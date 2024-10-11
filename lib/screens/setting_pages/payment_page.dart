@@ -21,7 +21,14 @@ class _PaymentPageState extends State<PaymentPage> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(onPressed: () {}, child: Text("Add Card")),
+            child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  "Add Card",
+                  style: TextStyle(
+                    fontFamily: 'Futura',
+                  ),
+                )),
           )
         ],
       ),

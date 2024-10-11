@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/details/doctor_detail.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
@@ -24,8 +23,11 @@ class _DoctorPageState extends State<DoctorPage> {
         centerTitle: true,
         title: Text(
           "Medical Consultation",
-          style: GoogleFonts.poppins(
-              fontSize: 18, color: white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontFamily: 'Futura',
+              fontSize: 18,
+              color: white,
+              fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -106,7 +108,8 @@ class _DoctorPageState extends State<DoctorPage> {
                                       left: 4.0, top: 8, right: 4),
                                   child: Text(
                                     doctorData['doctorName'],
-                                    style: GoogleFonts.poppins(
+                                    style: TextStyle(
+                                        fontFamily: 'Futura',
                                         fontSize: 13,
                                         color: black,
                                         fontWeight: FontWeight.w500),
@@ -117,7 +120,8 @@ class _DoctorPageState extends State<DoctorPage> {
                                       left: 4.0, top: 2, right: 4),
                                   child: Text(
                                     doctorData['doctorCategory'],
-                                    style: GoogleFonts.poppins(
+                                    style: TextStyle(
+                                        fontFamily: 'Futura',
                                         fontSize: 13,
                                         color: black,
                                         fontWeight: FontWeight.w500),

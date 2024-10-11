@@ -3,7 +3,6 @@ import 'package:estheva_web/screens/details/service_appointment_complete_detail.
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ServiceAppointmentDetails extends StatefulWidget {
   const ServiceAppointmentDetails({super.key});
@@ -22,7 +21,10 @@ class _ServiceAppointmentDetailsState extends State<ServiceAppointmentDetails> {
         centerTitle: true,
         title: Text(
           'Service Appointment ',
-          style: TextStyle(color: white),
+          style: TextStyle(
+            color: white,
+            fontFamily: 'Futura',
+          ),
         ),
         backgroundColor: mainColor,
       ),
@@ -82,13 +84,19 @@ class _ServiceAppointmentDetailsState extends State<ServiceAppointmentDetails> {
                                               serviceData['price'].toString(),
                                         )));
                           },
-                          child: Text("View")),
+                          child: Text(
+                            "View",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          )),
                       title: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "Service Name:",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
@@ -98,7 +106,8 @@ class _ServiceAppointmentDetailsState extends State<ServiceAppointmentDetails> {
                           ),
                           Text(
                             serviceData['serviceName'],
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 color: appColor,
                                 fontWeight: FontWeight.w300),
@@ -111,7 +120,8 @@ class _ServiceAppointmentDetailsState extends State<ServiceAppointmentDetails> {
                             children: [
                               Text(
                                 "Date:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -121,7 +131,8 @@ class _ServiceAppointmentDetailsState extends State<ServiceAppointmentDetails> {
                               ),
                               Text(
                                 serviceData['appointmentDate'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
@@ -132,7 +143,8 @@ class _ServiceAppointmentDetailsState extends State<ServiceAppointmentDetails> {
                             children: [
                               Text(
                                 "Time:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -142,7 +154,8 @@ class _ServiceAppointmentDetailsState extends State<ServiceAppointmentDetails> {
                               ),
                               Text(
                                 serviceData['appointmentStartTime'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),

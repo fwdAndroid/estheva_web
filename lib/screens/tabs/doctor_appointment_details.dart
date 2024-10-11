@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/screens/details/doctor_appointment_complete_detail.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
 class DoctorAppointmentDetails extends StatefulWidget {
@@ -22,7 +21,10 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
         centerTitle: true,
         title: Text(
           'Doctor Appointment ',
-          style: TextStyle(color: white),
+          style: TextStyle(
+            color: white,
+            fontFamily: 'Futura',
+          ),
         ),
         backgroundColor: mainColor,
       ),
@@ -81,12 +83,18 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                                               serviceData['price'].toString(),
                                         )));
                           },
-                          child: Text("View")),
+                          child: Text(
+                            "View",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          )),
                       title: Row(
                         children: [
                           Text(
                             "Doctor Name:",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
@@ -96,7 +104,8 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                           ),
                           Text(
                             serviceData['doctorName'],
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 color: appColor,
                                 fontWeight: FontWeight.w300),
@@ -109,7 +118,8 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                             children: [
                               Text(
                                 "Date:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -119,7 +129,8 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                               ),
                               Text(
                                 serviceData['appointmentDate'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
@@ -130,7 +141,8 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                             children: [
                               Text(
                                 "Time:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -140,7 +152,8 @@ class _DoctorAppointmentDetailsState extends State<DoctorAppointmentDetails> {
                               ),
                               Text(
                                 serviceData['appointmentStartTime'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),

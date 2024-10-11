@@ -26,7 +26,10 @@ class _OfferDetailState extends State<OfferDetail> {
         centerTitle: true,
         title: Text(
           "Offers Detail",
-          style: TextStyle(color: white),
+          style: TextStyle(
+            color: white,
+            fontFamily: 'Futura',
+          ),
         ),
       ),
       body: Column(
@@ -48,7 +51,10 @@ class _OfferDetailState extends State<OfferDetail> {
               height: 100,
               child: Text(
                 widget.offerDetail,
-                style: TextStyle(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
           ),

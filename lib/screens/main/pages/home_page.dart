@@ -4,7 +4,6 @@ import 'package:estheva_web/screens/details/offer_detail.dart';
 import 'package:estheva_web/screens/details/product_detail.dart';
 import 'package:estheva_web/widgets/my_drawer_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart' as cs;
@@ -98,6 +97,9 @@ class _HomePageState extends State<HomePage> {
                 filled: true,
                 border: InputBorder.none,
                 fillColor: Colors.white,
+                hintStyle: TextStyle(
+                  fontFamily: 'Futura',
+                ),
                 hintText: "Search Services"),
           ),
           leading: Image.asset("assets/logos.png"),
@@ -171,6 +173,7 @@ class _HomePageState extends State<HomePage> {
                                             child: Text(
                                               item['offerDetail']!,
                                               style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: Colors.white,
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.bold,
@@ -271,7 +274,10 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Text(
                           "Clinic",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Futura',
+                          ),
                         ),
                       ],
                     ),
@@ -301,8 +307,11 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Text(
                           "Home",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Futura',
+                          ),
+                        )
                       ],
                     )
                   ],
@@ -312,7 +321,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Body Contouring Packages',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       color: appColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w800),
@@ -402,6 +412,7 @@ class _HomePageState extends State<HomePage> {
                                             serviceData['serviceSubcategory'],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: appColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -427,6 +438,7 @@ class _HomePageState extends State<HomePage> {
                                                     " AED",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
+                                                    fontFamily: 'Futura',
                                                     color: mainColor,
                                                     fontSize: 12,
                                                     fontWeight:
@@ -451,7 +463,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'IV Drips Therapy',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       color: appColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w800),
@@ -547,6 +560,7 @@ class _HomePageState extends State<HomePage> {
                                         serviceData['serviceSubcategory'],
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
+                                            fontFamily: 'Futura',
                                             color: appColor,
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
@@ -570,6 +584,7 @@ class _HomePageState extends State<HomePage> {
                                                 " AED",
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: mainColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -595,7 +610,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'IV Drips Therapy Packages',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       color: appColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w800),
@@ -692,6 +708,7 @@ class _HomePageState extends State<HomePage> {
                                         serviceData['serviceSubcategory'],
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
+                                            fontFamily: 'Futura',
                                             color: appColor,
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
@@ -715,6 +732,7 @@ class _HomePageState extends State<HomePage> {
                                                 " AED",
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: mainColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -740,7 +758,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Health Checkup',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       color: appColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w800),
@@ -836,6 +855,7 @@ class _HomePageState extends State<HomePage> {
                                         serviceData['serviceSubcategory'],
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
+                                            fontFamily: 'Futura',
                                             color: appColor,
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
@@ -859,6 +879,7 @@ class _HomePageState extends State<HomePage> {
                                                 " AED",
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: mainColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -884,9 +905,10 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Physiotherapy',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       color: appColor,
                       fontSize: 16,
+                      fontFamily: 'Futura',
                       fontWeight: FontWeight.w800),
                 ),
               ),
@@ -977,6 +999,7 @@ class _HomePageState extends State<HomePage> {
                                         serviceData['serviceSubcategory'],
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
+                                            fontFamily: 'Futura',
                                             color: appColor,
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
@@ -1000,6 +1023,7 @@ class _HomePageState extends State<HomePage> {
                                                 " AED",
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: mainColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -1026,7 +1050,8 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Aesthetic',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                            fontFamily: 'Futura',
                             color: appColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w800),
@@ -1133,6 +1158,7 @@ class _HomePageState extends State<HomePage> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   color: appColor,
+                                                  fontFamily: 'Futura',
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w600),
                                             ),
@@ -1158,6 +1184,7 @@ class _HomePageState extends State<HomePage> {
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                       color: mainColor,
+                                                      fontFamily: 'Futura',
                                                       fontSize: 12,
                                                       fontWeight:
                                                           FontWeight.w600),
@@ -1185,8 +1212,9 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Hair Transplant',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
                             color: appColor,
+                            fontFamily: 'Futura',
                             fontSize: 16,
                             fontWeight: FontWeight.w800),
                       ),
@@ -1292,6 +1320,7 @@ class _HomePageState extends State<HomePage> {
                                               serviceData['serviceSubcategory'],
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
+                                                  fontFamily: 'Futura',
                                                   color: appColor,
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w600),
@@ -1317,6 +1346,7 @@ class _HomePageState extends State<HomePage> {
                                                       " AED",
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
+                                                      fontFamily: 'Futura',
                                                       color: mainColor,
                                                       fontSize: 12,
                                                       fontWeight:

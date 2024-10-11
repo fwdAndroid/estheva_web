@@ -86,6 +86,7 @@ class _IVDripsTherapyPackagesClinicState
                                   serviceData['serviceSubcategory'],
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: appColor,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600),
@@ -107,6 +108,7 @@ class _IVDripsTherapyPackagesClinicState
                                       serviceData['price'].toString() + " AED",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
+                                          fontFamily: 'Futura',
                                           color: mainColor,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600),

@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 
@@ -59,8 +58,11 @@ class _EditProfileState extends State<EditProfile> {
               )),
           title: Text(
             "Edit Profile",
-            style: GoogleFonts.workSans(
-                color: white, fontSize: 18, fontWeight: FontWeight.w500),
+            style: TextStyle(
+                fontFamily: 'Futura',
+                color: white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500),
           ),
           automaticallyImplyLeading: false,
           backgroundColor: mainColor,
@@ -72,7 +74,10 @@ class _EditProfileState extends State<EditProfile> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: customerFullNameContoller,
-                  style: GoogleFonts.plusJakartaSans(color: black),
+                  style: TextStyle(
+                    color: black,
+                    fontFamily: 'Futura',
+                  ),
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: borderColor)),
@@ -83,15 +88,17 @@ class _EditProfileState extends State<EditProfile> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: borderColor)),
                       hintText: "Enter Full Name",
-                      hintStyle: GoogleFonts.plusJakartaSans(
-                          color: black, fontSize: 12)),
+                      hintStyle: TextStyle(color: black, fontSize: 12)),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: TextFormField(
                   controller: customerPhoneNumberController,
-                  style: GoogleFonts.plusJakartaSans(color: black),
+                  style: TextStyle(
+                    color: black,
+                    fontFamily: 'Futura',
+                  ),
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: borderColor)),
@@ -102,8 +109,7 @@ class _EditProfileState extends State<EditProfile> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: borderColor)),
                       hintText: "Enter Phone Number",
-                      hintStyle: GoogleFonts.plusJakartaSans(
-                          color: black, fontSize: 12)),
+                      hintStyle: TextStyle(color: black, fontSize: 12)),
                 ),
               ),
               Padding(

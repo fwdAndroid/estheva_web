@@ -3,7 +3,6 @@ import 'package:estheva_web/screens/details/doctor_appointment_completed_detail.
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CompleteDoctorAppointment extends StatefulWidget {
   const CompleteDoctorAppointment({super.key});
@@ -81,12 +80,18 @@ class _CompleteDoctorAppointmentState extends State<CompleteDoctorAppointment> {
                                               serviceData['price'].toString(),
                                         )));
                           },
-                          child: Text("View")),
+                          child: Text(
+                            "View",
+                            style: TextStyle(
+                              fontFamily: 'Futura',
+                            ),
+                          )),
                       title: Row(
                         children: [
                           Text(
                             "Doctor Name:",
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
@@ -96,7 +101,8 @@ class _CompleteDoctorAppointmentState extends State<CompleteDoctorAppointment> {
                           ),
                           Text(
                             serviceData['doctorName'],
-                            style: GoogleFonts.poppins(
+                            style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 color: appColor,
                                 fontWeight: FontWeight.w300),
@@ -109,7 +115,8 @@ class _CompleteDoctorAppointmentState extends State<CompleteDoctorAppointment> {
                             children: [
                               Text(
                                 "Date:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -119,7 +126,8 @@ class _CompleteDoctorAppointmentState extends State<CompleteDoctorAppointment> {
                               ),
                               Text(
                                 serviceData['appointmentDate'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
@@ -130,7 +138,8 @@ class _CompleteDoctorAppointmentState extends State<CompleteDoctorAppointment> {
                             children: [
                               Text(
                                 "Time:",
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
@@ -140,7 +149,8 @@ class _CompleteDoctorAppointmentState extends State<CompleteDoctorAppointment> {
                               ),
                               Text(
                                 serviceData['appointmentStartTime'],
-                                style: GoogleFonts.poppins(
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),

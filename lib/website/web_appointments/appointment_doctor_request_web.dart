@@ -7,7 +7,6 @@ import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -176,14 +175,16 @@ class _FormSectionState extends State<FormSection> {
                               children: [
                                 Text(
                                   "Patient Name: ",
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: appColor,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
                                   widget.paitientName,
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: appColor,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500),
@@ -194,14 +195,16 @@ class _FormSectionState extends State<FormSection> {
                               children: [
                                 Text(
                                   "Date of Birth: ",
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
                                       color: appColor,
                                       fontSize: 14,
+                                      fontFamily: 'Futura',
                                       fontWeight: FontWeight.w500),
                                 ),
                                 Text(
                                   widget.dob,
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: appColor,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500),
@@ -210,7 +213,8 @@ class _FormSectionState extends State<FormSection> {
                             ),
                             Text(
                               widget.problem,
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: dateColor,
                                 fontSize: 12,
                               ),
@@ -231,7 +235,8 @@ class _FormSectionState extends State<FormSection> {
                 children: [
                   Text(
                     "Select Appointment Date",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -262,7 +267,8 @@ class _FormSectionState extends State<FormSection> {
                 children: [
                   Text(
                     "Start Appointment Time",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
@@ -284,7 +290,8 @@ class _FormSectionState extends State<FormSection> {
                 children: [
                   Text(
                     "End Appointment Time",
-                    style: GoogleFonts.manrope(
+                    style: TextStyle(
+                        fontFamily: 'Futura',
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),

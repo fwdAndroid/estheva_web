@@ -1,7 +1,6 @@
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TextFormInputField extends StatelessWidget {
   final TextEditingController controller;
@@ -52,7 +51,11 @@ class TextFormInputField extends StatelessWidget {
           ),
           fillColor: Color(0xffF6F7F9),
           hintText: hintText,
-          hintStyle: GoogleFonts.plusJakartaSans(color: black, fontSize: 12),
+          hintStyle: TextStyle(
+            color: black,
+            fontSize: 12,
+            fontFamily: 'Futura',
+          ),
           filled: true,
           contentPadding: EdgeInsets.all(8),
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/screens/tabs/cancelled.dart';
 import 'package:estheva_web/screens/tabs/completed.dart';
 import 'package:estheva_web/screens/tabs/upcomming.dart';
@@ -24,17 +23,22 @@ class _AppointmentPageState extends State<AppointmentPage> {
           automaticallyImplyLeading: false,
           title: Text(
             "Appointments",
-            style: GoogleFonts.poppins(color: appColor),
+            style: TextStyle(
+              color: appColor,
+              fontFamily: 'Futura',
+            ),
           ),
           bottom: TabBar(
             indicatorColor: mainColor,
             labelColor: mainColor,
-            labelStyle: GoogleFonts.poppins(
+            labelStyle: TextStyle(
+              fontFamily: 'Futura',
               fontSize: 14,
               fontWeight: FontWeight.w300,
             ),
             unselectedLabelColor: textColor,
-            unselectedLabelStyle: GoogleFonts.poppins(
+            unselectedLabelStyle: TextStyle(
+              fontFamily: 'Futura',
               fontSize: 14,
               fontWeight: FontWeight.w300,
             ),

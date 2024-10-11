@@ -4,7 +4,6 @@ import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/website/screens/web_details.dart/product_detail_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:dots_indicator/dots_indicator.dart'; // For the dots indicator
 import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:flutter/gestures.dart';
@@ -161,6 +160,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             child: Text(
                                               item['offerDetail']!,
                                               style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: Colors.white,
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.bold,
@@ -261,7 +261,10 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                         ),
                         Text(
                           "Clinic Services",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Futura',
+                          ),
                         ),
                       ],
                     ),
@@ -291,7 +294,10 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                         ),
                         Text(
                           "Home Services",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Futura',
+                          ),
                         ),
                       ],
                     )
@@ -302,7 +308,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Body Contouring Packages',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
+                      fontFamily: 'Futura',
                       color: appColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w800),
@@ -404,6 +411,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                     'serviceSubcategory'],
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
+                                                    fontFamily: 'Futura',
                                                     color: appColor,
                                                     fontSize: 12,
                                                     fontWeight:
@@ -430,6 +438,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                         " AED",
                                                     textAlign: TextAlign.start,
                                                     style: TextStyle(
+                                                        fontFamily: 'Futura',
                                                         color: mainColor,
                                                         fontSize: 12,
                                                         fontWeight:
@@ -456,8 +465,9 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'IV Drips Therapy',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       color: appColor,
+                      fontFamily: 'Futura',
                       fontSize: 16,
                       fontWeight: FontWeight.w800),
                 ),
@@ -568,6 +578,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             serviceData['serviceSubcategory'],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: appColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -593,6 +604,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                     " AED",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
+                                                    fontFamily: 'Futura',
                                                     color: mainColor,
                                                     fontSize: 12,
                                                     fontWeight:
@@ -621,9 +633,10 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'IV Drips Therapy Packages',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       color: appColor,
                       fontSize: 16,
+                      fontFamily: 'Futura',
                       fontWeight: FontWeight.w800),
                 ),
               ),
@@ -733,6 +746,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             serviceData['serviceSubcategory'],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: appColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -758,6 +772,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                     " AED",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
+                                                    fontFamily: 'Futura',
                                                     color: mainColor,
                                                     fontSize: 12,
                                                     fontWeight:
@@ -786,9 +801,10 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Health Checkup',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       color: appColor,
                       fontSize: 16,
+                      fontFamily: 'Futura',
                       fontWeight: FontWeight.w800),
                 ),
               ),
@@ -897,6 +913,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             serviceData['serviceSubcategory'],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: appColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -922,6 +939,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                     " AED",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
+                                                    fontFamily: 'Futura',
                                                     color: mainColor,
                                                     fontSize: 12,
                                                     fontWeight:
@@ -950,8 +968,9 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Physiotherapy',
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       color: appColor,
+                      fontFamily: 'Futura',
                       fontSize: 16,
                       fontWeight: FontWeight.w800),
                 ),
@@ -1058,6 +1077,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             serviceData['serviceSubcategory'],
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
+                                                fontFamily: 'Futura',
                                                 color: appColor,
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w600),
@@ -1083,6 +1103,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                     " AED",
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
+                                                    fontFamily: 'Futura',
                                                     color: mainColor,
                                                     fontSize: 12,
                                                     fontWeight:
@@ -1112,7 +1133,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Aesthetic',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                            fontFamily: 'Futura',
                             color: appColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w800),
@@ -1236,6 +1258,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                       'serviceSubcategory'],
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
+                                                      fontFamily: 'Futura',
                                                       color: appColor,
                                                       fontSize: 12,
                                                       fontWeight:
@@ -1265,6 +1288,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                       textAlign:
                                                           TextAlign.start,
                                                       style: TextStyle(
+                                                          fontFamily: 'Futura',
                                                           color: mainColor,
                                                           fontSize: 12,
                                                           fontWeight:
@@ -1295,7 +1319,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         'Hair Transplant',
-                        style: GoogleFonts.poppins(
+                        style: TextStyle(
+                            fontFamily: 'Futura',
                             color: appColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w800),
@@ -1419,6 +1444,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                       'serviceSubcategory'],
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
+                                                      fontFamily: 'Futura',
                                                       color: appColor,
                                                       fontSize: 12,
                                                       fontWeight:
@@ -1448,6 +1474,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                       textAlign:
                                                           TextAlign.start,
                                                       style: TextStyle(
+                                                          fontFamily: 'Futura',
                                                           color: mainColor,
                                                           fontSize: 12,
                                                           fontWeight:

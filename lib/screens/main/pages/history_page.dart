@@ -11,7 +11,6 @@ import 'package:estheva_web/widgets/logout_widget.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -51,8 +50,10 @@ class _HistoryPageState extends State<HistoryPage> {
                         children: [
                           Text(
                             snap['fullName'],
-                            style: GoogleFonts.workSans(
-                                fontWeight: FontWeight.w600, fontSize: 22),
+                            style: TextStyle(
+                                fontFamily: 'Futura',
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22),
                           ),
                         ],
                       ),
@@ -83,8 +84,10 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       title: Text(
                         "Records",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -110,8 +113,10 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       title: Text(
                         "Edit Profile",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -138,8 +143,10 @@ class _HistoryPageState extends State<HistoryPage> {
                         ),
                         title: Text(
                           "Change Password",
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w500, fontSize: 16),
+                          style: TextStyle(
+                              fontFamily: 'Futura',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,
@@ -166,8 +173,10 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       title: Text(
                         "Payment Method",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -193,8 +202,10 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       title: Text(
                         "Notifications",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -217,8 +228,10 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       title: Text(
                         "Invite Friends",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -238,7 +251,8 @@ class _HistoryPageState extends State<HistoryPage> {
                         padding: EdgeInsets.all(8),
                         child: Text(
                           "About App",
-                          style: GoogleFonts.workSans(
+                          style: TextStyle(
+                              fontFamily: 'Futura',
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
                               color: Color(0xff5496FB)),
@@ -258,8 +272,10 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       title: Text(
                         "Privacy Policy ",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -283,8 +299,10 @@ class _HistoryPageState extends State<HistoryPage> {
                       ),
                       title: Text(
                         "Help & Support",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,

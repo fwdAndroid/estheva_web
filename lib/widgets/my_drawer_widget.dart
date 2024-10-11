@@ -11,7 +11,6 @@ import 'package:estheva_web/widgets/logout_widget.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:share_plus/share_plus.dart';
 
 class MyDrawerWidget extends StatefulWidget {
@@ -54,8 +53,11 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                       children: [
                         Text(
                           snap['fullName'],
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w600, fontSize: 22),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22,
+                            fontFamily: 'Futura',
+                          ),
                         ),
                       ],
                     ),
@@ -86,8 +88,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Records",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(
@@ -109,8 +113,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Edit Profile",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(
@@ -132,8 +138,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Change Password",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(
@@ -155,8 +163,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Payment Method",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(
@@ -178,8 +188,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Notifications",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(
@@ -198,8 +210,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Invite Friends",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(
@@ -215,7 +229,7 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                       padding: EdgeInsets.all(8),
                       child: Text(
                         "About App",
-                        style: GoogleFonts.workSans(
+                        style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Color(0xff5496FB)),
@@ -235,8 +249,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Privacy Policy ",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(
@@ -256,8 +272,10 @@ class _MyDrawerWidgetState extends State<MyDrawerWidget> {
                     ),
                     title: Text(
                       "Help & Support",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                   ),
                   Padding(

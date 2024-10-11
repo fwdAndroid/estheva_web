@@ -86,6 +86,7 @@ class _BodyContouringPageClinicState extends State<BodyContouringPageClinic> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: appColor,
+                                      fontFamily: 'Futura',
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600),
                                 ),
@@ -106,6 +107,7 @@ class _BodyContouringPageClinicState extends State<BodyContouringPageClinic> {
                                       serviceData['price'].toString() + " AED",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
+                                          fontFamily: 'Futura',
                                           color: mainColor,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600),

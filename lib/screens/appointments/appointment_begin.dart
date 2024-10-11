@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:estheva_web/screens/appointments/appoinment_request.dart';
 import 'package:estheva_web/uitls/colors.dart';
@@ -88,7 +87,11 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
         centerTitle: true,
         title: Text(
           "Make Appointment",
-          style: GoogleFonts.poppins(fontSize: 17, color: appColor),
+          style: TextStyle(
+            fontSize: 17,
+            color: appColor,
+            fontFamily: 'Futura',
+          ),
         ),
         leading: GestureDetector(
           onTap: () {
@@ -151,14 +154,16 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                           children: [
                             Text(
                               widget.name,
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                  fontFamily: 'Futura',
                                   color: appColor,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
                               widget.experience + " Years",
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: dateColor,
                                 fontSize: 12,
                               ),
@@ -167,14 +172,16 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                               children: [
                                 Text(
                                   currentDate, // Display the formatted date
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                    fontFamily: 'Futura',
                                     color: textColor,
                                     fontSize: 12,
                                   ),
                                 ),
                                 Text(
                                   currentTime,
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                    fontFamily: 'Futura',
                                     color: Colors.black,
                                     fontSize: 12,
                                   ),
@@ -206,8 +213,10 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                 children: [
                   Text(
                     "Patient Name",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
                   ),
                   TextFormInputField(
                     controller: _paitnetNameController,
@@ -224,8 +233,11 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                 children: [
                   Text(
                     "Contact Number",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Futura',
+                    ),
                   ),
                   TextFormInputField(
                     controller: _phoneController,
@@ -242,8 +254,11 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                 children: [
                   Text(
                     "Date of Birth",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Futura',
+                    ),
                   ),
                   TextFormInputField(
                     onTap: () async {
@@ -269,8 +284,12 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Gender",
-                style: GoogleFonts.poppins(
-                    color: appColor, fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: appColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             Row(
@@ -287,7 +306,11 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                 ),
                 Text(
                   'Male',
-                  style: GoogleFonts.poppins(fontSize: 14, color: textColor),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: textColor,
+                    fontFamily: 'Futura',
+                  ),
                 ),
                 Radio<String>(
                   value: 'Female',
@@ -300,7 +323,11 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                 ),
                 Text(
                   'Female',
-                  style: GoogleFonts.poppins(fontSize: 14, color: textColor),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: textColor,
+                    fontFamily: 'Futura',
+                  ),
                 ),
                 Radio<String>(
                   value: 'Other',
@@ -313,7 +340,7 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                 ),
                 Text(
                   'Other',
-                  style: GoogleFonts.poppins(fontSize: 14, color: textColor),
+                  style: TextStyle(fontSize: 14, color: textColor),
                 ),
               ],
             ),
@@ -321,8 +348,12 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Write Your Problem",
-                style: GoogleFonts.poppins(
-                    color: appColor, fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: appColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             Container(
@@ -331,7 +362,10 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
               child: TextFormField(
                 controller: _aboutController,
                 keyboardType: TextInputType.text,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
                 maxLines: 3,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -343,16 +377,20 @@ class _AppointmentBeginState extends State<AppointmentBegin> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "About Me ",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                        fontFamily: 'Futura', color: black, fontSize: 12)),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Upload Document",
-                style: GoogleFonts.poppins(
-                    color: appColor, fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: appColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             Padding(

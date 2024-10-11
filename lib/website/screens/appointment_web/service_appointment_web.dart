@@ -49,7 +49,12 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("Upcoming Appointment"),
+                            child: Text(
+                              "Upcoming Appointment",
+                              style: TextStyle(
+                                fontFamily: 'Futura',
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -78,7 +83,12 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("Complete Appointment"),
+                            child: Text(
+                              "Complete Appointment",
+                              style: TextStyle(
+                                fontFamily: 'Futura',
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -107,7 +117,12 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("Cancel Appointment"),
+                            child: Text(
+                              "Cancel Appointment",
+                              style: TextStyle(
+                                fontFamily: 'Futura',
+                              ),
+                            ),
                           ),
                         ],
                       ),

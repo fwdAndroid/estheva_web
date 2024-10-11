@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:estheva_web/services/auth_methods.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
@@ -7,7 +5,6 @@ import 'package:estheva_web/website/screens/main_dashboard_we.dart';
 import 'package:estheva_web/website/web_auth/web_signin.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WebSignup extends StatelessWidget {
   const WebSignup({Key? key}) : super(key: key);
@@ -46,7 +43,6 @@ class _FormSectionState extends State<_FormSection> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _contactController = TextEditingController();
   bool _isLoading = false;
-  Uint8List? _image;
   @override
   void initState() {
     super.initState();
@@ -64,14 +60,22 @@ class _FormSectionState extends State<_FormSection> {
           children: [
             const Text(
               "Create Account",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25.63),
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 25.63,
+                fontFamily: 'Futura',
+              ),
             ),
             const SizedBox(height: 41),
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Name",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             const SizedBox(height: 9),
@@ -80,7 +84,10 @@ class _FormSectionState extends State<_FormSection> {
               padding: const EdgeInsets.all(8),
               child: TextFormField(
                 controller: _nameController,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
@@ -91,15 +98,22 @@ class _FormSectionState extends State<_FormSection> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "Enter Full Name ",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                      color: black,
+                      fontSize: 12,
+                      fontFamily: 'Futura',
+                    )),
               ),
             ),
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Email Address",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             const SizedBox(height: 9),
@@ -108,7 +122,10 @@ class _FormSectionState extends State<_FormSection> {
               padding: const EdgeInsets.all(8),
               child: TextFormField(
                 controller: _emailController,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
@@ -119,8 +136,11 @@ class _FormSectionState extends State<_FormSection> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "Enter Email Address",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                      color: black,
+                      fontSize: 12,
+                      fontFamily: 'Futura',
+                    )),
               ),
             ),
             const SizedBox(height: 20),
@@ -128,7 +148,11 @@ class _FormSectionState extends State<_FormSection> {
               alignment: Alignment.centerLeft,
               child: Text(
                 "Password",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             const SizedBox(height: 9),
@@ -138,7 +162,7 @@ class _FormSectionState extends State<_FormSection> {
               child: TextFormField(
                 obscureText: passwordVisible,
                 controller: _passwordController,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(color: black),
                 decoration: InputDecoration(
                     suffixIcon: IconButton(
                       icon: Icon(passwordVisible
@@ -161,8 +185,8 @@ class _FormSectionState extends State<_FormSection> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "Enter Password",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                        fontFamily: 'Futura', color: black, fontSize: 12)),
               ),
             ),
             const SizedBox(height: 20),
@@ -170,7 +194,11 @@ class _FormSectionState extends State<_FormSection> {
               alignment: Alignment.centerLeft,
               child: Text(
                 "Contact Number",
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             const SizedBox(height: 9),
@@ -179,7 +207,10 @@ class _FormSectionState extends State<_FormSection> {
               padding: const EdgeInsets.all(8),
               child: TextFormField(
                 controller: _contactController,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
@@ -190,8 +221,8 @@ class _FormSectionState extends State<_FormSection> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "Enter Contact Number ",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                        fontFamily: 'Futura', color: black, fontSize: 12)),
               ),
             ),
             const SizedBox(height: 30),
@@ -247,7 +278,8 @@ class _FormSectionState extends State<_FormSection> {
                     },
                     child: Text(
                       "Already Have An Account",
-                      style: GoogleFonts.dmSans(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           color: mainColor,
                           fontSize: 14,
                           fontWeight: FontWeight.bold),

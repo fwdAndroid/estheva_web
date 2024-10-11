@@ -4,7 +4,6 @@ import 'package:estheva_web/website/web_auth/web_signin.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WebForgotPassword extends StatefulWidget {
   const WebForgotPassword({super.key});
@@ -56,15 +55,23 @@ class _FormSectionState extends State<_FormSection> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            "Log in",
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25.63),
+            "Forgot Password",
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 25.63,
+              fontFamily: 'Futura',
+            ),
           ),
           const SizedBox(height: 41),
           const Align(
             alignment: Alignment.centerLeft,
             child: Text(
               "Email Address",
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+              style: TextStyle(
+                fontFamily: 'Futura',
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
             ),
           ),
           const SizedBox(height: 9),
@@ -73,7 +80,10 @@ class _FormSectionState extends State<_FormSection> {
             padding: const EdgeInsets.all(8),
             child: TextFormField(
               controller: _emailController,
-              style: GoogleFonts.plusJakartaSans(color: black),
+              style: TextStyle(
+                color: black,
+                fontFamily: 'Futura',
+              ),
               decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: borderColor)),
@@ -84,8 +94,11 @@ class _FormSectionState extends State<_FormSection> {
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: borderColor)),
                   hintText: "Enter Email Address",
-                  hintStyle:
-                      GoogleFonts.plusJakartaSans(color: black, fontSize: 12)),
+                  hintStyle: TextStyle(
+                    color: black,
+                    fontSize: 12,
+                    fontFamily: 'Futura',
+                  )),
             ),
           ),
           const SizedBox(height: 30),

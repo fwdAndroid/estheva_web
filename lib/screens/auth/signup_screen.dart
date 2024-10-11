@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:estheva_web/screens/auth/login_screen.dart';
 import 'package:estheva_web/screens/main/main_dashboard.dart';
@@ -45,7 +44,10 @@ class _SignupScreenState extends State<SignupScreen> {
         backgroundColor: mainColor,
         title: Text(
           "Create Account",
-          style: TextStyle(color: white),
+          style: TextStyle(
+            color: white,
+            fontFamily: 'Futura',
+          ),
         ),
         centerTitle: true,
       ),
@@ -81,7 +83,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       'Name',
-                      style: GoogleFonts.plusJakartaSans(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           color: black,
                           fontWeight: FontWeight.w500,
                           fontSize: 14),
@@ -93,7 +96,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   padding: const EdgeInsets.all(8),
                   child: TextFormField(
                     controller: _nameController,
-                    style: GoogleFonts.plusJakartaSans(color: black),
+                    style: TextStyle(
+                      color: black,
+                      fontFamily: 'Futura',
+                    ),
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
@@ -104,8 +110,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Enter Full Name",
-                        hintStyle: GoogleFonts.plusJakartaSans(
-                            color: black, fontSize: 12)),
+                        hintStyle: TextStyle(
+                            fontFamily: 'Futura', color: black, fontSize: 12)),
                   ),
                 ),
               ],
@@ -118,7 +124,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       'Email',
-                      style: GoogleFonts.plusJakartaSans(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           color: black,
                           fontWeight: FontWeight.w500,
                           fontSize: 14),
@@ -131,7 +138,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     controller: _emailController,
-                    style: GoogleFonts.plusJakartaSans(color: black),
+                    style: TextStyle(
+                      color: black,
+                      fontFamily: 'Futura',
+                    ),
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
@@ -142,8 +152,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Create Email ",
-                        hintStyle: GoogleFonts.plusJakartaSans(
-                            color: black, fontSize: 12)),
+                        hintStyle: TextStyle(
+                            fontFamily: 'Futura', color: black, fontSize: 12)),
                   ),
                 ),
               ],
@@ -156,7 +166,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       'Password',
-                      style: GoogleFonts.plusJakartaSans(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           color: black,
                           fontWeight: FontWeight.w500,
                           fontSize: 14),
@@ -169,7 +180,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     obscureText: passwordVisible,
                     controller: _passwordController,
-                    style: GoogleFonts.plusJakartaSans(color: black),
+                    style: TextStyle(
+                      color: black,
+                      fontFamily: 'Futura',
+                    ),
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
                           icon: Icon(passwordVisible
@@ -192,8 +206,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Create Password",
-                        hintStyle: GoogleFonts.plusJakartaSans(
-                            color: black, fontSize: 12)),
+                        hintStyle: TextStyle(
+                            fontFamily: 'Futura', color: black, fontSize: 12)),
                   ),
                 ),
               ],
@@ -206,7 +220,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     alignment: AlignmentDirectional.topStart,
                     child: Text(
                       'Contact Number',
-                      style: GoogleFonts.plusJakartaSans(
+                      style: TextStyle(
+                          fontFamily: 'Futura',
                           color: black,
                           fontWeight: FontWeight.w500,
                           fontSize: 14),
@@ -219,7 +234,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     controller: _contactController,
                     keyboardType: TextInputType.number,
-                    style: GoogleFonts.plusJakartaSans(color: black),
+                    style: TextStyle(
+                      color: black,
+                      fontFamily: 'Futura',
+                    ),
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
@@ -230,8 +248,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Contact Number ",
-                        hintStyle: GoogleFonts.plusJakartaSans(
-                            color: black, fontSize: 12)),
+                        hintStyle: TextStyle(
+                          color: black,
+                          fontSize: 12,
+                          fontFamily: 'Futura',
+                        )),
                   ),
                 ),
               ],
@@ -295,6 +316,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       TextSpan(
                         text: 'Sign In',
                         style: TextStyle(
+                            fontFamily: 'Futura',
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: mainColor),

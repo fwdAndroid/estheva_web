@@ -83,6 +83,7 @@ class _OffersWebState extends State<OffersWeb> {
                                         child: Text(
                                           serviceData['offerDetail'],
                                           style: TextStyle(
+                                              fontFamily: 'Futura',
                                               color: appColor,
                                               fontSize: 12,
                                               fontWeight: FontWeight.w600),

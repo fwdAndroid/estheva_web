@@ -37,7 +37,12 @@ class _CompletedState extends State<Completed> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Complete Doctors Appointment"),
+                      child: Text(
+                        "Complete Doctors Appointment",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -65,7 +70,12 @@ class _CompletedState extends State<Completed> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Complete Service Appointment"),
+                      child: Text(
+                        "Complete Service Appointment",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ),
                   ],
                 ),

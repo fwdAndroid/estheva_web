@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class OfferDetailsWeb extends StatefulWidget {
   final photo;
@@ -69,7 +68,8 @@ class FormSectionState extends State<FormSection> {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               widget.name,
-              style: GoogleFonts.poppins(
+              style: TextStyle(
+                fontFamily: 'Futura',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,

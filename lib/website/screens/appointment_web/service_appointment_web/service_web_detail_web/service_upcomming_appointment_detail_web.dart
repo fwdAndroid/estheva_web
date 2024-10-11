@@ -3,7 +3,6 @@ import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ServiceAppointUpcommingCompletedDetailWeb extends StatefulWidget {
   final appointmentDate;
@@ -162,7 +161,8 @@ class FormSelection extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "Appointment Schedule",
-                          style: GoogleFonts.poppins(
+                          style: TextStyle(
+                              fontFamily: 'Futura',
                               color: appColor,
                               fontSize: 16,
                               fontWeight: FontWeight.w700),
@@ -174,14 +174,16 @@ class FormSelection extends StatelessWidget {
                           children: [
                             Text(
                               "Date:     ", // Display the formatted date
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: appColor,
                                 fontSize: 14,
                               ),
                             ),
                             Text(
                               appointmentDate, // Display the formatted date
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: textColor,
                                 fontSize: 12,
                               ),
@@ -195,14 +197,16 @@ class FormSelection extends StatelessWidget {
                           children: [
                             Text(
                               "Time:     ", // Display the formatted date
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
                                 color: appColor,
+                                fontFamily: 'Futura',
                                 fontSize: 14,
                               ),
                             ),
                             Text(
                               appointmentStartTime,
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: Colors.black,
                                 fontSize: 12,
                               ),
@@ -232,7 +236,8 @@ class FormSelection extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "Patient Details",
-                          style: GoogleFonts.poppins(
+                          style: TextStyle(
+                              fontFamily: 'Futura',
                               color: appColor,
                               fontSize: 16,
                               fontWeight: FontWeight.w700),
@@ -244,14 +249,16 @@ class FormSelection extends StatelessWidget {
                           children: [
                             Text(
                               "Name:     ", // Display the formatted date
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: appColor,
                                 fontSize: 14,
                               ),
                             ),
                             Text(
                               patientName,
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: dateColor,
                                 fontSize: 14,
                               ),
@@ -265,14 +272,16 @@ class FormSelection extends StatelessWidget {
                           children: [
                             Text(
                               "Gender:     ", // Display the formatted date
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
                                 color: appColor,
                                 fontSize: 14,
+                                fontFamily: 'Futura',
                               ),
                             ),
                             Text(
                               gender,
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: dateColor,
                                 fontSize: 14,
                               ),
@@ -286,14 +295,16 @@ class FormSelection extends StatelessWidget {
                           children: [
                             Text(
                               "Service Description:     ", // Display the formatted date
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
                                 color: appColor,
+                                fontFamily: 'Futura',
                                 fontSize: 14,
                               ),
                             ),
                             Text(
                               serviceDescription,
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                fontFamily: 'Futura',
                                 color: dateColor,
                                 fontSize: 14,
                               ),

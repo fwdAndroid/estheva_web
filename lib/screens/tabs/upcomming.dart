@@ -37,7 +37,12 @@ class _UpcomingState extends State<Upcoming> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Doctor Appointment"),
+                      child: Text(
+                        "Doctor Appointment",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -65,7 +70,12 @@ class _UpcomingState extends State<Upcoming> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Service Appointment"),
+                      child: Text(
+                        "Service Appointment",
+                        style: TextStyle(
+                          fontFamily: 'Futura',
+                        ),
+                      ),
                     ),
                   ],
                 ),

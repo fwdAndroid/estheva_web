@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -40,7 +39,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               children: [
                                 Text(
                                   "Mohammad Quasi",
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                      fontFamily: 'Futura',
                                       fontSize: 16,
                                       color: appColor,
                                       fontWeight: FontWeight.w600),
@@ -57,8 +57,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   child: Center(
                                     child: Text(
                                       "Upcoming",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 12, color: mainColor),
+                                      style: TextStyle(
+                                          fontFamily: 'Futura',
+                                          fontSize: 12,
+                                          color: mainColor),
                                     ),
                                   ),
                                 )
@@ -66,7 +68,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             ),
                             Text(
                               "+82312412414424",
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                  fontFamily: 'Futura',
                                   fontSize: 14,
                                   color: appColor,
                                   fontWeight: FontWeight.w400),
@@ -79,7 +82,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               children: [
                                 Text(
                                   "23 Sept 2023",
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: dateColor,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w300),
@@ -89,7 +93,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                 ),
                                 Text(
                                   "|",
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: dateColor,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w300),
@@ -99,7 +104,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                 ),
                                 Text(
                                   "12:30 AM",
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                      fontFamily: 'Futura',
                                       color: dateColor,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w300),

@@ -7,7 +7,6 @@ import 'package:estheva_web/widgets/logout_web_widget.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WebMainDashboardAccount extends StatefulWidget {
   const WebMainDashboardAccount({super.key});
@@ -48,13 +47,17 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                       children: [
                         Text(
                           snap['fullName'],
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w600, fontSize: 22),
+                          style: TextStyle(
+                              fontFamily: 'Futura',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 22),
                         ),
                         Text(
                           snap['email'],
-                          style: GoogleFonts.workSans(
-                              fontWeight: FontWeight.w400, fontSize: 16),
+                          style: TextStyle(
+                              fontFamily: 'Futura',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16),
                         ),
                       ],
                     ),
@@ -85,8 +88,10 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                     ),
                     title: Text(
                       "Appointment History",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                     trailing: Icon(
                       Icons.arrow_forward_ios,
@@ -112,8 +117,10 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                     ),
                     title: Text(
                       "Edit Profile",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                     trailing: Icon(
                       Icons.arrow_forward_ios,
@@ -140,8 +147,10 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                       ),
                       title: Text(
                         "Change Password",
-                        style: GoogleFonts.workSans(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                        style: TextStyle(
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -166,8 +175,10 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                     ),
                     title: Text(
                       "Payment Method",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                     trailing: Icon(
                       Icons.arrow_forward_ios,
@@ -190,8 +201,10 @@ class _WebMainDashboardAccountState extends State<WebMainDashboardAccount> {
                     ),
                     title: Text(
                       "Invite Friends",
-                      style: GoogleFonts.workSans(
-                          fontWeight: FontWeight.w500, fontSize: 16),
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
                     ),
                     trailing: Icon(
                       Icons.arrow_forward_ios,

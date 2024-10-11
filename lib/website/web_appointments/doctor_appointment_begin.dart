@@ -9,7 +9,6 @@ import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -167,7 +166,8 @@ class _FormSectionState extends State<FormSection> {
                           children: [
                             Text(
                               widget.fullName,
-                              style: GoogleFonts.poppins(
+                              style: TextStyle(
+                                  fontFamily: 'Futura',
                                   color: appColor,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700),
@@ -176,14 +176,16 @@ class _FormSectionState extends State<FormSection> {
                               children: [
                                 Text(
                                   currentDate, // Display the formatted date
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
                                     color: textColor,
+                                    fontFamily: 'Futura',
                                     fontSize: 12,
                                   ),
                                 ),
                                 Text(
                                   currentTime,
-                                  style: GoogleFonts.poppins(
+                                  style: TextStyle(
+                                    fontFamily: 'Futura',
                                     color: Colors.black,
                                     fontSize: 12,
                                   ),
@@ -205,8 +207,10 @@ class _FormSectionState extends State<FormSection> {
                 children: [
                   Text(
                     "Patient Name",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
                   ),
                   TextFormInputField(
                     controller: _paitnetNameController,
@@ -223,8 +227,10 @@ class _FormSectionState extends State<FormSection> {
                 children: [
                   Text(
                     "Contact Number",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
                   ),
                   TextFormInputField(
                     controller: _phoneController,
@@ -241,8 +247,10 @@ class _FormSectionState extends State<FormSection> {
                 children: [
                   Text(
                     "Date of Birth",
-                    style: GoogleFonts.poppins(
-                        fontSize: 14, fontWeight: FontWeight.w400),
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
                   ),
                   TextFormInputField(
                     onTap: () async {
@@ -268,8 +276,11 @@ class _FormSectionState extends State<FormSection> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Gender",
-                style: GoogleFonts.poppins(
-                    color: appColor, fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    fontFamily: 'Futura',
+                    color: appColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Row(
@@ -286,7 +297,11 @@ class _FormSectionState extends State<FormSection> {
                 ),
                 Text(
                   'Male',
-                  style: GoogleFonts.poppins(fontSize: 14, color: textColor),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: textColor,
+                    fontFamily: 'Futura',
+                  ),
                 ),
                 Radio<String>(
                   value: 'Female',
@@ -299,7 +314,11 @@ class _FormSectionState extends State<FormSection> {
                 ),
                 Text(
                   'Female',
-                  style: GoogleFonts.poppins(fontSize: 14, color: textColor),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: textColor,
+                    fontFamily: 'Futura',
+                  ),
                 ),
                 Radio<String>(
                   value: 'Other',
@@ -312,7 +331,11 @@ class _FormSectionState extends State<FormSection> {
                 ),
                 Text(
                   'Other',
-                  style: GoogleFonts.poppins(fontSize: 14, color: textColor),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: textColor,
+                    fontFamily: 'Futura',
+                  ),
                 ),
               ],
             ),
@@ -320,8 +343,12 @@ class _FormSectionState extends State<FormSection> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Write Your Problem",
-                style: GoogleFonts.poppins(
-                    color: appColor, fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: appColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Futura',
+                ),
               ),
             ),
             Container(
@@ -330,7 +357,10 @@ class _FormSectionState extends State<FormSection> {
               child: TextFormField(
                 controller: _aboutController,
                 keyboardType: TextInputType.text,
-                style: GoogleFonts.plusJakartaSans(color: black),
+                style: TextStyle(
+                  color: black,
+                  fontFamily: 'Futura',
+                ),
                 maxLines: 3,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -342,16 +372,19 @@ class _FormSectionState extends State<FormSection> {
                     border: OutlineInputBorder(
                         borderSide: BorderSide(color: borderColor)),
                     hintText: "About Me ",
-                    hintStyle: GoogleFonts.plusJakartaSans(
-                        color: black, fontSize: 12)),
+                    hintStyle: TextStyle(
+                        fontFamily: 'Futura', color: black, fontSize: 12)),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Upload Document",
-                style: GoogleFonts.poppins(
-                    color: appColor, fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    fontFamily: 'Futura',
+                    color: appColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Padding(

@@ -3,7 +3,6 @@ import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/website/screens/web_details.dart/doctor_details.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class WebDashboardDoctors extends StatefulWidget {
   const WebDashboardDoctors({super.key});
@@ -78,22 +77,20 @@ class _WebDashboardDoctorsState extends State<WebDashboardDoctors> {
                                 children: [
                                   Center(
                                     child: FittedBox(
-                                      fit: BoxFit.cover,
-                                      child: CircleAvatar(
-                                        radius: 60,
-                                        backgroundImage: NetworkImage(
+                                        fit: BoxFit.cover,
+                                        child: Image.network(
                                           data['photoURL'],
-                                        ),
-                                      ),
-                                    ),
+                                        )),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 4.0, top: 8, right: 4),
                                     child: Text(
                                       data['doctorName'],
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 12, color: appColor),
+                                      style: TextStyle(
+                                          fontFamily: 'Futura',
+                                          fontSize: 12,
+                                          color: appColor),
                                     ),
                                   )
                                 ],
