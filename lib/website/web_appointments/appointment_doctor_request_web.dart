@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/services/storage_methods.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
-import 'package:estheva_web/website/screens/web_dashboard_doctors.dart';
+import 'package:estheva_web/website/screens/appointment_web/doctor_appointment_web/upcomming_doctor_appointment_web.dart';
 import 'package:estheva_web/widgets/save_button.dart';
+import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,7 @@ class AppointmentDoctorRequestWeb extends StatefulWidget {
   final about;
   final photoURL;
   final doctorId;
-
+  final paitientContact;
   final price;
   final paitientName;
   final problem;
@@ -28,6 +29,7 @@ class AppointmentDoctorRequestWeb extends StatefulWidget {
     super.key,
     required this.file,
     required this.doctorId,
+    required this.paitientContact,
     required this.about,
     required this.dob,
     required this.experience,
@@ -57,6 +59,7 @@ class _AppointmentDoctorRequestWebState
             child: Row(
               children: [
                 FormSection(
+                  paitientContact: widget.paitientContact,
                   paitientId: widget.paitientId,
                   problem: widget.problem,
                   paitientName: widget.paitientName,
@@ -86,6 +89,7 @@ class FormSection extends StatefulWidget {
   final about;
   final photoURL;
   final doctorId;
+  final paitientContact;
   final price;
   final paitientName;
   final problem;
@@ -99,6 +103,7 @@ class FormSection extends StatefulWidget {
     required this.doctorId,
     required this.about,
     required this.dob,
+    required this.paitientContact,
     required this.experience,
     required this.paitientId,
     required this.fullName,
@@ -114,32 +119,26 @@ class FormSection extends StatefulWidget {
 }
 
 class _FormSectionState extends State<FormSection> {
-  String currentTime = '';
-  String currentDate = '';
+  TextEditingController _dateController = TextEditingController();
+  TextEditingController _timeController = TextEditingController();
+  TextEditingController _endTimeController = TextEditingController();
+  var uuid = Uuid().v4();
 
-  @override
-  void initState() {
-    super.initState();
-    _updateTime();
-  }
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? pickedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
 
-  void _updateTime() {
-    final now = DateTime.now();
-    final timeFormat = DateFormat('hh:mm a');
-    final dateFormat = DateFormat('EEEE, d MMM, yyyy');
-
-    setState(() {
-      currentTime = timeFormat.format(now); // Format for time
-      currentDate = dateFormat.format(now); // Format for date
-    });
+    if (pickedTime != null) {
+      setState(() {
+        _timeController.text = pickedTime.format(context);
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _dateController = TextEditingController();
-    TextEditingController _timeController = TextEditingController();
-    TextEditingController _endTimeController = TextEditingController();
-    bool isLoading = false;
     return Container(
       width: 448,
       padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -224,6 +223,7 @@ class _FormSectionState extends State<FormSection> {
                 ),
               ),
             ),
+            // Date Picker
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
               child: Column(
@@ -236,8 +236,21 @@ class _FormSectionState extends State<FormSection> {
                         fontWeight: FontWeight.bold,
                         color: appColor),
                   ),
-                  TextFormField(
+                  TextFormInputField(
+                    onTap: () async {
+                      DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        lastDate: DateTime(3000),
+                        firstDate: DateTime(2015),
+                        initialDate: DateTime.now(),
+                      );
+                      _dateController.text =
+                          DateFormat('yyyy-MM-dd').format(pickedDate!);
+                    },
+                    preFixICon: Icons.date_range,
                     controller: _dateController,
+                    hintText: "Appointment Date",
+                    textInputType: TextInputType.name,
                   ),
                 ],
               ),
@@ -248,15 +261,18 @@ class _FormSectionState extends State<FormSection> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Select Appointment Time",
+                    "Start Appointment Time",
                     style: GoogleFonts.manrope(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
                   ),
-                  TextFormField(
-                    onTap: () async {},
+                  TextFormInputField(
+                    onTap: () => _selectTime(context), // Opens the time picker
+                    preFixICon: Icons.time_to_leave,
                     controller: _timeController,
+                    hintText: "Appointment Time",
+                    textInputType: TextInputType.name,
                   ),
                 ],
               ),
@@ -267,15 +283,46 @@ class _FormSectionState extends State<FormSection> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Select Appointment End Time",
+                    "End Appointment Time",
                     style: GoogleFonts.manrope(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: appColor),
                   ),
-                  TextFormField(
-                    onTap: () async {},
+                  TextFormInputField(
+                    onTap: () async {
+                      final TimeOfDay? pickedTime = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.now(),
+                        builder: (BuildContext context, Widget? child) {
+                          return MediaQuery(
+                            data: MediaQuery.of(context)
+                                .copyWith(alwaysUse24HourFormat: false),
+                            child: child!,
+                          );
+                        },
+                      );
+
+                      if (pickedTime != null) {
+                        final now = DateTime.now();
+                        final selectedTime = DateTime(
+                          now.year,
+                          now.month,
+                          now.day,
+                          pickedTime.hour,
+                          pickedTime.minute,
+                        );
+
+                        setState(() {
+                          _endTimeController.text =
+                              DateFormat('hh:mm a').format(selectedTime);
+                        });
+                      }
+                    },
+                    preFixICon: Icons.time_to_leave,
                     controller: _endTimeController,
+                    hintText: "Appointment Time",
+                    textInputType: TextInputType.name,
                   ),
                 ],
               ),
@@ -285,11 +332,12 @@ class _FormSectionState extends State<FormSection> {
               child: SaveButton(
                 title: "Confirm Appointment",
                 onTap: () async {
-                  var uuid = Uuid().v4();
-                  if (_dateController.text.isEmpty ||
-                      _timeController.text.isEmpty) {
-                    showMessageBar(
-                        "Appointment Time and Date is Required ", context);
+                  if (_dateController.text.isEmpty) {
+                    showMessageBar("Appointment Date is Required", context);
+                  } else if (_timeController.text.isEmpty) {
+                    showMessageBar("Appointment Time is Required", context);
+                  } else if (_endTimeController.text.isEmpty) {
+                    showMessageBar("Appointment End Time is Required", context);
                   } else {
                     String photoURL =
                         await StorageMethods().uploadImageToStorage(
@@ -320,9 +368,9 @@ class _FormSectionState extends State<FormSection> {
                       "paitientProblem": widget.problem,
                       "gender": widget.gender,
                       "paitientDate": widget.dob,
-                      "status": "send",
+                      "status": "confirm",
                       "price": int.parse(widget.price),
-
+                      "paitientContact": widget.paitientContact,
                       //UUid
                       "appointmentId": uuid
                     });
@@ -331,7 +379,8 @@ class _FormSectionState extends State<FormSection> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (builder) => WebDashboardDoctors()));
+                            builder: (builder) =>
+                                UpcommingDoctorAppointmentWeb()));
                   }
                 },
               ),

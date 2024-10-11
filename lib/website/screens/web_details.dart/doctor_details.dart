@@ -1,6 +1,7 @@
 import 'package:estheva_web/uitls/colors.dart';
+import 'package:estheva_web/website/screens/web_details.dart/product_booking_web.dart';
 import 'package:estheva_web/website/web_appointments/doctor_appointment_begin.dart';
-import 'package:estheva_web/widgets/save_button.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,249 +30,131 @@ class _WebDoctorDetailState extends State<WebDoctorDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Row(
-              children: [
-                FormSection(
-                  fullName: widget.fullName,
-                  experience: widget.experience,
-                  about: widget.about,
-                  doctorId: widget.doctorId,
-                  photoURL: widget.photoURL,
-                  price: widget.price.toString(),
-                ),
-                ImageSelection(),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ImageSelection extends StatelessWidget {
-  const ImageSelection({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Image.asset(
-              "assets/logos.png",
-              height: 300,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class FormSection extends StatelessWidget {
-  final fullName;
-  final experience;
-  final about;
-  final photoURL;
-  final doctorId;
-  final price;
-  const FormSection({
-    super.key,
-    required this.fullName,
-    required this.experience,
-    required this.about,
-    required this.doctorId,
-    required this.price,
-    required this.photoURL,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 448,
-      padding: const EdgeInsets.symmetric(horizontal: 50),
-      child: SingleChildScrollView(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundImage: NetworkImage(photoURL),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.network(
+                widget.photoURL,
+                height: 170,
+                width: 500,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                widget.fullName,
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 8.0, right: 8, top: 17),
-                    child: Text(
-                      fullName,
-                      style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: appColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            height: 45,
-                            width: 45,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: circle,
-                            ),
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(
-                                  size: 20,
-                                  Icons.badge,
-                                  color: textColor,
-                                ),
-                              ),
-                            ),
+            SizedBox(
+                height: 300,
+                width: 1200,
+                child: Scrollbar(
+                    // Add a scrollbar for the description
+                    thumbVisibility: true, // Keep the scrollbar visible
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          widget.about,
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: Colors.black54,
                           ),
-                          Text(
-                            experience.toString() + " " + "Years",
-                            style: GoogleFonts.inter(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: appColor),
-                          ),
-                          Text(
-                            "Experience",
-                            style: GoogleFonts.inter(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: textColor),
-                          ),
-                        ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "About Doctor",
+                    ))),
+            // Padding(
+            //   padding: const EdgeInsets.all(16.0),
+            //   child: Container(
+            //     color: Colors.yellow.shade100,
+            //     padding: EdgeInsets.all(16),
+            //     child: Row(
+            //       children: [
+            //         Icon(Icons.discount, color: Colors.orange),
+            //         SizedBox(width: 8),
+            //         Column(
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: [
+            //             Text(
+            //               widget.discount.toString(),
+            //               style: GoogleFonts.poppins(
+            //                 fontSize: 14,
+            //                 fontWeight: FontWeight.bold,
+            //                 color: Colors.black,
+            //               ),
+            //             ),
+            //             Text(
+            //               "Use code SUMMER20 | above AED 10",
+            //               style: GoogleFonts.poppins(
+            //                 fontSize: 12,
+            //                 color: Colors.black54,
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    widget.price.toString() + "AED",
                     style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w800,
-                        color: appColor),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: mainColor,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 150,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0, right: 8, top: 5),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Book now action
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (builder) => DoctorAppointmentBegin(
+                                    photoURL: widget.photoURL,
+                                    fullName: widget.fullName,
+                                    experience: widget.experience,
+                                    about: widget.about,
+                                    doctorId: widget.doctorId,
+                                    price: widget.price.toString(),
+                                  )));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: mainColor,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    ),
                     child: Text(
-                      about,
+                      "Book Now",
                       style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: dateColor),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 80,
-                    width: 360,
-                    decoration: BoxDecoration(
-                      color: circle,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: dividerColor,
-                      ),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Consultation fee",
-                                style: GoogleFonts.poppins(
-                                  color: dateColor,
-                                  fontSize: 14,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "\$",
-                                    style: GoogleFonts.poppins(
-                                        color: appColor,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  Text(
-                                    price.toString(),
-                                    style: GoogleFonts.poppins(
-                                        color: appColor,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                  Text(
-                                    "/Consultation fee",
-                                    style: GoogleFonts.poppins(
-                                      color: dateColor,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SaveButton(
-                      title: "Make Appointment",
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => DoctorAppointmentBegin(
-                                      photoURL: photoURL,
-                                      fullName: fullName,
-                                      experience: experience,
-                                      about: about,
-                                      doctorId: doctorId,
-                                      price: price.toString(),
-                                    )));
-                      }),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

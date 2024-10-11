@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/image_utils.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
@@ -91,6 +92,7 @@ class _FormSectionState extends State<FormSection> {
   void initState() {
     super.initState();
     _updateTime();
+    fetchUsersDetails();
   }
 
   void _updateTime() {
@@ -104,13 +106,32 @@ class _FormSectionState extends State<FormSection> {
     });
   }
 
+  void fetchUsersDetails() async {
+    // Fetch data from Firestore
+    DocumentSnapshot doc = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    // Update the controllers with the fetched data
+    setState(() {
+      _paitnetNameController.text = data['fullName'];
+      _phoneController.text = (data['contactNumber']); // Convert int to string
+    });
+  }
+
+  TextEditingController _phoneController = TextEditingController();
+
+  TextEditingController _paitnetNameController = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
+  TextEditingController _aboutController = TextEditingController();
+
   String _selectedGender = 'Male'; // Variable to track the selected gender
   Uint8List? _image;
   @override
   Widget build(BuildContext context) {
-    TextEditingController _paitnetNameController = TextEditingController();
-    TextEditingController _dateController = TextEditingController();
-    TextEditingController _aboutController = TextEditingController();
     return Container(
       width: 448,
       padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -191,6 +212,24 @@ class _FormSectionState extends State<FormSection> {
                     controller: _paitnetNameController,
                     hintText: "Patient Name",
                     textInputType: TextInputType.name,
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, left: 8, right: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Contact Number",
+                    style: GoogleFonts.poppins(
+                        fontSize: 14, fontWeight: FontWeight.w400),
+                  ),
+                  TextFormInputField(
+                    controller: _phoneController,
+                    hintText: "Contact Number",
+                    textInputType: TextInputType.number,
                   ),
                 ],
               ),
@@ -342,6 +381,8 @@ class _FormSectionState extends State<FormSection> {
                       showMessageBar(
                           "Patient Name, Date of Birth and Patient Issue is required ",
                           context);
+                    } else if (_phoneController.text.isEmpty) {
+                      showMessageBar("Contact Number is Required", context);
                     } else {
                       print(_paitnetNameController.text);
                       Navigator.push(
@@ -349,6 +390,8 @@ class _FormSectionState extends State<FormSection> {
                           MaterialPageRoute(
                               builder: (builder) => AppointmentDoctorRequestWeb(
                                     file: _image,
+                                    paitientContact:
+                                        _phoneController.text.trim(),
                                     about: widget.about,
                                     doctorId: widget.doctorId,
                                     paitientId:
