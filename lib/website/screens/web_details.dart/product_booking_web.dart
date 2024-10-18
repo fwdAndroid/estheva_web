@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
-import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/upcoming_service_appointment_web.dart';
+import 'package:estheva_web/website/web_checkout/web_checkoutpage.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -118,7 +118,6 @@ class FormSelection extends StatefulWidget {
 class _FormSelectionState extends State<FormSelection> {
   TextEditingController _dateController = TextEditingController();
   TextEditingController _timeController = TextEditingController();
-  TextEditingController _endTimeController = TextEditingController();
   TextEditingController _contactControlelr = TextEditingController();
   TextEditingController _paitientController = TextEditingController();
   bool isLoading = false;
@@ -266,6 +265,30 @@ class _FormSelectionState extends State<FormSelection> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
+                    "Total Service Time",
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: appColor),
+                  ),
+                  Text(
+                    "Service Time: " + widget.appointmentTime,
+                    style: TextStyle(
+                        fontFamily: 'Futura',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: appColor),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
                     "Select Appointment Date",
                     style: TextStyle(
                         fontFamily: 'Futura',
@@ -348,49 +371,6 @@ class _FormSelectionState extends State<FormSelection> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "End Appointment Time",
-                    style: TextStyle(
-                        fontFamily: 'Futura',
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: appColor),
-                  ),
-                  TextFormInputField(
-                    onTap: () async {
-                      final TimeOfDay? pickedTime = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-                        builder: (BuildContext context, Widget? child) {
-                          return MediaQuery(
-                            data: MediaQuery.of(context)
-                                .copyWith(alwaysUse24HourFormat: false),
-                            child: child!,
-                          );
-                        },
-                      );
-
-                      if (pickedTime != null) {
-                        final now = DateTime.now();
-                        final selectedTime = DateTime(
-                          now.year,
-                          now.month,
-                          now.day,
-                          pickedTime.hour,
-                          pickedTime.minute,
-                        );
-
-                        setState(() {
-                          _endTimeController.text =
-                              DateFormat('hh:mm a').format(selectedTime);
-                        });
-                      }
-                    },
-                    preFixICon: Icons.time_to_leave,
-                    controller: _endTimeController,
-                    hintText: "Appointment Time",
-                    textInputType: TextInputType.name,
-                  ),
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
@@ -460,46 +440,43 @@ class _FormSelectionState extends State<FormSelection> {
                             } else if (_timeController.text.isEmpty) {
                               showMessageBar(
                                   "Appointment Time is Required", context);
-                            } else if (_endTimeController.text.isEmpty) {
-                              showMessageBar(
-                                  "Appointment End Time is Required", context);
                             } else {
                               setState(() {
                                 isLoading = true;
                               });
                               var uuid = Uuid().v4();
-                              await FirebaseFirestore.instance
-                                  .collection("appointment")
-                                  .doc(uuid)
-                                  .set({
-                                "gender": _selectedGender,
-                                "patientName": _paitientController.text.trim(),
-                                "doctorName": selectedDoctor,
-                                "patientContact":
-                                    _contactControlelr.text.trim(),
-                                "appointmentDate": _dateController.text.trim(),
-                                "appointmentStartTime":
-                                    _timeController.text.trim(),
-                                "appointmentEndTime":
-                                    _endTimeController.text.trim(),
-                                "serviceName": widget.serviceName,
-                                "serviceCategory": widget.serviceCategory,
-                                "serviceDescription": widget.description,
-                                "status": "confirm",
-                                "price": int.parse(widget.price),
-                                "patientUid":
-                                    FirebaseAuth.instance.currentUser!.uid,
-                                "appointmentId": uuid,
-                              });
-                              setState(() {
-                                isLoading = false;
-                              });
-                              showMessageBar("Service Booked", context);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (builder) =>
-                                          UpcomingServiceAppointmentWeb()));
+                                      builder: (builder) => CheckOutPageWeb(
+                                            gender: _selectedGender,
+                                            serviceDescription:
+                                                widget.description,
+                                            status: "confirm",
+                                            price: int.parse(widget.price),
+                                            patientUid: FirebaseAuth
+                                                .instance.currentUser!.uid,
+                                            doctorName: selectedDoctor,
+                                            appointmentStartTime:
+                                                _timeController.text.trim(),
+                                            appointmentServiceTime:
+                                                widget.appointmentTime,
+                                            appointmentId: uuid,
+                                            patientName:
+                                                _paitientController.text.trim(),
+                                            serviceName: widget.serviceName,
+                                            patientContact:
+                                                _contactControlelr.text.trim(),
+                                            serviceCategory:
+                                                widget.serviceCategory,
+                                            appointmentDate:
+                                                _dateController.text.trim(),
+                                          )));
+
+                              setState(() {
+                                isLoading = false;
+                              });
+                              // showMessageBar("Service Booked", context);
                             }
                           },
                           title: "Book Now"),

@@ -57,8 +57,8 @@ class _CancelServiceAppointmentWebState
                                               serviceData['appointmentDate'],
                                           serviceDescription:
                                               serviceData['serviceDescription'],
-                                          appointmentEndTime:
-                                              serviceData['appointmentEndTime'],
+                                          appointmentServiceTime: serviceData[
+                                              'appointmentServiceTime'],
                                           serviceName:
                                               serviceData['serviceName'],
                                           appointmentId:
