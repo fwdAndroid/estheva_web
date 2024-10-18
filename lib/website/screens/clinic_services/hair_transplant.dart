@@ -51,6 +51,7 @@ class _HairTransplantState extends State<HairTransplant> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => ProductDetailWeb(
+                                      time: serviceData['time'],
                                       description:
                                           serviceData['serviceDescription'],
                                       discount:

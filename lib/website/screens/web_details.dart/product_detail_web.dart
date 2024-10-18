@@ -10,6 +10,7 @@ class ProductDetailWeb extends StatefulWidget {
   final uuid;
   final price;
   final serviceCategory;
+  final time;
   final serviceName;
   final serviceSubCategory;
   ProductDetailWeb(
@@ -17,6 +18,7 @@ class ProductDetailWeb extends StatefulWidget {
       required this.description,
       required this.discount,
       required this.photoURL,
+      required this.time,
       required this.price,
       required this.serviceCategory,
       required this.serviceName,
@@ -135,6 +137,7 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
                           context,
                           MaterialPageRoute(
                               builder: (builder) => ProductBookingWeb(
+                                    appointmentTime: widget.time,
                                     description: widget.description,
                                     discount: widget.discount.toString(),
                                     price: widget.price.toString(),

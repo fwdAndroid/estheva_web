@@ -51,6 +51,7 @@ class _AestheticAtClinicState extends State<AestheticAtClinic> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => ProductDetailWeb(
+                                      time: serviceData['time'],
                                       description:
                                           serviceData['serviceDescription'],
                                       discount:

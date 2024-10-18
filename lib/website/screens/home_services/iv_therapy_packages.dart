@@ -50,6 +50,7 @@ class _IVDripsTherapyPackagesState extends State<IVDripsTherapyPackages> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => ProductDetailWeb(
+                                      time: serviceData['time'],
                                       description:
                                           serviceData['serviceDescription'],
                                       discount:

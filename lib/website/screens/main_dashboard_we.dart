@@ -359,6 +359,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             MaterialPageRoute(
                                                 builder: (builder) =>
                                                     ProductDetailWeb(
+                                                      time: serviceData['time'],
                                                       description: serviceData[
                                                           'serviceDescription'],
                                                       discount: serviceData[
@@ -529,6 +530,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                         MaterialPageRoute(
                                             builder: (builder) =>
                                                 ProductDetailWeb(
+                                                  time: serviceData['time'],
                                                   description: serviceData[
                                                       'serviceDescription'],
                                                   discount:
@@ -697,6 +699,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                         MaterialPageRoute(
                                             builder: (builder) =>
                                                 ProductDetailWeb(
+                                                  time: serviceData['time'],
                                                   description: serviceData[
                                                       'serviceDescription'],
                                                   discount:
@@ -864,6 +867,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                         MaterialPageRoute(
                                             builder: (builder) =>
                                                 ProductDetailWeb(
+                                                  time: serviceData['time'],
                                                   description: serviceData[
                                                       'serviceDescription'],
                                                   discount:
@@ -1028,6 +1032,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                         MaterialPageRoute(
                                             builder: (builder) =>
                                                 ProductDetailWeb(
+                                                  time: serviceData['time'],
                                                   description: serviceData[
                                                       'serviceDescription'],
                                                   discount:
@@ -1201,6 +1206,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                               MaterialPageRoute(
                                                   builder: (builder) =>
                                                       ProductDetailWeb(
+                                                        time:
+                                                            serviceData['time'],
                                                         description: serviceData[
                                                             'serviceDescription'],
                                                         discount: serviceData[
@@ -1387,6 +1394,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                               MaterialPageRoute(
                                                   builder: (builder) =>
                                                       ProductDetailWeb(
+                                                        time:
+                                                            serviceData['time'],
                                                         description: serviceData[
                                                             'serviceDescription'],
                                                         discount: serviceData[

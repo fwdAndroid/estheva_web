@@ -52,6 +52,7 @@ class _BodyContouringPageClinicState extends State<BodyContouringPageClinic> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => ProductDetailWeb(
+                                      time: serviceData['time'],
                                       description:
                                           serviceData['serviceDescription'],
                                       discount:

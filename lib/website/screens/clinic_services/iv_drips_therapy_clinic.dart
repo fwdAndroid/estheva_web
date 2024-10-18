@@ -51,6 +51,7 @@ class _IVDripsTherapyClinicState extends State<IVDripsTherapyClinic> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => ProductDetailWeb(
+                                      time: serviceData['time'],
                                       description:
                                           serviceData['serviceDescription'],
                                       discount:

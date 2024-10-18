@@ -119,10 +119,7 @@ class _FormSectionState extends State<_FormSection> {
             child: TextFormField(
               obscureText: passwordVisible,
               controller: _passwordController,
-              style: TextStyle(
-                color: black,
-                fontFamily: 'Futura',
-              ),
+              style: TextStyle(color: black),
               decoration: InputDecoration(
                   suffixIcon: IconButton(
                     icon: Icon(passwordVisible
@@ -146,10 +143,7 @@ class _FormSectionState extends State<_FormSection> {
                       borderSide: BorderSide(color: borderColor)),
                   hintText: "Enter Password",
                   hintStyle: TextStyle(
-                    color: black,
-                    fontSize: 12,
-                    fontFamily: 'Futura',
-                  )),
+                      fontFamily: 'Futura', color: black, fontSize: 12)),
             ),
           ),
           const SizedBox(height: 30),
@@ -181,49 +175,55 @@ class _FormSectionState extends State<_FormSection> {
                   },
                 ),
           const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              margin: const EdgeInsets.only(right: 25),
-              child: SizedBox(
-                width: 154,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (builder) => WebForgotPassword()));
-                  },
-                  child: Text(
-                    "Forgot Password",
-                    style: TextStyle(
-                        fontFamily: 'Futura',
-                        color: mainColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                margin: const EdgeInsets.only(right: 25),
+                child: SizedBox(
+                  width: 154,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (builder) => WebForgotPassword()));
+                    },
+                    child: Text(
+                      "Forgot Password",
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          color: mainColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              margin: const EdgeInsets.only(right: 25),
-              child: SizedBox(
-                width: 154,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (builder) => WebSignup()));
-                  },
-                  child: Text(
-                    "Create Account",
-                    style: TextStyle(
-                        fontFamily: 'Futura',
-                        color: mainColor,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                margin: const EdgeInsets.only(right: 25),
+                child: SizedBox(
+                  width: 154,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (builder) => WebSignup()));
+                    },
+                    child: Text(
+                      "Create Account",
+                      style: TextStyle(
+                          fontFamily: 'Futura',
+                          color: mainColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),

@@ -48,6 +48,7 @@ class _IvThearapyHomeState extends State<IvThearapyHome> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => ProductDetailWeb(
+                                      time: serviceData['time'],
                                       description:
                                           serviceData['serviceDescription'],
                                       discount:

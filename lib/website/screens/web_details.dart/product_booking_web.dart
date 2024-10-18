@@ -18,6 +18,7 @@ class ProductBookingWeb extends StatefulWidget {
   final serviceCategory;
   final serviceName;
   final serviceSubCategory;
+  final appointmentTime;
   const ProductBookingWeb(
       {super.key,
       required this.description,
@@ -26,6 +27,7 @@ class ProductBookingWeb extends StatefulWidget {
       required this.price,
       required this.serviceCategory,
       required this.serviceName,
+      required this.appointmentTime,
       required this.serviceSubCategory,
       required this.uuid});
 
@@ -46,6 +48,7 @@ class _ProductBookingWebState extends State<ProductBookingWeb> {
               children: [
                 FormSelection(
                   uuid: widget.uuid,
+                  appointmentTime: widget.appointmentTime,
                   serviceSubCategory: widget.serviceSubCategory,
                   serviceName: widget.serviceName,
                   serviceCategory: widget.serviceCategory,
@@ -92,6 +95,7 @@ class FormSelection extends StatefulWidget {
   final photoURL;
   final uuid;
   final price;
+  final appointmentTime;
   final serviceCategory;
   final serviceName;
   final serviceSubCategory;
@@ -104,6 +108,7 @@ class FormSelection extends StatefulWidget {
       required this.serviceCategory,
       required this.serviceName,
       required this.serviceSubCategory,
+      required this.appointmentTime,
       required this.uuid});
 
   @override
