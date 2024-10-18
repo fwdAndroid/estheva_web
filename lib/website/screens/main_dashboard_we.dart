@@ -320,7 +320,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
                   child: SizedBox(
-                    height: 165,
+                    height: 250,
                     width: MediaQuery.of(context).size.width,
                     child: StreamBuilder<Object>(
                         stream: FirebaseFirestore.instance
@@ -351,7 +351,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                 itemBuilder: (context, index) {
                                   var serviceData = snap.docs[index].data();
                                   return SizedBox(
-                                    width: 220,
+                                    width: 250,
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
@@ -392,8 +392,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(12)),
                                                 child: Image.network(
-                                                  height: 80,
-                                                  width: 90,
+                                                  height: 140,
+                                                  width: 140,
                                                   fit: BoxFit.cover,
                                                   serviceData['photoURL'],
                                                 ),
@@ -402,7 +402,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                           ),
                                           SizedBox(
                                             height: 43,
-                                            width: 220,
+                                            width: 250,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
                                                   top: 8.0, left: 8, right: 8),
@@ -480,7 +480,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
                   child: SizedBox(
-                    height: 165,
+                    height: 250,
                     width: MediaQuery.of(context).size.width,
                     child: StreamBuilder(
                       stream: FirebaseFirestore.instance
@@ -521,7 +521,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                               var serviceData = snap.docs[index].data()
                                   as Map<String, dynamic>;
                               return SizedBox(
-                                width: 220,
+                                width: 250,
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -560,8 +560,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(12)),
                                             child: Image.network(
-                                              height: 80,
-                                              width: 90,
+                                              height: 140,
+                                              width: 140,
                                               fit: BoxFit.cover,
                                               serviceData['photoURL'],
                                             ),
@@ -570,7 +570,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                       ),
                                       SizedBox(
                                         height: 43,
-                                        width: 220,
+                                        width: 250,
                                         child: Padding(
                                           padding: const EdgeInsets.only(
                                               top: 8.0, left: 8, right: 8),
@@ -648,7 +648,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
                   child: SizedBox(
-                    height: 165,
+                    height: 250,
                     width: MediaQuery.of(context).size.width,
                     child: StreamBuilder(
                       stream: FirebaseFirestore.instance
@@ -689,7 +689,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                               var serviceData = snap.docs[index].data()
                                   as Map<String, dynamic>;
                               return SizedBox(
-                                width: 220,
+                                width: 250,
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -728,8 +728,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(12)),
                                             child: Image.network(
-                                              height: 80,
-                                              width: 90,
+                                              height: 140,
+                                              width: 140,
                                               fit: BoxFit.cover,
                                               serviceData['photoURL'],
                                             ),
@@ -738,7 +738,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                       ),
                                       SizedBox(
                                         height: 43,
-                                        width: 220,
+                                        width: 250,
                                         child: Padding(
                                           padding: const EdgeInsets.only(
                                               top: 8.0, left: 8, right: 8),
@@ -816,7 +816,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
                   child: SizedBox(
-                    height: 165,
+                    height: 250,
                     width: MediaQuery.of(context).size.width,
                     child: StreamBuilder(
                       stream: FirebaseFirestore.instance
@@ -856,7 +856,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                               var serviceData = snap.docs[index].data()
                                   as Map<String, dynamic>;
                               return SizedBox(
-                                width: 220,
+                                width: 250,
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -895,8 +895,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(12)),
                                             child: Image.network(
-                                              height: 80,
-                                              width: 90,
+                                              height: 140,
+                                              width: 140,
                                               fit: BoxFit.cover,
                                               serviceData['photoURL'],
                                             ),
@@ -905,7 +905,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                       ),
                                       SizedBox(
                                         height: 43,
-                                        width: 220,
+                                        width: 250,
                                         child: Padding(
                                           padding: const EdgeInsets.only(
                                               top: 8.0, left: 8, right: 8),
@@ -980,7 +980,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                 child: Container(
                   margin: EdgeInsets.only(left: 10),
                   child: SizedBox(
-                    height: 165,
+                    height: 250,
                     width: MediaQuery.of(context).size.width,
                     child: StreamBuilder(
                       stream: FirebaseFirestore.instance
@@ -1020,7 +1020,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                               var serviceData = snap.docs[index].data()
                                   as Map<String, dynamic>;
                               return SizedBox(
-                                width: 220,
+                                width: 250,
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -1059,8 +1059,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(12)),
                                             child: Image.network(
-                                              height: 80,
-                                              width: 90,
+                                              height: 140,
+                                              width: 140,
                                               fit: BoxFit.cover,
                                               serviceData['photoURL'],
                                             ),
@@ -1069,7 +1069,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                       ),
                                       SizedBox(
                                         height: 43,
-                                        width: 220,
+                                        width: 250,
                                         child: Padding(
                                           padding: const EdgeInsets.only(
                                               top: 8.0, left: 8, right: 8),
@@ -1150,7 +1150,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       child: Container(
                         margin: EdgeInsets.only(left: 10),
                         child: SizedBox(
-                          height: 165,
+                          height: 250,
                           width: MediaQuery.of(context).size.width,
                           child: StreamBuilder(
                             stream: FirebaseFirestore.instance
@@ -1193,7 +1193,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                     var serviceData = snap.docs[index].data()
                                         as Map<String, dynamic>;
                                     return SizedBox(
-                                      width: 220,
+                                      width: 250,
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.push(
@@ -1237,8 +1237,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                       BorderRadius.all(
                                                           Radius.circular(12)),
                                                   child: Image.network(
-                                                    height: 80,
-                                                    width: 90,
+                                                    height: 140,
+                                                    width: 140,
                                                     fit: BoxFit.cover,
                                                     serviceData['photoURL'],
                                                   ),
@@ -1247,7 +1247,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             ),
                                             SizedBox(
                                               height: 43,
-                                              width: 220,
+                                              width: 250,
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 8.0,
@@ -1336,7 +1336,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                       child: Container(
                         margin: EdgeInsets.only(left: 10),
                         child: SizedBox(
-                          height: 165,
+                          height: 250,
                           width: MediaQuery.of(context).size.width,
                           child: StreamBuilder(
                             stream: FirebaseFirestore.instance
@@ -1379,7 +1379,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                     var serviceData = snap.docs[index].data()
                                         as Map<String, dynamic>;
                                     return SizedBox(
-                                      width: 220,
+                                      width: 250,
                                       child: GestureDetector(
                                         onTap: () {
                                           Navigator.push(
@@ -1423,8 +1423,8 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                                       BorderRadius.all(
                                                           Radius.circular(12)),
                                                   child: Image.network(
-                                                    height: 80,
-                                                    width: 90,
+                                                    height: 140,
+                                                    width: 140,
                                                     fit: BoxFit.cover,
                                                     serviceData['photoURL'],
                                                   ),
@@ -1433,7 +1433,7 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                             ),
                                             SizedBox(
                                               height: 43,
-                                              width: 220,
+                                              width: 250,
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 8.0,
