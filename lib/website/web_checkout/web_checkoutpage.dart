@@ -156,7 +156,7 @@ class _FormSelectionState extends State<FormSelection> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 100,
+                height: 150,
                 width: 360,
                 decoration: BoxDecoration(
                   color: white,
@@ -229,7 +229,7 @@ class _FormSelectionState extends State<FormSelection> {
                         child: Row(
                           children: [
                             Text(
-                              "Total Service Time:     ", // Display the formatted date
+                              "Total Service Time: ", // Display the formatted date
                               style: TextStyle(
                                 color: appColor,
                                 fontFamily: 'Futura',
@@ -255,7 +255,7 @@ class _FormSelectionState extends State<FormSelection> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 200,
+                height: 150,
                 width: 360,
                 decoration: BoxDecoration(
                   color: white,
@@ -374,44 +374,49 @@ class _FormSelectionState extends State<FormSelection> {
                           ],
                         ),
                       ),
-                      SaveButton(
-                          title: "Paid",
-                          onTap: () async {
-                            setState(() {
-                              isLoading = true;
-                            });
-                            await FirebaseFirestore.instance
-                                .collection("appointment")
-                                .doc(widget.appointmentId)
-                                .set({
-                              "gender": widget.gender,
-                              "patientName": widget.patientName,
-                              "doctorName": widget.doctorName,
-                              "patientContact": widget.patientContact,
-                              "appointmentDate": widget.appointmentDate,
-                              "appointmentStartTime":
-                                  widget.appointmentStartTime,
-                              "appointmentServiceTime":
-                                  widget.appointmentServiceTime,
-                              "serviceName": widget.serviceName,
-                              "serviceCategory": widget.serviceCategory,
-                              "serviceDescription": widget.serviceDescription,
-                              "status": "confirm",
-                              "price": int.parse(widget.price),
-                              "patientUid":
-                                  FirebaseAuth.instance.currentUser!.uid,
-                              "appointmentId": widget.appointmentId,
-                            });
-                            setState(() {
-                              isLoading = false;
-                            });
-                            showMessageBar("Booking is Confirmed", context);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (builder) =>
-                                        UpcomingServiceAppointmentWeb()));
-                          })
+                      isLoading
+                          ? CircularProgressIndicator(
+                              color: mainColor,
+                            )
+                          : SaveButton(
+                              title: "Paid",
+                              onTap: () async {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                await FirebaseFirestore.instance
+                                    .collection("appointment")
+                                    .doc(widget.appointmentId)
+                                    .set({
+                                  "gender": widget.gender,
+                                  "patientName": widget.patientName,
+                                  "doctorName": widget.doctorName,
+                                  "patientContact": widget.patientContact,
+                                  "appointmentDate": widget.appointmentDate,
+                                  "appointmentStartTime":
+                                      widget.appointmentStartTime,
+                                  "appointmentServiceTime":
+                                      widget.appointmentServiceTime,
+                                  "serviceName": widget.serviceName,
+                                  "serviceCategory": widget.serviceCategory,
+                                  "serviceDescription":
+                                      widget.serviceDescription,
+                                  "status": "confirm",
+                                  "price": int.parse(widget.price),
+                                  "patientUid":
+                                      FirebaseAuth.instance.currentUser!.uid,
+                                  "appointmentId": widget.appointmentId,
+                                });
+                                setState(() {
+                                  isLoading = false;
+                                });
+                                showMessageBar("Booking is Confirmed", context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (builder) =>
+                                            UpcomingServiceAppointmentWeb()));
+                              })
                     ],
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/website/screens/web_details.dart/product_booking_web.dart';
+import 'package:estheva_web/widgets/header_widget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,7 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: HeaderBar(),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(

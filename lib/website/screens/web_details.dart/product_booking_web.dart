@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/website/web_checkout/web_checkoutpage.dart';
+import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,6 +40,7 @@ class _ProductBookingWebState extends State<ProductBookingWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: HeaderBar(),
       backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

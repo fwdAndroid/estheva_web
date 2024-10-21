@@ -138,7 +138,7 @@ class FormSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 448,
+      width: 500,
       padding: const EdgeInsets.symmetric(horizontal: 50),
       child: SingleChildScrollView(
         child: Column(
@@ -148,7 +148,7 @@ class FormSelection extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 height: 100,
-                width: 360,
+                width: 500,
                 decoration: BoxDecoration(
                   color: white,
                   borderRadius: BorderRadius.circular(12),
@@ -222,8 +222,8 @@ class FormSelection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 200,
-                width: 360,
+                height: 480,
+                width: 500,
                 decoration: BoxDecoration(
                   color: white,
                   borderRadius: BorderRadius.circular(12),
@@ -289,27 +289,35 @@ class FormSelection extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 4.0, left: 8),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Service Description:     ", // Display the formatted date
-                              style: TextStyle(
-                                color: appColor,
-                                fontFamily: 'Futura',
-                                fontSize: 14,
+                      SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 4.0, left: 8, right: 8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Service Description: ", // Display the formatted date
+                                style: TextStyle(
+                                  color: appColor,
+                                  fontFamily: 'Futura',
+                                  fontSize: 14,
+                                ),
                               ),
-                            ),
-                            Text(
-                              serviceDescription,
-                              style: TextStyle(
-                                fontFamily: 'Futura',
-                                color: dateColor,
-                                fontSize: 14,
+                              SizedBox(
+                                width: 500,
+                                height: 360,
+                                child: Text(
+                                  serviceDescription,
+                                  style: TextStyle(
+                                    fontFamily: 'Futura',
+                                    color: dateColor,
+                                    fontSize: 12,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
