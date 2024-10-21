@@ -139,6 +139,7 @@ class _FormSelectionState extends State<FormSelection> {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('doctors')
           .where('doctorCategory', isEqualTo: widget.serviceName)
+          .where("status", isEqualTo: "Free")
           .get();
 
       setState(() {

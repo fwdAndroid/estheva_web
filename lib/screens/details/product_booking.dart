@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/screens/details/mobile_checkout.dart';
-import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
@@ -60,6 +59,7 @@ class _ProductBookingState extends State<ProductBooking> {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('doctors')
           .where('doctorCategory', isEqualTo: widget.serviceName)
+          .where("status", isEqualTo: "Free")
           .get();
 
       setState(() {
