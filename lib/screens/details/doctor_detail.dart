@@ -1,3 +1,5 @@
+import 'package:estheva_web/screens/video/video_call.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:estheva_web/screens/appointments/appointment_begin.dart';
 import 'package:estheva_web/uitls/colors.dart';
@@ -33,6 +35,22 @@ class _DoctorDetailState extends State<DoctorDetail> {
     return Scaffold(
       backgroundColor: mainColor,
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (builder) => VideoCall(
+                              callingid: FirebaseAuth.instance.currentUser!.uid,
+                              friendName: widget.name,
+                            )));
+              },
+              icon: Icon(
+                Icons.video_call,
+                color: mainColor,
+              ))
+        ],
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);

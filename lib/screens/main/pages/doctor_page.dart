@@ -127,6 +127,20 @@ class _DoctorPageState extends State<DoctorPage> {
                                         fontWeight: FontWeight.w500),
                                   ),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 4.0, top: 2, right: 4),
+                                  child: Text(
+                                    doctorData['isOnline'] == true
+                                        ? "Online"
+                                        : "Free",
+                                    style: TextStyle(
+                                        fontFamily: 'Futura',
+                                        fontSize: 13,
+                                        color: black,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
