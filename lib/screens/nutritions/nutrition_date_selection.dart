@@ -1,18 +1,18 @@
 import 'package:estheva_web/screens/main/main_dashboard.dart';
-import 'package:estheva_web/screens/nutritions/nutrition_date_selection.dart';
+import 'package:estheva_web/uitls/colors.dart';
+import 'package:estheva_web/uitls/message_utils.dart';
+import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 
-import '../../uitls/colors.dart';
-
-class NutritionGenderSelection extends StatefulWidget {
-  const NutritionGenderSelection({super.key});
+class NutritionDateSelection extends StatefulWidget {
+  const NutritionDateSelection({super.key});
 
   @override
-  State<NutritionGenderSelection> createState() =>
-      _NutritionGenderSelectionState();
+  State<NutritionDateSelection> createState() => _NutritionDateSelectionState();
 }
 
-class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
+class _NutritionDateSelectionState extends State<NutritionDateSelection> {
+  TextEditingController _nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +57,7 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
               Column(
                 children: [
                   Text(
-                    '3 / 8',
+                    '4 / 8',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -66,7 +66,7 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                   SizedBox(height: 10),
                   RichText(
                     text: TextSpan(
-                      text: 'What is your ',
+                      text: 'Your ',
                       style: TextStyle(
                         fontSize: 22,
                         color: Colors.black,
@@ -74,7 +74,7 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'gender?',
+                          text: 'date of birth?',
                           style: TextStyle(
                             color: Colors.orange,
                             fontWeight: FontWeight.bold,
@@ -93,63 +93,15 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                     ),
                   ),
                   SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: Colors.grey[400],
-                          child: Center(
-                              child: Column(
-                            children: [
-                              Icon(
-                                Icons.male,
-                                color: white,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Male",
-                                style: TextStyle(color: white),
-                              ),
-                            ],
-                          )),
-                          width: 100,
-                          height: 100,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 16),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: Colors.grey[400],
-                          child: Center(
-                              child: Column(
-                            children: [
-                              Icon(
-                                Icons.female,
-                                color: white,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Female",
-                                style: TextStyle(color: white),
-                              ),
-                            ],
-                          )),
-                          width: 100,
-                          height: 100,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 16),
-                        ),
-                      ),
-                    ],
-                  ),
+                  Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                      child: TextFormInputField(
+                        textInputType: TextInputType.text,
+                        hintText:
+                            'Date of Birth', // Pre-filled name or user input field can be added
+                        controller: _nameController,
+                      )),
                 ],
               ),
               // Bottom circular progress and forward button
@@ -171,12 +123,15 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                     IconButton(
                       icon: Icon(Icons.arrow_forward, color: black),
                       onPressed: () {
+                        if (_nameController.text.isEmpty) {
+                          showMessageBar("Dob is Required", context);
+                        } else {
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (builder) => NutritionSelection()));
+                        }
                         // Handle next button press
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) =>
-                                    NutritionDateSelection()));
                       },
                       iconSize: 40,
                       color: Colors.orange,
