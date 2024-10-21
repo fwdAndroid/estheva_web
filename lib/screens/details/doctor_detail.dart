@@ -48,7 +48,7 @@ class _DoctorDetailState extends State<DoctorDetail> {
               },
               icon: Icon(
                 Icons.video_call,
-                color: mainColor,
+                color: white,
               ))
         ],
         leading: GestureDetector(

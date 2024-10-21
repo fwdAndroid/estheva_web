@@ -125,10 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextFormField(
                     obscureText: passwordVisible,
                     controller: _passwordController,
-                    style: TextStyle(
-                      color: black,
-                      fontFamily: 'Futura',
-                    ),
+                    style: TextStyle(color: black),
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
                           icon: Icon(passwordVisible
@@ -152,10 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderSide: BorderSide(color: borderColor)),
                         hintText: "Enter Password",
                         hintStyle: TextStyle(
-                            fontFamily: 'Futura',
-                            color: black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w300)),
+                            fontFamily: 'Futura', color: black, fontSize: 12)),
                   ),
                 ),
               ],

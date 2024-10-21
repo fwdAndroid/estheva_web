@@ -1,24 +1,24 @@
-import 'package:estheva_web/screens/nutritions/work_out.dart';
+import 'package:estheva_web/screens/nutritions/height_out.dart';
+import 'package:estheva_web/uitls/colors.dart';
 import 'package:flutter/material.dart';
 
-class Nutritions extends StatefulWidget {
-  const Nutritions({super.key});
+class WorkOut extends StatefulWidget {
+  const WorkOut({super.key});
 
   @override
-  State<Nutritions> createState() => _NutritionsState();
+  State<WorkOut> createState() => _WorkOutState();
 }
 
-class _NutritionsState extends State<Nutritions> {
+class _WorkOutState extends State<WorkOut> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: white,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text('Nutritions'),
-        centerTitle: true,
+        backgroundColor: white,
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-        Image.asset("assets/diet.png"),
+        Image.asset("assets/workout.png"),
         Spacer(),
         Center(
           child: Container(
@@ -34,11 +34,12 @@ class _NutritionsState extends State<Nutritions> {
               children: [
                 // Title Text
                 Text(
-                  'Know What You Eat',
+                  'Track Your Diet',
                   style: TextStyle(
+                    fontFamily: "Futura",
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: black,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -47,10 +48,11 @@ class _NutritionsState extends State<Nutritions> {
 
                 // Subtitle Text
                 Text(
-                  'Gain insights in your nutritional habits with detailed statistics',
+                  'We will help you lose weight, stay fit, or build mode',
                   style: TextStyle(
+                    fontFamily: "Futura",
                     fontSize: 16,
-                    color: Colors.black54,
+                    color: Colors.black45,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -78,8 +80,10 @@ class _NutritionsState extends State<Nutritions> {
                     IconButton(
                       onPressed: () {
                         // Define your action here
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (builder) => WorkOut()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) => HeightOut()));
                       },
                       icon: Icon(Icons.arrow_forward, color: Colors.white),
                       iconSize: 30,
