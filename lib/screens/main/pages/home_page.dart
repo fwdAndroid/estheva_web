@@ -362,6 +362,7 @@ class _HomePageState extends State<HomePage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (builder) => ProductDetail(
+                                                  time: serviceData['time'],
                                                   type: serviceData['type'],
                                                   description: serviceData[
                                                       'serviceDescription'],
@@ -515,6 +516,7 @@ class _HomePageState extends State<HomePage> {
                                     MaterialPageRoute(
                                         builder: (builder) => ProductDetail(
                                               type: serviceData['type'],
+                                              time: serviceData['time'],
                                               description: serviceData[
                                                   'serviceDescription'],
                                               discount: serviceData['discount']
@@ -673,6 +675,7 @@ class _HomePageState extends State<HomePage> {
                                                   .toString(),
                                               serviceCategory: serviceData[
                                                   'serviceCategory'],
+                                              time: serviceData['time'],
                                               serviceName:
                                                   serviceData['serviceName'],
                                               serviceSubCategory: serviceData[
@@ -812,6 +815,7 @@ class _HomePageState extends State<HomePage> {
                                               type: serviceData['type'],
                                               description: serviceData[
                                                   'serviceDescription'],
+                                              time: serviceData['time'],
                                               discount: serviceData['discount']
                                                   .toString(),
                                               photoURL: serviceData['photoURL'],
@@ -962,6 +966,7 @@ class _HomePageState extends State<HomePage> {
                                               uuid: serviceData['uuid'],
                                               price: serviceData['price']
                                                   .toString(),
+                                              time: serviceData['time'],
                                               serviceCategory: serviceData[
                                                   'serviceCategory'],
                                               serviceName:
@@ -1115,6 +1120,7 @@ class _HomePageState extends State<HomePage> {
                                                     photoURL:
                                                         serviceData['photoURL'],
                                                     uuid: serviceData['uuid'],
+                                                    time: serviceData['time'],
                                                     price: serviceData['price']
                                                         .toString(),
                                                     serviceCategory:
@@ -1269,6 +1275,7 @@ class _HomePageState extends State<HomePage> {
                                           MaterialPageRoute(
                                               builder: (builder) =>
                                                   ProductDetail(
+                                                    time: serviceData['time'],
                                                     type: serviceData['type'],
                                                     description: serviceData[
                                                         'serviceDescription'],
