@@ -1,25 +1,22 @@
 import 'package:estheva_web/screens/main/main_dashboard.dart';
+import 'package:estheva_web/screens/nutritions/nutrition_weight_selection.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import 'nutrition_height_selection.dart';
-
-class NutritionDateSelection extends StatefulWidget {
-  var selectedGoal;
-  var selectedGoalGender;
-  NutritionDateSelection(
-      {super.key, required selectedGoal, required this.selectedGoalGender});
+class NutritionHeightSelection extends StatefulWidget {
+  final dob, gender, goal;
+  NutritionHeightSelection(
+      {super.key, required this.goal, required this.dob, required this.gender});
 
   @override
-  State<NutritionDateSelection> createState() => _NutritionDateSelectionState();
+  State<NutritionHeightSelection> createState() =>
+      _NutritionHeightSelectionState();
 }
 
-class _NutritionDateSelectionState extends State<NutritionDateSelection> {
+class _NutritionHeightSelectionState extends State<NutritionHeightSelection> {
   TextEditingController _nameController = TextEditingController();
-  DateTime? selectedDate; // To store selected date
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +61,7 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
               Column(
                 children: [
                   Text(
-                    '4 / 8',
+                    '5 / 8',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -73,7 +70,7 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                   SizedBox(height: 10),
                   RichText(
                     text: TextSpan(
-                      text: 'Your ',
+                      text: 'How ',
                       style: TextStyle(
                         fontSize: 22,
                         color: Colors.black,
@@ -81,7 +78,7 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'date of birth?',
+                          text: 'tall you are',
                           style: TextStyle(
                             color: Colors.orange,
                             fontWeight: FontWeight.bold,
@@ -104,27 +101,10 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                       child: TextFormInputField(
-                        onTap: () async {
-                          DateTime? picked = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate:
-                                DateTime(1900), // Earliest date you can choose
-                            lastDate:
-                                DateTime.now(), // Latest date you can choose
-                          );
-                          if (picked != null && picked != selectedDate) {
-                            setState(() {
-                              selectedDate = picked;
-                              _nameController.text = DateFormat('dd-MM-yyyy')
-                                  .format(
-                                      picked); // Format and display the date
-                            });
-                          }
-                        },
-                        textInputType: TextInputType.text,
+                        onTap: () async {},
+                        textInputType: TextInputType.number,
                         hintText:
-                            'Date of Birth', // Pre-filled name or user input field can be added
+                            'Height', // Pre-filled name or user input field can be added
                         controller: _nameController,
                       )),
                 ],
@@ -139,7 +119,7 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                       width: 60,
                       height: 60,
                       child: CircularProgressIndicator(
-                        value: 0.505, // Adjust this value for progress
+                        value: 0.605, // Adjust this value for progress
                         strokeWidth: 6,
                         valueColor:
                             AlwaysStoppedAnimation<Color>(Colors.orange),
@@ -149,16 +129,17 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                       icon: Icon(Icons.arrow_forward, color: black),
                       onPressed: () {
                         if (_nameController.text.isEmpty) {
-                          showMessageBar("Dob is Required", context);
+                          showMessageBar("Height is Required", context);
                         } else {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (builder) =>
-                                      NutritionHeightSelection(
-                                          dob: _nameController.text,
-                                          gender: widget.selectedGoalGender,
-                                          goal: widget.selectedGoal)));
+                                      NutritionWeightSelection(
+                                          height: _nameController.text,
+                                          dob: widget.dob,
+                                          gender: widget.gender,
+                                          goal: widget.goal)));
                         }
                         // Handle next button press
                       },

@@ -11,6 +11,9 @@ class NutritionSelection extends StatefulWidget {
 }
 
 class _NutritionSelectionState extends State<NutritionSelection> {
+  // Variable to hold the selected goal
+  String? selectedGoal;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +54,7 @@ class _NutritionSelectionState extends State<NutritionSelection> {
                   ),
                 ],
               ),
-              // Middle part with the title, subtitle, and text field
+              // Middle part with the title, subtitle, and selectable items
               Column(
                 children: [
                   Text(
@@ -91,63 +94,10 @@ class _NutritionSelectionState extends State<NutritionSelection> {
                     ),
                   ),
                   SizedBox(height: 40),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      color: Colors.grey[400],
-                      child: Center(
-                        child: ListTile(
-                          trailing: Icon(Icons.line_weight),
-                          title: Text(
-                            "Lose Weight",
-                            style: TextStyle(color: white),
-                          ),
-                        ),
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      color: Colors.grey[400],
-                      child: Center(
-                        child: ListTile(
-                          trailing: Icon(Icons.line_weight),
-                          title: Text(
-                            "Gain Weight",
-                            style: TextStyle(color: white),
-                          ),
-                        ),
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      color: Colors.grey[400],
-                      child: Center(
-                        child: ListTile(
-                          trailing: Icon(Icons.line_weight),
-                          title: Text(
-                            "Stay Healthy",
-                            style: TextStyle(color: white),
-                          ),
-                        ),
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                    ),
-                  ),
+                  // Selections
+                  buildGoalOption('Lose Weight'),
+                  buildGoalOption('Gain Weight'),
+                  buildGoalOption('Stay Healthy'),
                 ],
               ),
               // Bottom circular progress and forward button
@@ -160,7 +110,7 @@ class _NutritionSelectionState extends State<NutritionSelection> {
                       width: 60,
                       height: 60,
                       child: CircularProgressIndicator(
-                        value: 0.125, // Adjust this value for progress
+                        value: 0.160, // Adjust this value for progress
                         strokeWidth: 6,
                         valueColor:
                             AlwaysStoppedAnimation<Color>(Colors.orange),
@@ -168,18 +118,20 @@ class _NutritionSelectionState extends State<NutritionSelection> {
                     ),
                     IconButton(
                       icon: Icon(Icons.arrow_forward, color: black),
-                      onPressed: () {
-                        // Handle next button press
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) =>
-                                    NutritionGenderSelection()));
-                      },
+                      onPressed: selectedGoal != null
+                          ? () {
+                              // Navigate to the next screen, passing the selected goal
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) =>
+                                          NutritionGenderSelection(
+                                              selectedGoal: selectedGoal!)));
+                            }
+                          : null, // Disable if no option is selected
                       iconSize: 40,
                       color: Colors.orange,
                       padding: EdgeInsets.all(0),
-                      // Outer circle style
                       constraints: BoxConstraints(
                         minWidth: 60,
                         minHeight: 60,
@@ -193,6 +145,35 @@ class _NutritionSelectionState extends State<NutritionSelection> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build each goal option
+  Widget buildGoalOption(String goal) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            selectedGoal = goal; // Update selected goal
+          });
+        },
+        child: Container(
+          color: selectedGoal == goal ? Colors.orange : Colors.grey[400],
+          child: Center(
+            child: ListTile(
+              trailing: Icon(Icons.line_weight),
+              title: Text(
+                goal,
+                style: TextStyle(color: white),
+              ),
+            ),
+          ),
+          width: MediaQuery.of(context).size.width,
+          height: 100,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         ),
       ),
     );

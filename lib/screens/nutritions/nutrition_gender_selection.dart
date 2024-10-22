@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import '../../uitls/colors.dart';
 
 class NutritionGenderSelection extends StatefulWidget {
-  const NutritionGenderSelection({super.key});
+  final String selectedGoal;
+  NutritionGenderSelection({super.key, required this.selectedGoal});
 
   @override
   State<NutritionGenderSelection> createState() =>
@@ -13,6 +14,8 @@ class NutritionGenderSelection extends StatefulWidget {
 }
 
 class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
+  String? selectedGender; // State variable to track selected gender
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +39,11 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                   TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (builder) =>
-                                  MainDashboard(type: 'clinic')));
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => MainDashboard(type: 'clinic'),
+                        ),
+                      );
                       // Handle skip button press
                     },
                     child: Text(
@@ -53,7 +57,7 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                   ),
                 ],
               ),
-              // Middle part with the title, subtitle, and text field
+              // Middle part with the title, subtitle, and selection options
               Column(
                 children: [
                   Text(
@@ -93,60 +97,19 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                     ),
                   ),
                   SizedBox(height: 40),
+                  // Selection options for gender
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: Colors.grey[400],
-                          child: Center(
-                              child: Column(
-                            children: [
-                              Icon(
-                                Icons.male,
-                                color: white,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Male",
-                                style: TextStyle(color: white),
-                              ),
-                            ],
-                          )),
-                          width: 100,
-                          height: 100,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 16),
-                        ),
+                      _buildGenderOption(
+                        icon: Icons.male,
+                        label: 'Male',
+                        value: 'Male',
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: Colors.grey[400],
-                          child: Center(
-                              child: Column(
-                            children: [
-                              Icon(
-                                Icons.female,
-                                color: white,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Female",
-                                style: TextStyle(color: white),
-                              ),
-                            ],
-                          )),
-                          width: 100,
-                          height: 100,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 16),
-                        ),
+                      _buildGenderOption(
+                        icon: Icons.female,
+                        label: 'Female',
+                        value: 'Female',
                       ),
                     ],
                   ),
@@ -162,7 +125,7 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                       width: 60,
                       height: 60,
                       child: CircularProgressIndicator(
-                        value: 0.125, // Adjust this value for progress
+                        value: 0.305, // Adjust this value for progress
                         strokeWidth: 6,
                         valueColor:
                             AlwaysStoppedAnimation<Color>(Colors.orange),
@@ -170,18 +133,23 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
                     ),
                     IconButton(
                       icon: Icon(Icons.arrow_forward, color: black),
-                      onPressed: () {
-                        // Handle next button press
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) =>
-                                    NutritionDateSelection()));
-                      },
+                      onPressed: selectedGender != null
+                          ? () {
+                              // Navigate to the next screen, passing the selected goal and gender
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (builder) => NutritionDateSelection(
+                                    selectedGoal: widget.selectedGoal,
+                                    selectedGoalGender: selectedGender!,
+                                  ),
+                                ),
+                              );
+                            }
+                          : null, // Disable if no option is selected
                       iconSize: 40,
                       color: Colors.orange,
                       padding: EdgeInsets.all(0),
-                      // Outer circle style
                       constraints: BoxConstraints(
                         minWidth: 60,
                         minHeight: 60,
@@ -196,6 +164,46 @@ class _NutritionGenderSelectionState extends State<NutritionGenderSelection> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  // Widget for building gender selection options
+  Widget _buildGenderOption({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedGender = value;
+        });
+      },
+      child: Container(
+        color: selectedGender == value
+            ? Colors.orange
+            : Colors.grey[400], // Highlight if selected
+        child: Center(
+          child: Column(
+            children: [
+              Icon(
+                icon,
+                color: white,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                label,
+                style: TextStyle(color: white),
+              ),
+            ],
+          ),
+        ),
+        width: 100,
+        height: 100,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       ),
     );
   }

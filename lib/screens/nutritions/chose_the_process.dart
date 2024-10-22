@@ -1,25 +1,25 @@
 import 'package:estheva_web/screens/main/main_dashboard.dart';
+import 'package:estheva_web/screens/nutritions/final_goal.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/uitls/message_utils.dart';
-import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import 'nutrition_height_selection.dart';
-
-class NutritionDateSelection extends StatefulWidget {
-  var selectedGoal;
-  var selectedGoalGender;
-  NutritionDateSelection(
-      {super.key, required selectedGoal, required this.selectedGoalGender});
+class ChoseTheProcess extends StatefulWidget {
+  final dob, gender, goal, height, target_weight;
+  const ChoseTheProcess(
+      {super.key,
+      required this.dob,
+      required this.gender,
+      required this.goal,
+      required this.height,
+      required this.target_weight});
 
   @override
-  State<NutritionDateSelection> createState() => _NutritionDateSelectionState();
+  State<ChoseTheProcess> createState() => _ChoseTheProcessState();
 }
 
-class _NutritionDateSelectionState extends State<NutritionDateSelection> {
-  TextEditingController _nameController = TextEditingController();
-  DateTime? selectedDate; // To store selected date
+class _ChoseTheProcessState extends State<ChoseTheProcess> {
+  String? selectedGoal;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,11 +60,11 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                   ),
                 ],
               ),
-              // Middle part with the title, subtitle, and text field
+              // Middle part with the title, subtitle, and selectable items
               Column(
                 children: [
                   Text(
-                    '4 / 8',
+                    '8 / 8',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
@@ -73,7 +73,7 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                   SizedBox(height: 10),
                   RichText(
                     text: TextSpan(
-                      text: 'Your ',
+                      text: 'Chose the ',
                       style: TextStyle(
                         fontSize: 22,
                         color: Colors.black,
@@ -81,7 +81,7 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'date of birth?',
+                          text: 'progress',
                           style: TextStyle(
                             color: Colors.orange,
                             fontWeight: FontWeight.bold,
@@ -100,33 +100,10 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                     ),
                   ),
                   SizedBox(height: 40),
-                  Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                      child: TextFormInputField(
-                        onTap: () async {
-                          DateTime? picked = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate:
-                                DateTime(1900), // Earliest date you can choose
-                            lastDate:
-                                DateTime.now(), // Latest date you can choose
-                          );
-                          if (picked != null && picked != selectedDate) {
-                            setState(() {
-                              selectedDate = picked;
-                              _nameController.text = DateFormat('dd-MM-yyyy')
-                                  .format(
-                                      picked); // Format and display the date
-                            });
-                          }
-                        },
-                        textInputType: TextInputType.text,
-                        hintText:
-                            'Date of Birth', // Pre-filled name or user input field can be added
-                        controller: _nameController,
-                      )),
+                  // Selections
+                  buildGoalOption('Power Up', 'Hard 4 Weeks'),
+                  buildGoalOption('Steady', "Medium  4 Weeks"),
+                  buildGoalOption('Relaxad', 'Hard 4 Weeks'),
                 ],
               ),
               // Bottom circular progress and forward button
@@ -139,7 +116,7 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                       width: 60,
                       height: 60,
                       child: CircularProgressIndicator(
-                        value: 0.505, // Adjust this value for progress
+                        value: 1, // Adjust this value for progress
                         strokeWidth: 6,
                         valueColor:
                             AlwaysStoppedAnimation<Color>(Colors.orange),
@@ -147,25 +124,25 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
                     ),
                     IconButton(
                       icon: Icon(Icons.arrow_forward, color: black),
-                      onPressed: () {
-                        if (_nameController.text.isEmpty) {
-                          showMessageBar("Dob is Required", context);
-                        } else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (builder) =>
-                                      NutritionHeightSelection(
-                                          dob: _nameController.text,
-                                          gender: widget.selectedGoalGender,
-                                          goal: widget.selectedGoal)));
-                        }
-                        // Handle next button press
-                      },
+                      onPressed: selectedGoal != null
+                          ? () {
+                              // Navigate to the next screen, passing the selected goal
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) => FinalGoal(
+                                            target_weight: widget.target_weight,
+                                            dob: widget.dob,
+                                            gender: widget.gender,
+                                            height: widget.height,
+                                            goal: widget.goal,
+                                            finalgoal: selectedGoal,
+                                          )));
+                            }
+                          : null, // Disable if no option is selected
                       iconSize: 40,
                       color: Colors.orange,
                       padding: EdgeInsets.all(0),
-                      // Outer circle style
                       constraints: BoxConstraints(
                         minWidth: 60,
                         minHeight: 60,
@@ -179,6 +156,41 @@ class _NutritionDateSelectionState extends State<NutritionDateSelection> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build each goal option
+  Widget buildGoalOption(
+    String goal,
+    String subtitle,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            selectedGoal = goal; // Update selected goal
+          });
+        },
+        child: Container(
+          color: selectedGoal == goal ? Colors.orange : Colors.grey[400],
+          child: Center(
+            child: ListTile(
+              title: Text(
+                goal,
+                style: TextStyle(color: white),
+              ),
+              subtitle: Text(
+                subtitle,
+                style: TextStyle(color: white),
+              ),
+            ),
+          ),
+          width: MediaQuery.of(context).size.width,
+          height: 100,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         ),
       ),
     );
