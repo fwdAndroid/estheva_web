@@ -6,6 +6,8 @@ import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 
 class MobileCheckout extends StatefulWidget {
   final appointmentDate;
@@ -46,6 +48,23 @@ class MobileCheckout extends StatefulWidget {
 
 class _MobileCheckoutState extends State<MobileCheckout> {
   bool isLoading = false;
+  // Future<void> sendEmail(String email, String appointmentDetails) async {
+  //   final smtpServer = gmail(
+  //       'fwdkaleem@gmail.com', '21121993Fawad'); // Use your email credentials
+  //   final message = Message()
+  //     ..from = Address('your_email@gmail.com', 'Your App Name')
+  //     ..recipients.add(email) // Email of the user
+  //     ..subject = 'Appointment Confirmation'
+  //     ..text = appointmentDetails; // Email content with appointment details
+
+  //   try {
+  //     final sendReport = await send(message, smtpServer);
+  //     print('Message sent: ' + sendReport.toString());
+  //   } on MailerException catch (e) {
+  //     print('Message not sent. ${e.toString()}');
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -291,8 +310,10 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                         ),
                       ),
                       isLoading
-                          ? CircularProgressIndicator(
-                              color: mainColor,
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: mainColor,
+                              ),
                             )
                           : Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -325,6 +346,19 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                                           .instance.currentUser!.uid,
                                       "appointmentId": widget.appointmentId,
                                     });
+                                    //             String appointmentDetails = '''
+                                    // Dear ${widget.patientName},
+
+                                    // Your appointment with Dr. ${widget.doctorName} on ${widget.appointmentDate} at ${widget.appointmentStartTime} is confirmed.
+
+                                    // Service: ${widget.serviceName}
+                                    // Price: ${widget.price}
+
+                                    // Thank you for using our services.
+                                    // ''';
+
+                                    //             await sendEmail(widget.patientContact,
+                                    //                 appointmentDetails);
                                     setState(() {
                                       isLoading = false;
                                     });
