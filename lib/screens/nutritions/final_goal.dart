@@ -1,3 +1,4 @@
+import 'package:estheva_web/screens/nutritions/final_result.dart';
 import 'package:flutter/material.dart';
 
 class FinalGoal extends StatefulWidget {
@@ -81,6 +82,8 @@ class _FinalGoalState extends State<FinalGoal> {
             padding: const EdgeInsets.only(bottom: 50.0),
             child: ElevatedButton(
               onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (builder) => FinalResult()));
                 // Handle "Next" button action here
               },
               style: ElevatedButton.styleFrom(

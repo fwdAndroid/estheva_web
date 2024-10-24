@@ -1,12 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/screens/details/mobile_checkout.dart';
+import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:estheva_web/uitls/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:uuid/uuid.dart';
 
 class ProductBooking extends StatefulWidget {
@@ -20,38 +21,38 @@ class ProductBooking extends StatefulWidget {
   final serviceName;
   final serviceSubCategory;
   final time;
+
   ProductBooking(
-      {super.key,
+      {required this.serviceName,
+      required this.photoURL,
       required this.description,
       required this.discount,
       required this.time,
-      required this.photoURL,
       required this.price,
       required this.type,
       required this.serviceCategory,
-      required this.serviceName,
       required this.serviceSubCategory,
       required this.uuid});
 
   @override
-  State<ProductBooking> createState() => _ProductBookingState();
+  _ProductBookingState createState() => _ProductBookingState();
 }
 
 class _ProductBookingState extends State<ProductBooking> {
-  TextEditingController _dateController = TextEditingController();
-  TextEditingController _timeController = TextEditingController();
-  TextEditingController _contactControlelr = TextEditingController();
+  TextEditingController _contactController = TextEditingController();
   TextEditingController _paitientController = TextEditingController();
   bool isLoading = false;
-  String? selectedDoctor; // For storing selected doctor
-  List<String> doctorList = []; // For storing doctors list
+  String? selectedDoctor;
+  List<String> doctorList = [];
   String _selectedGender = 'male';
+  DateTime? _selectedValue;
+  String? _selectedTime;
 
   @override
   void initState() {
     super.initState();
-    fetchUsersDetails();
-    fetchDoctors(); // Fetch doctors when the screen initializes
+    fetchUserDetails();
+    fetchDoctors();
   }
 
   Future<void> fetchDoctors() async {
@@ -68,12 +69,10 @@ class _ProductBookingState extends State<ProductBooking> {
       });
     } catch (e) {
       print('Error fetching doctors: $e');
-      // Handle the error
     }
   }
 
-  void fetchUsersDetails() async {
-    // Fetch data from Firestore
+  void fetchUserDetails() async {
     DocumentSnapshot doc = await FirebaseFirestore.instance
         .collection('users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
@@ -81,11 +80,9 @@ class _ProductBookingState extends State<ProductBooking> {
 
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
-    // Update the controllers with the fetched data
     setState(() {
       _paitientController.text = data['fullName'];
-      _contactControlelr.text =
-          (data['contactNumber']); // Convert int to string
+      _contactController.text = data['contactNumber'];
     });
   }
 
@@ -93,24 +90,16 @@ class _ProductBookingState extends State<ProductBooking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: mainColor, // Change to the yellow color in the design
+        backgroundColor: mainColor,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
         centerTitle: true,
         title: Image.asset(
-          'assets/logos.png', // Replace with your logo asset path
+          'assets/logos.png',
           height: 30,
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search, color: Colors.white),
-            onPressed: () {
-              // Handle search button action
-            },
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -224,76 +213,26 @@ class _ProductBookingState extends State<ProductBooking> {
                         fontWeight: FontWeight.bold,
                         color: appColor),
                   ),
-                  TextFormInputField(
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        lastDate: DateTime(3000),
-                        firstDate: DateTime(2015),
-                        initialDate: DateTime.now(),
-                      );
-                      _dateController.text =
-                          DateFormat('yyyy-MM-dd').format(pickedDate!);
-                    },
-                    preFixICon: Icons.date_range,
-                    controller: _dateController,
-                    hintText: "Appointment Date",
-                    textInputType: TextInputType.name,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Start Appointment Time",
-                    style: TextStyle(
-                        fontFamily: 'Futura',
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: appColor),
-                  ),
-                  TextFormInputField(
-                    onTap: () async {
-                      final TimeOfDay? pickedTime = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-                        builder: (BuildContext context, Widget? child) {
-                          return MediaQuery(
-                            data: MediaQuery.of(context)
-                                .copyWith(alwaysUse24HourFormat: false),
-                            child: child!,
-                          );
-                        },
-                      );
-
-                      if (pickedTime != null) {
-                        final now = DateTime.now();
-                        final selectedTime = DateTime(
-                          now.year,
-                          now.month,
-                          now.day,
-                          pickedTime.hour,
-                          pickedTime.minute,
-                        );
-
+                  SizedBox(
+                    height: 100,
+                    child: DatePicker(
+                      DateTime.now(),
+                      initialSelectedDate: DateTime.now(),
+                      selectionColor: Colors.black,
+                      selectedTextColor: Colors.white,
+                      onDateChange: (date) {
+                        // New date selected
                         setState(() {
-                          _timeController.text =
-                              DateFormat('hh:mm a').format(selectedTime);
+                          _selectedValue = date;
+                          print(_selectedValue.toString());
                         });
-                      }
-                    },
-                    preFixICon: Icons.time_to_leave,
-                    controller: _timeController,
-                    hintText: "Appointment Time",
-                    textInputType: TextInputType.name,
+                      },
+                    ),
                   ),
                 ],
               ),
             ),
+            if (_selectedValue != null) _buildTimeDropdown(),
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
               child: Column(
@@ -315,7 +254,7 @@ class _ProductBookingState extends State<ProductBooking> {
                         ),
                         TextFormInputField(
                           preFixICon: Icons.numbers,
-                          controller: _contactControlelr,
+                          controller: _contactController,
                           hintText: "Contact Number",
                           textInputType: TextInputType.number,
                         ),
@@ -367,17 +306,14 @@ class _ProductBookingState extends State<ProductBooking> {
                           onTap: () async {
                             if (_paitientController.text.isEmpty) {
                               showMessageBar("User Name is required", context);
-                            } else if (_dateController.text.isEmpty) {
-                              showMessageBar(
-                                  "Appointment Date is Required", context);
-                            } else if (_timeController.text.isEmpty) {
-                              showMessageBar(
-                                  "Appointment Time is Required", context);
                             } else {
                               setState(() {
                                 isLoading = true;
                               });
                               var uuid = Uuid().v4();
+                              print(
+                                _selectedValue.toString(),
+                              );
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -390,19 +326,18 @@ class _ProductBookingState extends State<ProductBooking> {
                                             patientUid: FirebaseAuth
                                                 .instance.currentUser!.uid,
                                             doctorName: selectedDoctor,
-                                            appointmentStartTime:
-                                                _timeController.text.trim(),
+                                            appointmentStartTime: _selectedTime,
                                             appointmentServiceTime: widget.time,
                                             appointmentId: uuid,
                                             patientName:
                                                 _paitientController.text.trim(),
                                             serviceName: widget.serviceName,
                                             patientContact:
-                                                _contactControlelr.text.trim(),
+                                                _contactController.text.trim(),
                                             serviceCategory:
                                                 widget.serviceCategory,
                                             appointmentDate:
-                                                _dateController.text.trim(),
+                                                _selectedValue.toString(),
                                           )));
 
                               setState(() {
@@ -417,6 +352,43 @@ class _ProductBookingState extends State<ProductBooking> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTimeDropdown() {
+    List<String> timeSlots =
+        List.generate(24, (index) => '${index.toString().padLeft(2, '0')}:00');
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8, bottom: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Select Appointment Time",
+            style: TextStyle(
+                fontFamily: 'Futura',
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: appColor),
+          ),
+          DropdownButtonFormField<String>(
+            value: _selectedTime,
+            hint: Text("Choose a time"),
+            onChanged: (String? newValue) {
+              setState(() {
+                _selectedTime = newValue;
+              });
+            },
+            items: timeSlots.map<DropdownMenuItem<String>>((String time) {
+              return DropdownMenuItem<String>(
+                value: time,
+                child: Text(time),
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
   }

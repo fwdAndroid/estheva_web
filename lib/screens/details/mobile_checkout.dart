@@ -6,6 +6,7 @@ import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
@@ -48,6 +49,19 @@ class MobileCheckout extends StatefulWidget {
 
 class _MobileCheckoutState extends State<MobileCheckout> {
   bool isLoading = false;
+
+  String formatAppointmentDate(String dateStr) {
+    try {
+      // Parse the date string
+      DateTime parsedDate = DateTime.parse(dateStr);
+      // Format the date to the desired format: "23 October 2023"
+      String formattedDate = DateFormat('dd MMMM yyyy').format(parsedDate);
+      return formattedDate;
+    } catch (e) {
+      // In case of an error, return the original string
+      return dateStr;
+    }
+  }
   // Future<void> sendEmail(String email, String appointmentDetails) async {
   //   final smtpServer = gmail(
   //       'fwdkaleem@gmail.com', '21121993Fawad'); // Use your email credentials
@@ -125,8 +139,7 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                               ),
                             ),
                             Text(
-                              widget
-                                  .appointmentDate, // Display the formatted date
+                              formatAppointmentDate(widget.appointmentDate),
                               style: TextStyle(
                                 fontFamily: 'Futura',
                                 color: textColor,
