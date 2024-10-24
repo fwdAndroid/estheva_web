@@ -344,9 +344,11 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                                       "patientName": widget.patientName,
                                       "doctorName": widget.doctorName,
                                       "patientContact": widget.patientContact,
-                                      "appointmentDate": widget.appointmentDate,
-                                      "appointmentStartTime":
-                                          widget.appointmentStartTime,
+                                      "appointmentDate":
+                                          widget.appointmentDate.toString(),
+                                      "appointmentStartTime": widget
+                                          .appointmentStartTime
+                                          .toString(),
                                       "appointmentServiceTime":
                                           widget.appointmentServiceTime,
                                       "serviceName": widget.serviceName,

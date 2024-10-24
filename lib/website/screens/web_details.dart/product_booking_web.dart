@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 
 class ProductBookingWeb extends StatefulWidget {
   final description;
@@ -118,10 +119,11 @@ class FormSelection extends StatefulWidget {
 }
 
 class _FormSelectionState extends State<FormSelection> {
-  TextEditingController _dateController = TextEditingController();
-  TextEditingController _timeController = TextEditingController();
   TextEditingController _contactControlelr = TextEditingController();
   TextEditingController _paitientController = TextEditingController();
+
+  DateTime? _selectedValue;
+  String? _selectedTime;
   bool isLoading = false;
   String? selectedDoctor; // For storing selected doctor
   List<String> doctorList = []; // For storing doctors list
@@ -299,76 +301,26 @@ class _FormSelectionState extends State<FormSelection> {
                         fontWeight: FontWeight.bold,
                         color: appColor),
                   ),
-                  TextFormInputField(
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        lastDate: DateTime(3000),
-                        firstDate: DateTime(2015),
-                        initialDate: DateTime.now(),
-                      );
-                      _dateController.text =
-                          DateFormat('yyyy-MM-dd').format(pickedDate!);
-                    },
-                    preFixICon: Icons.date_range,
-                    controller: _dateController,
-                    hintText: "Appointment Date",
-                    textInputType: TextInputType.name,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Start Appointment Time",
-                    style: TextStyle(
-                        fontFamily: 'Futura',
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: appColor),
-                  ),
-                  TextFormInputField(
-                    onTap: () async {
-                      final TimeOfDay? pickedTime = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-                        builder: (BuildContext context, Widget? child) {
-                          return MediaQuery(
-                            data: MediaQuery.of(context)
-                                .copyWith(alwaysUse24HourFormat: false),
-                            child: child!,
-                          );
-                        },
-                      );
-
-                      if (pickedTime != null) {
-                        final now = DateTime.now();
-                        final selectedTime = DateTime(
-                          now.year,
-                          now.month,
-                          now.day,
-                          pickedTime.hour,
-                          pickedTime.minute,
-                        );
-
+                  SizedBox(
+                    height: 100,
+                    child: DatePicker(
+                      DateTime.now(),
+                      initialSelectedDate: DateTime.now(),
+                      selectionColor: Colors.black,
+                      selectedTextColor: Colors.white,
+                      onDateChange: (date) {
+                        // New date selected
                         setState(() {
-                          _timeController.text =
-                              DateFormat('hh:mm a').format(selectedTime);
+                          _selectedValue = date;
+                          print(_selectedValue.toString());
                         });
-                      }
-                    },
-                    preFixICon: Icons.time_to_leave,
-                    controller: _timeController,
-                    hintText: "Appointment Time",
-                    textInputType: TextInputType.name,
+                      },
+                    ),
                   ),
                 ],
               ),
             ),
+            if (_selectedValue != null) _buildTimeDropdown(),
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
               child: Column(
@@ -437,12 +389,6 @@ class _FormSelectionState extends State<FormSelection> {
                           onTap: () async {
                             if (_paitientController.text.isEmpty) {
                               showMessageBar("User Name is required", context);
-                            } else if (_dateController.text.isEmpty) {
-                              showMessageBar(
-                                  "Appointment Date is Required", context);
-                            } else if (_timeController.text.isEmpty) {
-                              showMessageBar(
-                                  "Appointment Time is Required", context);
                             } else {
                               setState(() {
                                 isLoading = true;
@@ -460,8 +406,7 @@ class _FormSelectionState extends State<FormSelection> {
                                             patientUid: FirebaseAuth
                                                 .instance.currentUser!.uid,
                                             doctorName: selectedDoctor,
-                                            appointmentStartTime:
-                                                _timeController.text.trim(),
+                                            appointmentStartTime: _selectedTime,
                                             appointmentServiceTime:
                                                 widget.appointmentTime,
                                             appointmentId: uuid,
@@ -473,7 +418,7 @@ class _FormSelectionState extends State<FormSelection> {
                                             serviceCategory:
                                                 widget.serviceCategory,
                                             appointmentDate:
-                                                _dateController.text.trim(),
+                                                _selectedValue.toString,
                                           )));
 
                               setState(() {
@@ -488,6 +433,43 @@ class _FormSelectionState extends State<FormSelection> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTimeDropdown() {
+    List<String> timeSlots =
+        List.generate(24, (index) => '${index.toString().padLeft(2, '0')}:00');
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8, bottom: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Select Appointment Time",
+            style: TextStyle(
+                fontFamily: 'Futura',
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: appColor),
+          ),
+          DropdownButtonFormField<String>(
+            value: _selectedTime,
+            hint: Text("Choose a time"),
+            onChanged: (String? newValue) {
+              setState(() {
+                _selectedTime = newValue;
+              });
+            },
+            items: timeSlots.map<DropdownMenuItem<String>>((String time) {
+              return DropdownMenuItem<String>(
+                value: time,
+                child: Text(time),
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
   }

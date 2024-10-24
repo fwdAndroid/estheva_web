@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 class CheckOutPageWeb extends StatefulWidget {
   final appointmentDate;
@@ -144,6 +145,19 @@ class FormSelection extends StatefulWidget {
 
 class _FormSelectionState extends State<FormSelection> {
   bool isLoading = false;
+  String formatAppointmentDate(String dateStr) {
+    try {
+      // Parse the date string
+      DateTime parsedDate = DateTime.parse(dateStr);
+      // Format the date to the desired format: "23 October 2023"
+      String formattedDate = DateFormat('dd MMMM yyyy').format(parsedDate);
+      return formattedDate;
+    } catch (e) {
+      // In case of an error, return the original string
+      return dateStr;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -190,8 +204,7 @@ class _FormSelectionState extends State<FormSelection> {
                               ),
                             ),
                             Text(
-                              widget
-                                  .appointmentDate, // Display the formatted date
+                              formatAppointmentDate(widget.appointmentDate),
                               style: TextStyle(
                                 fontFamily: 'Futura',
                                 color: textColor,
@@ -394,9 +407,11 @@ class _FormSelectionState extends State<FormSelection> {
                                       "patientName": widget.patientName,
                                       "doctorName": widget.doctorName,
                                       "patientContact": widget.patientContact,
-                                      "appointmentDate": widget.appointmentDate,
-                                      "appointmentStartTime":
-                                          widget.appointmentStartTime,
+                                      "appointmentDate":
+                                          widget.appointmentDate.toString(),
+                                      "appointmentStartTime": widget
+                                          .appointmentStartTime
+                                          .toString(),
                                       "appointmentServiceTime":
                                           widget.appointmentServiceTime,
                                       "serviceName": widget.serviceName,
