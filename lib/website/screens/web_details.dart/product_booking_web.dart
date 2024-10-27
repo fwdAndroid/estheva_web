@@ -409,7 +409,7 @@ class _FormSelectionState extends State<FormSelection> {
                                             serviceDescription:
                                                 widget.description,
                                             status: "confirm",
-                                            price: int.parse(widget.price),
+                                            price: widget.price,
                                             patientUid: FirebaseAuth
                                                 .instance.currentUser!.uid,
                                             doctorName: selectedDoctor,

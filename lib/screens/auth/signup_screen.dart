@@ -180,10 +180,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     obscureText: passwordVisible,
                     controller: _passwordController,
-                    style: TextStyle(
-                      color: black,
-                      fontFamily: 'Futura',
-                    ),
+                    style: TextStyle(color: black),
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
                           icon: Icon(passwordVisible
@@ -205,7 +202,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             borderSide: BorderSide(color: borderColor)),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: borderColor)),
-                        hintText: "Create Password",
+                        hintText: "Enter Password",
                         hintStyle: TextStyle(
                             fontFamily: 'Futura', color: black, fontSize: 12)),
                   ),

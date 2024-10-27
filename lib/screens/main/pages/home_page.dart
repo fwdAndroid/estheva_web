@@ -138,9 +138,9 @@ class _HomePageState extends State<HomePage> {
                                       MaterialPageRoute(
                                           builder: (builder) => OfferDetail(
                                                 offerDetail:
-                                                    item['offerDetail']!,
-                                                uuid: item['uuid']!,
-                                                photos: item['photos']!,
+                                                    item['offerDetail'],
+                                                uuid: item['uuid'],
+                                                photos: item['photos'],
                                               )));
                                 },
                                 child: Container(
