@@ -129,7 +129,7 @@ class _ServiceAppointCompleteDetailState
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: 600,
+                height: 750,
                 width: 360,
                 decoration: BoxDecoration(
                   color: white,
@@ -198,6 +198,7 @@ class _ServiceAppointCompleteDetailState
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0, left: 8),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "Service Description:     ", // Display the formatted date

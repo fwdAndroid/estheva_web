@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:estheva_web/email/email.dart';
-import 'package:estheva_web/email/send_email.dart';
+
 import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/screens/tabs/service_appointment_details.dart';
 import 'package:estheva_web/uitls/colors.dart';
@@ -10,7 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
+import 'package:mailer/smtp_server/gmail.dart';
 
 class MobileCheckout extends StatefulWidget {
   final appointmentDate;
@@ -27,23 +26,24 @@ class MobileCheckout extends StatefulWidget {
   final serviceName;
   final status;
   final gender;
-  MobileCheckout({
-    super.key,
-    required this.appointmentDate,
-    required this.appointmentServiceTime,
-    required this.appointmentId,
-    required this.appointmentStartTime,
-    required this.doctorName,
-    required this.patientContact,
-    required this.patientName,
-    required this.patientUid,
-    required this.price,
-    required this.serviceCategory,
-    required this.gender,
-    required this.serviceDescription,
-    required this.serviceName,
-    required this.status,
-  });
+  final userEmail;
+  MobileCheckout(
+      {super.key,
+      required this.appointmentDate,
+      required this.appointmentServiceTime,
+      required this.appointmentId,
+      required this.appointmentStartTime,
+      required this.doctorName,
+      required this.patientContact,
+      required this.patientName,
+      required this.patientUid,
+      required this.price,
+      required this.serviceCategory,
+      required this.gender,
+      required this.serviceDescription,
+      required this.serviceName,
+      required this.status,
+      required this.userEmail});
 
   @override
   State<MobileCheckout> createState() => _MobileCheckoutState();
@@ -64,27 +64,12 @@ class _MobileCheckoutState extends State<MobileCheckout> {
       return dateStr;
     }
   }
-  // Future<void> sendEmail(String email, String appointmentDetails) async {
-  //   final smtpServer = gmail(
-  //       'fwdkaleem@gmail.com', '21121993Fawad'); // Use your email credentials
-  //   final message = Message()
-  //     ..from = Address('your_email@gmail.com', 'Your App Name')
-  //     ..recipients.add(email) // Email of the user
-  //     ..subject = 'Appointment Confirmation'
-  //     ..text = appointmentDetails; // Email content with appointment details
-
-  //   try {
-  //     final sendReport = await send(message, smtpServer);
-  //     print('Message sent: ' + sendReport.toString());
-  //   } on MailerException catch (e) {
-  //     print('Message not sent. ${e.toString()}');
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: white),
         actions: [
           TextButton(
               onPressed: () {
@@ -363,6 +348,7 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                                           .instance.currentUser!.uid,
                                       "appointmentId": widget.appointmentId,
                                     });
+                                    await sendConfirmationEmail();
 
                                     setState(() {
                                       isLoading = false;
@@ -375,16 +361,6 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                                         MaterialPageRoute(
                                             builder: (builder) =>
                                                 ServiceAppointmentDetails()));
-                                    try {
-                                      await EmailSendClass.sendEmail(
-                                        body:
-                                            'Dear Estheva Polyclinic,\n There is a new appointment available on your dashboard, Hurry up and check it!\n\n  Job ID: $widget,appointmentId\n\nCustomer Full Name: ${widget.patientName}\n\nCustomer number: ${widget.patientContact}\n\nService Description:\n$widget.serviceDescription\nAppointment Date: $widget.appointmentDate.toString(),\n\nExpected Time: $widget.appointmentServiceTime',
-                                        email: "fwdkaleem@gmail.com",
-                                        subject: "New Order!",
-                                      );
-                                    } catch (e) {
-                                      debugPrint("sendEmail failed ${e}");
-                                    }
                                   }),
                             )
                     ],
@@ -396,5 +372,42 @@ class _MobileCheckoutState extends State<MobileCheckout> {
         ),
       ),
     );
+  }
+
+  Future<void> sendConfirmationEmail() async {
+    final smtpServer = gmail('fwdKaleem@gmail.com', '21121993Fawad');
+    final senderEmail = 'fwdKaleem@gmail.com';
+    final clinicName = 'Estheva Clinic';
+    final recipientEmail = widget.userEmail;
+    final serviceName = widget.serviceName;
+    final patientName = widget.patientName;
+    final appointmentDate = formatAppointmentDate(widget.appointmentDate);
+    final appointmentStartTime = widget.appointmentStartTime;
+    final doctorName = widget.doctorName;
+    final serviceCategory = widget.serviceCategory;
+    final serviceDescription = widget.serviceDescription;
+    final price = widget.price;
+
+    final message = Message()
+      ..from = Address(senderEmail, clinicName)
+      ..recipients.add(recipientEmail)
+      ..subject = 'Appointment Confirmation - $serviceName'
+      ..text = 'Hello $patientName,\n\n'
+          'Your appointment for $serviceName is confirmed on $appointmentDate at $appointmentStartTime.toString().\n\n'
+          'Details:\n'
+          'Doctor: $doctorName\n'
+          'Service Category: $serviceCategory\n'
+          'Description: $serviceDescription\n'
+          'Total Price: \$${price.toString}\n\n'
+          'Thank you for choosing $clinicName!\n\n'
+          'Best Regards,\n'
+          '$clinicName Team';
+
+    try {
+      await send(message, smtpServer);
+      print('Confirmation email sent successfully');
+    } catch (e) {
+      print('Error occurred while sending email: $e');
+    }
   }
 }

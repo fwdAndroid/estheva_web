@@ -6,7 +6,6 @@ import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:uuid/uuid.dart';
 
@@ -102,150 +101,44 @@ class _ProductBookingState extends State<ProductBooking> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.network(
-              widget.photoURL,
-              height: 200,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.serviceName,
-                style: TextStyle(
-                  fontFamily: 'Futura',
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        child: StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection("users")
+                .doc(FirebaseAuth.instance.currentUser!.uid)
+                .snapshots(),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (!snapshot.hasData || snapshot.data == null) {
+                return Center(child: Text('No data available'));
+              }
+              var snap = snapshot.data;
+              return Column(
                 children: [
-                  Text(
-                    "Name",
-                    style: TextStyle(
+                  Image.network(
+                    widget.photoURL,
+                    height: 200,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.high,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      widget.serviceName,
+                      style: TextStyle(
                         fontFamily: 'Futura',
-                        fontSize: 14,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: appColor),
-                  ),
-                  TextFormInputField(
-                    preFixICon: Icons.person,
-                    controller: _paitientController,
-                    hintText: "Name",
-                    textInputType: TextInputType.name,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Gender",
-                    style: TextStyle(
-                        fontFamily: 'Futura',
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: appColor),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment
-                        .start, // Aligning the radio buttons to the center
-                    children: <Widget>[
-                      // Male Radio Button
-                      Radio<String>(
-                        value: 'Male',
-                        groupValue: _selectedGender,
-                        onChanged: (String? value) {
-                          setState(() {
-                            _selectedGender = value!;
-                          });
-                        },
+                        color: Colors.black,
                       ),
-                      Text(
-                        "Male",
-                        style: TextStyle(
-                          fontFamily: 'Futura',
-                        ),
-                      ),
-
-                      // Female Radio Button
-                      Radio<String>(
-                        value: 'Female',
-                        groupValue: _selectedGender,
-                        onChanged: (String? value) {
-                          setState(() {
-                            _selectedGender = value!;
-                          });
-                        },
-                      ),
-                      Text(
-                        "Female",
-                        style: TextStyle(
-                          fontFamily: 'Futura',
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Select Appointment Date",
-                    style: TextStyle(
-                        fontFamily: 'Futura',
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: appColor),
-                  ),
-                  SizedBox(
-                    height: 100,
-                    child: DatePicker(
-                      DateTime.now(),
-                      initialSelectedDate: DateTime.now(),
-                      selectionColor: Colors.black,
-                      selectedTextColor: Colors.white,
-                      onDateChange: (date) {
-                        // New date selected
-                        setState(() {
-                          _selectedValue = date;
-                          print(_selectedValue.toString());
-                        });
-                      },
                     ),
                   ),
-                ],
-              ),
-            ),
-            if (_selectedValue != null) _buildTimeDropdown(),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
+                    padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Contact Number",
+                          "Name",
                           style: TextStyle(
                               fontFamily: 'Futura',
                               fontSize: 14,
@@ -253,106 +146,234 @@ class _ProductBookingState extends State<ProductBooking> {
                               color: appColor),
                         ),
                         TextFormInputField(
-                          preFixICon: Icons.numbers,
-                          controller: _contactController,
-                          hintText: "Contact Number",
-                          textInputType: TextInputType.number,
+                          preFixICon: Icons.person,
+                          controller: _paitientController,
+                          hintText: "Name",
+                          textInputType: TextInputType.name,
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Select Doctor",
+                          "Gender",
                           style: TextStyle(
                               fontFamily: 'Futura',
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: appColor),
                         ),
-                        DropdownButtonFormField<String>(
-                          value: selectedDoctor,
-                          hint: Text(
-                            "Choose a doctor",
-                            style: TextStyle(
-                              fontFamily: 'Futura',
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment
+                              .start, // Aligning the radio buttons to the center
+                          children: <Widget>[
+                            // Male Radio Button
+                            Radio<String>(
+                              value: 'Male',
+                              groupValue: _selectedGender,
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _selectedGender = value!;
+                                });
+                              },
                             ),
-                          ),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedDoctor = newValue;
-                            });
-                          },
-                          items: doctorList
-                              .map<DropdownMenuItem<String>>((String doctor) {
-                            return DropdownMenuItem<String>(
-                              value: doctor,
-                              child: Text(doctor),
-                            );
-                          }).toList(),
+                            Text(
+                              "Male",
+                              style: TextStyle(
+                                fontFamily: 'Futura',
+                              ),
+                            ),
+
+                            // Female Radio Button
+                            Radio<String>(
+                              value: 'Female',
+                              groupValue: _selectedGender,
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _selectedGender = value!;
+                                });
+                              },
+                            ),
+                            Text(
+                              "Female",
+                              style: TextStyle(
+                                fontFamily: 'Futura',
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  isLoading
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : SaveButton(
-                          onTap: () async {
-                            if (_paitientController.text.isEmpty) {
-                              showMessageBar("User Name is required", context);
-                            } else if (_selectedTime!.isEmpty) {
-                              showMessageBar("Time is Not Selected", context);
-                            } else {
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Select Appointment Date",
+                          style: TextStyle(
+                              fontFamily: 'Futura',
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: appColor),
+                        ),
+                        SizedBox(
+                          height: 100,
+                          child: DatePicker(
+                            DateTime.now(),
+                            initialSelectedDate: DateTime.now(),
+                            selectionColor: Colors.black,
+                            selectedTextColor: Colors.white,
+                            onDateChange: (date) {
+                              // New date selected
                               setState(() {
-                                isLoading = true;
+                                _selectedValue = date;
+                                print(_selectedValue.toString());
                               });
-                              var uuid = Uuid().v4();
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (_selectedValue != null) _buildTimeDropdown(),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8.0, right: 8, bottom: 8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Contact Number",
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: appColor),
+                              ),
+                              TextFormInputField(
+                                preFixICon: Icons.numbers,
+                                controller: _contactController,
+                                hintText: "Contact Number",
+                                textInputType: TextInputType.number,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Select Doctor",
+                                style: TextStyle(
+                                    fontFamily: 'Futura',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: appColor),
+                              ),
+                              DropdownButtonFormField<String>(
+                                value: selectedDoctor,
+                                hint: Text(
+                                  "Choose a doctor",
+                                  style: TextStyle(
+                                    fontFamily: 'Futura',
+                                  ),
+                                ),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedDoctor = newValue;
+                                  });
+                                },
+                                items: doctorList.map<DropdownMenuItem<String>>(
+                                    (String doctor) {
+                                  return DropdownMenuItem<String>(
+                                    value: doctor,
+                                    child: Text(doctor),
+                                  );
+                                }).toList(),
+                              ),
+                            ],
+                          ),
+                        ),
+                        isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : SaveButton(
+                                onTap: () async {
+                                  if (_paitientController.text.isEmpty) {
+                                    showMessageBar(
+                                        "User Name is required", context);
+                                  } else if (_selectedTime!.isEmpty) {
+                                    showMessageBar(
+                                        "Time is Not Selected", context);
+                                  } else {
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+                                    var uuid = Uuid().v4();
 
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (builder) => MobileCheckout(
-                                            gender: _selectedGender,
-                                            serviceDescription:
-                                                widget.description,
-                                            status: "confirm",
-                                            price: widget.price,
-                                            patientUid: FirebaseAuth
-                                                .instance.currentUser!.uid,
-                                            doctorName: selectedDoctor,
-                                            appointmentStartTime:
-                                                _selectedTime.toString(),
-                                            appointmentServiceTime: widget.time,
-                                            appointmentId: uuid,
-                                            patientName:
-                                                _paitientController.text.trim(),
-                                            serviceName: widget.serviceName,
-                                            patientContact:
-                                                _contactController.text.trim(),
-                                            serviceCategory:
-                                                widget.serviceCategory,
-                                            appointmentDate:
-                                                _selectedValue.toString(),
-                                          )));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (builder) =>
+                                                MobileCheckout(
+                                                  userEmail: snap['email'],
+                                                  gender: _selectedGender,
+                                                  serviceDescription:
+                                                      widget.description,
+                                                  status: "confirm",
+                                                  price: widget.price,
+                                                  patientUid: FirebaseAuth
+                                                      .instance
+                                                      .currentUser!
+                                                      .uid,
+                                                  doctorName: selectedDoctor,
+                                                  appointmentStartTime:
+                                                      _selectedTime.toString(),
+                                                  appointmentServiceTime:
+                                                      widget.time,
+                                                  appointmentId: uuid,
+                                                  patientName:
+                                                      _paitientController.text
+                                                          .trim(),
+                                                  serviceName:
+                                                      widget.serviceName,
+                                                  patientContact:
+                                                      _contactController.text
+                                                          .trim(),
+                                                  serviceCategory:
+                                                      widget.serviceCategory,
+                                                  appointmentDate:
+                                                      _selectedValue.toString(),
+                                                )));
 
-                              setState(() {
-                                isLoading = false;
-                              });
-                              // showMessageBar("Service Booked", context);
-                            }
-                          },
-                          title: "Book Now"),
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                    // showMessageBar("Service Booked", context);
+                                  }
+                                },
+                                title: "Book Now"),
+                      ],
+                    ),
+                  ),
                 ],
-              ),
-            ),
-          ],
-        ),
+              );
+            }),
       ),
     );
   }
