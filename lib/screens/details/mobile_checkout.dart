@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estheva_web/email/email.dart';
+import 'package:estheva_web/email/send_email.dart';
 import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/screens/tabs/service_appointment_details.dart';
 import 'package:estheva_web/uitls/colors.dart';
@@ -162,7 +164,7 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                               ),
                             ),
                             Text(
-                              widget.appointmentStartTime,
+                              widget.appointmentStartTime.toString(),
                               style: TextStyle(
                                 fontFamily: 'Futura',
                                 color: Colors.black,
@@ -361,29 +363,28 @@ class _MobileCheckoutState extends State<MobileCheckout> {
                                           .instance.currentUser!.uid,
                                       "appointmentId": widget.appointmentId,
                                     });
-                                    //             String appointmentDetails = '''
-                                    // Dear ${widget.patientName},
 
-                                    // Your appointment with Dr. ${widget.doctorName} on ${widget.appointmentDate} at ${widget.appointmentStartTime} is confirmed.
-
-                                    // Service: ${widget.serviceName}
-                                    // Price: ${widget.price}
-
-                                    // Thank you for using our services.
-                                    // ''';
-
-                                    //             await sendEmail(widget.patientContact,
-                                    //                 appointmentDetails);
                                     setState(() {
                                       isLoading = false;
                                     });
                                     showMessageBar(
                                         "Booking is Confirmed", context);
+
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (builder) =>
                                                 ServiceAppointmentDetails()));
+                                    try {
+                                      await EmailSendClass.sendEmail(
+                                        body:
+                                            'Dear Estheva Polyclinic,\n There is a new appointment available on your dashboard, Hurry up and check it!\n\n  Job ID: $widget,appointmentId\n\nCustomer Full Name: ${widget.patientName}\n\nCustomer number: ${widget.patientContact}\n\nService Description:\n$widget.serviceDescription\nAppointment Date: $widget.appointmentDate.toString(),\n\nExpected Time: $widget.appointmentServiceTime',
+                                        email: "fwdkaleem@gmail.com",
+                                        subject: "New Order!",
+                                      );
+                                    } catch (e) {
+                                      debugPrint("sendEmail failed ${e}");
+                                    }
                                   }),
                             )
                     ],

@@ -306,14 +306,14 @@ class _ProductBookingState extends State<ProductBooking> {
                           onTap: () async {
                             if (_paitientController.text.isEmpty) {
                               showMessageBar("User Name is required", context);
+                            } else if (_selectedTime!.isEmpty) {
+                              showMessageBar("Time is Not Selected", context);
                             } else {
                               setState(() {
                                 isLoading = true;
                               });
                               var uuid = Uuid().v4();
-                              print(
-                                _selectedValue.toString(),
-                              );
+
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -322,11 +322,12 @@ class _ProductBookingState extends State<ProductBooking> {
                                             serviceDescription:
                                                 widget.description,
                                             status: "confirm",
-                                            price: int.parse(widget.price),
+                                            price: widget.price,
                                             patientUid: FirebaseAuth
                                                 .instance.currentUser!.uid,
                                             doctorName: selectedDoctor,
-                                            appointmentStartTime: _selectedTime,
+                                            appointmentStartTime:
+                                                _selectedTime.toString(),
                                             appointmentServiceTime: widget.time,
                                             appointmentId: uuid,
                                             patientName:

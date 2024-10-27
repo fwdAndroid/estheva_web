@@ -7,7 +7,7 @@ import 'package:estheva_web/widgets/save_button.dart';
 import 'package:estheva_web/widgets/text_form_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/gestures.dart';
 import 'package:uuid/uuid.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 
@@ -141,7 +141,6 @@ class _FormSelectionState extends State<FormSelection> {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('doctors')
           .where('doctorCategory', isEqualTo: widget.serviceName)
-          .where("status", isEqualTo: "Free")
           .get();
 
       setState(() {
@@ -303,18 +302,26 @@ class _FormSelectionState extends State<FormSelection> {
                   ),
                   SizedBox(
                     height: 100,
-                    child: DatePicker(
-                      DateTime.now(),
-                      initialSelectedDate: DateTime.now(),
-                      selectionColor: Colors.black,
-                      selectedTextColor: Colors.white,
-                      onDateChange: (date) {
-                        // New date selected
-                        setState(() {
-                          _selectedValue = date;
-                          print(_selectedValue.toString());
-                        });
-                      },
+                    child: ScrollConfiguration(
+                      behavior: ScrollConfiguration.of(context).copyWith(
+                        dragDevices: {
+                          PointerDeviceKind.touch,
+                          PointerDeviceKind.mouse,
+                        },
+                      ),
+                      child: DatePicker(
+                        DateTime.now(),
+                        initialSelectedDate: DateTime.now(),
+                        selectionColor: Colors.black,
+                        selectedTextColor: Colors.white,
+                        onDateChange: (date) {
+                          // New date selected
+                          setState(() {
+                            _selectedValue = date;
+                            print(_selectedValue.toString());
+                          });
+                        },
+                      ),
                     ),
                   ),
                 ],
