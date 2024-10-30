@@ -204,7 +204,8 @@ class _FormSelectionState extends State<FormSelection> {
                               ),
                             ),
                             Text(
-                              formatAppointmentDate(widget.appointmentDate),
+                              formatAppointmentDate(
+                                  widget.appointmentDate.toString()),
                               style: TextStyle(
                                 fontFamily: 'Futura',
                                 color: textColor,

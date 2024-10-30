@@ -9,9 +9,9 @@ class ProductDetailWeb extends StatefulWidget {
   final discount;
   final photoURL;
   final uuid;
+  final time;
   final price;
   final serviceCategory;
-  final time;
   final serviceName;
   final serviceSubCategory;
   ProductDetailWeb(
@@ -81,39 +81,6 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
                         ),
                       ),
                     ))),
-            // Padding(
-            //   padding: const EdgeInsets.all(16.0),
-            //   child: Container(
-            //     color: Colors.yellow.shade100,
-            //     padding: EdgeInsets.all(16),
-            //     child: Row(
-            //       children: [
-            //         Icon(Icons.discount, color: Colors.orange),
-            //         SizedBox(width: 8),
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children: [
-            //             Text(
-            //               widget.discount.toString(),
-            //               style: TextStyle(
-            //                 fontSize: 14,
-            //                 fontWeight: FontWeight.bold,
-            //                 color: Colors.black,
-            //               ),
-            //             ),
-            //             Text(
-            //               "Use code SUMMER20 | above AED 10",
-            //               style: TextStyle(
-            //                 fontSize: 12,
-            //                 color: Colors.black54,
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
             Container(
               color: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -139,17 +106,16 @@ class _ProductDetailWebState extends State<ProductDetailWeb> {
                           context,
                           MaterialPageRoute(
                               builder: (builder) => ProductBookingWeb(
-                                    appointmentTime: widget.time,
-                                    description: widget.description,
-                                    discount: widget.discount.toString(),
+                                    time: widget.time,
                                     price: widget.price.toString(),
-                                    serviceCategory:
-                                        widget.serviceCategory.toString(),
-                                    uuid: widget.uuid,
+                                    discount: widget.discount.toString(),
+                                    description: widget.description,
+                                    photoURL: widget.photoURL,
+                                    serviceCategory: widget.serviceCategory,
                                     serviceName: widget.serviceName,
                                     serviceSubCategory:
                                         widget.serviceSubCategory,
-                                    photoURL: widget.photoURL,
+                                    uuid: widget.uuid,
                                   )));
                     },
                     style: ElevatedButton.styleFrom(

@@ -125,9 +125,9 @@ class _MainDashboardWebState extends State<MainDashboardWeb> {
                                   //     MaterialPageRoute(
                                   //         builder: (builder) => WebOfferDetail(
                                   //               offerDetail:
-                                  //                   item['offerDetail']!,
-                                  //               uuid: item['uuid']!,
-                                  //               photos: item['photos']!,
+                                  //                   item['offerDetail'],
+                                  //               uuid: item['uuid'],
+                                  //               photos: item['photos'],
                                   //             )));
                                 },
                                 child: Container(

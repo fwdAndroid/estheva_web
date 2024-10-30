@@ -20,7 +20,7 @@ class ProductBookingWeb extends StatefulWidget {
   final serviceCategory;
   final serviceName;
   final serviceSubCategory;
-  final appointmentTime;
+  final time;
   const ProductBookingWeb(
       {super.key,
       required this.description,
@@ -29,7 +29,7 @@ class ProductBookingWeb extends StatefulWidget {
       required this.price,
       required this.serviceCategory,
       required this.serviceName,
-      required this.appointmentTime,
+      required this.time,
       required this.serviceSubCategory,
       required this.uuid});
 
@@ -51,7 +51,7 @@ class _ProductBookingWebState extends State<ProductBookingWeb> {
               children: [
                 FormSelection(
                   uuid: widget.uuid,
-                  appointmentTime: widget.appointmentTime,
+                  time: widget.time,
                   serviceSubCategory: widget.serviceSubCategory,
                   serviceName: widget.serviceName,
                   serviceCategory: widget.serviceCategory,
@@ -98,7 +98,7 @@ class FormSelection extends StatefulWidget {
   final photoURL;
   final uuid;
   final price;
-  final appointmentTime;
+  final time;
   final serviceCategory;
   final serviceName;
   final serviceSubCategory;
@@ -111,7 +111,7 @@ class FormSelection extends StatefulWidget {
       required this.serviceCategory,
       required this.serviceName,
       required this.serviceSubCategory,
-      required this.appointmentTime,
+      required this.time,
       required this.uuid});
 
   @override
@@ -140,7 +140,7 @@ class _FormSelectionState extends State<FormSelection> {
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('doctors')
-          .where('doctorCategory', isEqualTo: widget.serviceName)
+          // .where('doctorCategory', isEqualTo: widget.serviceName)
           .get();
 
       setState(() {
@@ -277,7 +277,7 @@ class _FormSelectionState extends State<FormSelection> {
                         color: appColor),
                   ),
                   Text(
-                    "Service Time: " + widget.appointmentTime,
+                    "Service Time: " + widget.time,
                     style: TextStyle(
                         fontFamily: 'Futura',
                         fontSize: 14,
@@ -413,9 +413,9 @@ class _FormSelectionState extends State<FormSelection> {
                                             patientUid: FirebaseAuth
                                                 .instance.currentUser!.uid,
                                             doctorName: selectedDoctor,
-                                            appointmentStartTime: _selectedTime,
-                                            appointmentServiceTime:
-                                                widget.appointmentTime,
+                                            appointmentStartTime:
+                                                _selectedTime.toString(),
+                                            appointmentServiceTime: widget.time,
                                             appointmentId: uuid,
                                             patientName:
                                                 _paitientController.text.trim(),
@@ -425,7 +425,7 @@ class _FormSelectionState extends State<FormSelection> {
                                             serviceCategory:
                                                 widget.serviceCategory,
                                             appointmentDate:
-                                                _selectedValue.toString,
+                                                _selectedValue.toString(),
                                           )));
 
                               setState(() {
