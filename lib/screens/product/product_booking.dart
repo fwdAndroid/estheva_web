@@ -1,4 +1,4 @@
-import 'package:estheva_web/screens/details/mobile_checkout.dart';
+import 'package:estheva_web/screens/checkout/mobile_checkout.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';

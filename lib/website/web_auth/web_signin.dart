@@ -1,7 +1,7 @@
 import 'package:estheva_web/services/auth_methods.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
-import 'package:estheva_web/website/screens/main_dashboard_we.dart';
+import 'package:estheva_web/website/screens/main_web_screens/main_dashboard_we.dart';
 import 'package:estheva_web/website/web_auth/web_forgot_password.dart';
 import 'package:estheva_web/website/web_auth/web_signup.dart';
 import 'package:estheva_web/widgets/save_button.dart';

@@ -1,14 +1,10 @@
-import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:estheva_web/screens/auth/login_screen.dart';
 import 'package:estheva_web/screens/main/main_dashboard.dart';
 import 'package:estheva_web/services/auth_methods.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/uitls/image_utils.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';
 
@@ -26,8 +22,6 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController _contactController = TextEditingController();
   bool isChecked = false;
   bool passwordVisible = false;
-  //Image
-  Uint8List? _image;
   //loader
   bool isLoading = false;
   @override
@@ -325,13 +319,5 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
-  }
-
-  //Functions
-  selectImage() async {
-    Uint8List ui = await pickImage(ImageSource.gallery);
-    setState(() {
-      _image = ui;
-    });
   }
 }

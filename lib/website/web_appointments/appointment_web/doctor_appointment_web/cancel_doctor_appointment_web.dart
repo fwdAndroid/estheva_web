@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/website/screens/appointment_web/doctor_appointment_web/doctor_appointment_detail/complete_doctor_web_appointment_detail.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/doctor_appointment_web/doctor_appointment_detail/cancel_doctor_web_appointment_detail.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class CompleteDoctorAppointmentWeb extends StatefulWidget {
-  const CompleteDoctorAppointmentWeb({super.key});
+class CancelDoctorAppointmentWeb extends StatefulWidget {
+  const CancelDoctorAppointmentWeb({super.key});
 
   @override
-  State<CompleteDoctorAppointmentWeb> createState() =>
-      _CompleteDoctorAppointmentWebState();
+  State<CancelDoctorAppointmentWeb> createState() =>
+      _CancelDoctorAppointmentWebState();
 }
 
-class _CompleteDoctorAppointmentWebState
-    extends State<CompleteDoctorAppointmentWeb> {
+class _CancelDoctorAppointmentWebState
+    extends State<CancelDoctorAppointmentWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _CompleteDoctorAppointmentWebState
               .collection("doctor_appointment")
               .where("paitientUid",
                   isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-              .where("status", isEqualTo: "complete")
+              .where("status", isEqualTo: "cancel")
               .snapshots(),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -49,7 +49,7 @@ class _CompleteDoctorAppointmentWebState
                                 context,
                                 MaterialPageRoute(
                                     builder: (builder) =>
-                                        CompleteDoctorWebAppointmentDetail(
+                                        CancelDoctorWebAppointmentDetail(
                                           status: serviceData['status'],
                                           appointmentDate:
                                               serviceData['appointmentDate'],

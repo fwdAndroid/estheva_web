@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/website/screens/web_details.dart/product_detail_web.dart';
+import 'package:estheva_web/website/screens/product_web/product_detail_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart'; // For the dots indicator

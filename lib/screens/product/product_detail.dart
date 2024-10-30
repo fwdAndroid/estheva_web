@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:estheva_web/screens/details/product_booking.dart';
+import 'package:estheva_web/screens/product/product_booking.dart';
 import 'package:estheva_web/uitls/colors.dart';
 
 class ProductDetail extends StatefulWidget {

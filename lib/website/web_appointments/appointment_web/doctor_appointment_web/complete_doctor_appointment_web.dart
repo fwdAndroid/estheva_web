@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/website/screens/appointment_web/doctor_appointment_web/doctor_appointment_detail/upcomming_doctor_web_appointment_detail.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/doctor_appointment_web/doctor_appointment_detail/complete_doctor_web_appointment_detail.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class UpcommingDoctorAppointmentWeb extends StatefulWidget {
-  const UpcommingDoctorAppointmentWeb({super.key});
+class CompleteDoctorAppointmentWeb extends StatefulWidget {
+  const CompleteDoctorAppointmentWeb({super.key});
 
   @override
-  State<UpcommingDoctorAppointmentWeb> createState() =>
-      _UpcommingDoctorAppointmentWebState();
+  State<CompleteDoctorAppointmentWeb> createState() =>
+      _CompleteDoctorAppointmentWebState();
 }
 
-class _UpcommingDoctorAppointmentWebState
-    extends State<UpcommingDoctorAppointmentWeb> {
+class _CompleteDoctorAppointmentWebState
+    extends State<CompleteDoctorAppointmentWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _UpcommingDoctorAppointmentWebState
               .collection("doctor_appointment")
               .where("paitientUid",
                   isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-              .where("status", isEqualTo: "confirm")
+              .where("status", isEqualTo: "complete")
               .snapshots(),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -49,7 +49,7 @@ class _UpcommingDoctorAppointmentWebState
                                 context,
                                 MaterialPageRoute(
                                     builder: (builder) =>
-                                        UpcommingDoctorWebAppointmentDetail(
+                                        CompleteDoctorWebAppointmentDetail(
                                           status: serviceData['status'],
                                           appointmentDate:
                                               serviceData['appointmentDate'],
@@ -86,8 +86,8 @@ class _UpcommingDoctorAppointmentWebState
                           Text(
                             "Doctor Name:",
                             style: TextStyle(
-                                fontSize: 13,
                                 fontFamily: 'Futura',
+                                fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -97,9 +97,9 @@ class _UpcommingDoctorAppointmentWebState
                           Text(
                             serviceData['doctorName'],
                             style: TextStyle(
+                                fontFamily: 'Futura',
                                 fontSize: 12,
                                 color: appColor,
-                                fontFamily: 'Futura',
                                 fontWeight: FontWeight.w300),
                           ),
                         ],
@@ -111,9 +111,9 @@ class _UpcommingDoctorAppointmentWebState
                               Text(
                                 "Date:",
                                 style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
-                                    fontFamily: 'Futura',
                                     fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(
@@ -122,8 +122,8 @@ class _UpcommingDoctorAppointmentWebState
                               Text(
                                 serviceData['appointmentDate'],
                                 style: TextStyle(
-                                    fontSize: 12,
                                     fontFamily: 'Futura',
+                                    fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -134,9 +134,9 @@ class _UpcommingDoctorAppointmentWebState
                               Text(
                                 "Time:",
                                 style: TextStyle(
+                                    fontFamily: 'Futura',
                                     fontSize: 13,
                                     color: appColor,
-                                    fontFamily: 'Futura',
                                     fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(
@@ -145,8 +145,8 @@ class _UpcommingDoctorAppointmentWebState
                               Text(
                                 serviceData['appointmentStartTime'],
                                 style: TextStyle(
-                                    fontSize: 12,
                                     fontFamily: 'Futura',
+                                    fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
                               ),

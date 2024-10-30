@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/service_web_detail_web/service_upcomming_appointment_detail_web.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/service_appointment_web/service_web_detail_web/service_upcomming_appointment_detail_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

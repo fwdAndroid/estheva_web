@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:estheva_web/screens/main/main_dashboard.dart';
-import 'package:estheva_web/screens/tabs/service_appointment_details.dart';
+import 'package:estheva_web/screens/appointment_pages/service_appointment_details.dart';
 import 'package:estheva_web/uitls/colors.dart';
 import 'package:estheva_web/uitls/message_utils.dart';
 import 'package:estheva_web/widgets/save_button.dart';

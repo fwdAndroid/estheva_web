@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:estheva_web/screens/details/offer_detail.dart';
-import 'package:estheva_web/screens/details/product_detail.dart';
+import 'package:estheva_web/screens/product/product_detail.dart';
 import 'package:estheva_web/widgets/my_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';

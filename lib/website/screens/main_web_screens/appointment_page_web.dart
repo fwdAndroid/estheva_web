@@ -1,18 +1,16 @@
-import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/cancel_service_appointment_web.dart';
-import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/complete_service_appointment_web.dart';
-import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/upcoming_service_appointment_web.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/doctor_appointment_web.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/service_appointment_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class ServiceAppointmentWeb extends StatefulWidget {
-  const ServiceAppointmentWeb({super.key});
+class AppointmentPageWeb extends StatefulWidget {
+  const AppointmentPageWeb({super.key});
 
   @override
-  State<ServiceAppointmentWeb> createState() => _ServiceAppointmentWebState();
+  State<AppointmentPageWeb> createState() => _AppointmentPageWebState();
 }
 
-class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
+class _AppointmentPageWebState extends State<AppointmentPageWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,20 +35,19 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (builder) =>
-                                  UpcomingServiceAppointmentWeb()));
+                              builder: (builder) => DoctorAppointmentWeb()));
                     },
                     child: Card(
                       child: Column(
                         children: [
                           Image.asset(
-                            "assets/logos.png",
+                            "assets/doctor.png",
                             height: 170,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Upcoming Appointment",
+                              "Doctor Appointment",
                               style: TextStyle(
                                 fontFamily: 'Futura',
                               ),
@@ -71,54 +68,19 @@ class _ServiceAppointmentWebState extends State<ServiceAppointmentWeb> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (builder) =>
-                                  CompleteServiceAppointmentWeb()));
+                              builder: (builder) => ServiceAppointmentWeb()));
                     },
                     child: Card(
                       child: Column(
                         children: [
                           Image.asset(
-                            "assets/logos.png",
+                            "assets/newlogo.png",
                             height: 170,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Complete Appointment",
-                              style: TextStyle(
-                                fontFamily: 'Futura',
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: SizedBox(
-                  width: 250,
-                  height: 250,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (builder) =>
-                                  CancelServiceAppointmentWeb()));
-                    },
-                    child: Card(
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            "assets/logos.png",
-                            height: 170,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Cancel Appointment",
+                              "Service Appointment",
                               style: TextStyle(
                                 fontFamily: 'Futura',
                               ),

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:estheva_web/screens/appointments/appointment_history.dart';
+import 'package:estheva_web/screens/setting_pages/appointment_history.dart';
 import 'package:estheva_web/screens/setting_pages/change_password.dart';
 import 'package:estheva_web/screens/setting_pages/edit_profile.dart';
 import 'package:estheva_web/screens/setting_pages/notification_screen.dart';

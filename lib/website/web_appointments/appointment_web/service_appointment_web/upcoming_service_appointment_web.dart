@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/website/screens/appointment_web/service_appointment_web/service_web_detail_web/service_upcomming_appointment_detail_web.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/service_appointment_web/service_web_detail_web/service_upcomming_appointment_detail_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class CancelServiceAppointmentWeb extends StatefulWidget {
-  const CancelServiceAppointmentWeb({super.key});
+class UpcomingServiceAppointmentWeb extends StatefulWidget {
+  const UpcomingServiceAppointmentWeb({super.key});
 
   @override
-  State<CancelServiceAppointmentWeb> createState() =>
-      _CancelServiceAppointmentWebState();
+  State<UpcomingServiceAppointmentWeb> createState() =>
+      _UpcomingServiceAppointmentWebState();
 }
 
-class _CancelServiceAppointmentWebState
-    extends State<CancelServiceAppointmentWeb> {
+class _UpcomingServiceAppointmentWebState
+    extends State<UpcomingServiceAppointmentWeb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _CancelServiceAppointmentWebState
               .collection("appointment")
               .where("patientUid",
                   isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-              .where("status", isEqualTo: "cancel")
+              .where("status", isEqualTo: "confirm")
               .snapshots(),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -88,8 +88,8 @@ class _CancelServiceAppointmentWebState
                           Text(
                             "Service Name:",
                             style: TextStyle(
-                                fontSize: 13,
                                 fontFamily: 'Futura',
+                                fontSize: 13,
                                 color: appColor,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -113,8 +113,8 @@ class _CancelServiceAppointmentWebState
                               Text(
                                 "Date:",
                                 style: TextStyle(
-                                    fontSize: 13,
                                     fontFamily: 'Futura',
+                                    fontSize: 13,
                                     color: appColor,
                                     fontWeight: FontWeight.w600),
                               ),
@@ -124,8 +124,8 @@ class _CancelServiceAppointmentWebState
                               Text(
                                 serviceData['appointmentDate'],
                                 style: TextStyle(
-                                    fontSize: 12,
                                     fontFamily: 'Futura',
+                                    fontSize: 12,
                                     color: appColor,
                                     fontWeight: FontWeight.w300),
                               ),
@@ -137,8 +137,8 @@ class _CancelServiceAppointmentWebState
                                 "Time:",
                                 style: TextStyle(
                                     fontSize: 13,
-                                    color: appColor,
                                     fontFamily: 'Futura',
+                                    color: appColor,
                                     fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(
@@ -148,8 +148,8 @@ class _CancelServiceAppointmentWebState
                                 serviceData['appointmentStartTime'],
                                 style: TextStyle(
                                     fontSize: 12,
-                                    color: appColor,
                                     fontFamily: 'Futura',
+                                    color: appColor,
                                     fontWeight: FontWeight.w300),
                               ),
                             ],

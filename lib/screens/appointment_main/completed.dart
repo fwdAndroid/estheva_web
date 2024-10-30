@@ -1,15 +1,15 @@
-import 'package:estheva_web/screens/tabs/service_appointment_details.dart';
+import 'package:estheva_web/screens/appointment_pages/complete_doctor_appointment.dart';
+import 'package:estheva_web/screens/appointment_pages/complete_service_appointment.dart';
 import 'package:flutter/material.dart';
-import 'package:estheva_web/screens/tabs/doctor_appointment_details.dart';
 
-class Upcoming extends StatefulWidget {
-  const Upcoming({super.key});
+class Completed extends StatefulWidget {
+  const Completed({super.key});
 
   @override
-  State<Upcoming> createState() => _UpcomingState();
+  State<Completed> createState() => _CompletedState();
 }
 
-class _UpcomingState extends State<Upcoming> {
+class _CompletedState extends State<Completed> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _UpcomingState extends State<Upcoming> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (builder) => DoctorAppointmentDetails()));
+                        builder: (builder) => CompleteDoctorAppointment()));
               },
               child: Card(
                 child: Column(
@@ -38,7 +38,7 @@ class _UpcomingState extends State<Upcoming> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Doctor Appointment",
+                        "Complete Doctors Appointment",
                         style: TextStyle(
                           fontFamily: 'Futura',
                         ),
@@ -59,7 +59,7 @@ class _UpcomingState extends State<Upcoming> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (builder) => ServiceAppointmentDetails()));
+                        builder: (builder) => CompleteServiceAppointment()));
               },
               child: Card(
                 child: Column(
@@ -71,7 +71,7 @@ class _UpcomingState extends State<Upcoming> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Service Appointment",
+                        "Complete Service Appointment",
                         style: TextStyle(
                           fontFamily: 'Futura',
                         ),

@@ -1,5 +1,5 @@
-import 'package:estheva_web/screens/tabs/cancel_doctor_appointment.dart';
-import 'package:estheva_web/screens/tabs/cancel_service_appointment.dart';
+import 'package:estheva_web/screens/appointment_pages/cancel_doctor_appointment.dart';
+import 'package:estheva_web/screens/appointment_pages/cancel_service_appointment.dart';
 import 'package:flutter/material.dart';
 
 class Cancelled extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/website/screens/web_details.dart/offers_detail_web.dart';
+import 'package:estheva_web/website/screens/offers/offers_detail_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

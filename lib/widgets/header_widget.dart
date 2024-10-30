@@ -1,5 +1,5 @@
 import 'package:estheva_web/uitls/colors.dart';
-import 'package:estheva_web/website/screens/appointment_web/appointment_page_web.dart';
+import 'package:estheva_web/website/screens/main_web_screens/appointment_page_web.dart';
 import 'package:estheva_web/website/screens/clinic_services/aestheticatclince.dart';
 import 'package:estheva_web/website/screens/clinic_services/bodu_contouring_page_clinic.dart';
 import 'package:estheva_web/website/screens/clinic_services/health_checkup_clinic.dart';
@@ -9,10 +9,10 @@ import 'package:estheva_web/website/screens/home_services/Iv_thearapy_home.dart'
 import 'package:estheva_web/website/screens/home_services/body_coutouring_page_home.dart';
 import 'package:estheva_web/website/screens/home_services/healthcheckup_home.dart';
 import 'package:estheva_web/website/screens/home_services/physiotherapy_home.dart';
-import 'package:estheva_web/website/screens/main_dashboard_we.dart';
+import 'package:estheva_web/website/screens/main_web_screens/main_dashboard_we.dart';
 import 'package:estheva_web/website/screens/offers/offers.dart';
-import 'package:estheva_web/website/screens/web_dashboard_doctors.dart';
-import 'package:estheva_web/website/screens/web_main_dashboard_account.dart';
+import 'package:estheva_web/website/screens/main_web_screens/web_dashboard_doctors.dart';
+import 'package:estheva_web/website/screens/main_web_screens/web_main_dashboard_account.dart';
 import 'package:estheva_web/website/web_auth/web_signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
-import 'package:estheva_web/screens/tabs/cancelled.dart';
-import 'package:estheva_web/screens/tabs/completed.dart';
-import 'package:estheva_web/screens/tabs/upcomming.dart';
+import 'package:estheva_web/screens/appointment_main/cancelled.dart';
+import 'package:estheva_web/screens/appointment_main/completed.dart';
+import 'package:estheva_web/screens/appointment_main/upcomming.dart';
 import 'package:flutter/material.dart';
 import 'package:estheva_web/uitls/colors.dart';
 

@@ -1,6 +1,6 @@
-import 'package:estheva_web/website/screens/appointment_web/doctor_appointment_web/cancel_doctor_appointment_web.dart';
-import 'package:estheva_web/website/screens/appointment_web/doctor_appointment_web/complete_doctor_appointment_web.dart';
-import 'package:estheva_web/website/screens/appointment_web/doctor_appointment_web/upcomming_doctor_appointment_web.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/doctor_appointment_web/cancel_doctor_appointment_web.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/doctor_appointment_web/complete_doctor_appointment_web.dart';
+import 'package:estheva_web/website/web_appointments/appointment_web/doctor_appointment_web/upcomming_doctor_appointment_web.dart';
 import 'package:estheva_web/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
